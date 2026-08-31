@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>Withdraw | Beez Gift Card</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+rel="stylesheet"
+>
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --blue:#0757c9;
+  --dark-blue:#043b8f;
+  --green:#16a34a;
+  --green-dark:#0d7a35;
+  --dark:#10233f;
+  --gray:#687891;
+  --light:#f4f8ff;
+  --border:#dfe7f1;
+  --red:#dc2626;
+}
+
+body{
+  font-family:Inter,sans-serif;
+  background:var(--light);
+  color:var(--dark);
+  min-height:100vh;
+}
+
+/* TOPBAR */
+
+.topbar{
+  height:72px;
+  background:white;
+  border-bottom:1px solid var(--border);
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 5%;
+
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.logo{
+  color:var(--blue);
+  text-decoration:none;
+  font-size:23px;
+  font-weight:800;
+}
+
+.logo span{
+  color:var(--green);
+}
+
+.user-area{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.user-name{
+  font-size:12px;
+  font-weight:700;
+}
+
+.avatar{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:var(--blue);
+  color:white;
+
+  display:grid;
+  place-items:center;
+
+  font-size:13px;
+  font-weight:800;
+}
+
+/* LAYOUT */
+
+.layout{
+  display:flex;
+  min-height:calc(100vh - 72px);
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  width:245px;
+  background:white;
+  border-right:1px solid var(--border);
+  padding:25px 15px;
+  flex-shrink:0;
+}
+
+.menu-title{
+  color:#91a0b5;
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1px;
+
+  padding:0 13px;
+  margin:8px 0 12px;
+}
+
+.menu{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.menu-item{
+  width:100%;
+
+  border:0;
+  background:transparent;
+
+  padding:12px 13px;
+
+  border-radius:9px;
+
+  display:flex;
+  align-items:center;
+
+  gap:12px;
+
+  color:var(--gray);
+
+  font-family:inherit;
+  font-size:13px;
+  font-weight:600;
+
+  text-decoration:none;
+
+  cursor:pointer;
+  text-align:left;
+}
+
+.menu-item:hover{
+  background:#edf5ff;
+  color:var(--blue);
+}
+
+.menu-item.active{
+  background:#eaf2ff;
+  color:var(--blue);
+}
+
+.menu-icon{
+  width:22px;
+  text-align:center;
+  font-size:16px;
+}
+
+.logout{
+  color:var(--red);
+  margin-top:15px;
+}
+
+/* MAIN */
+
+.main{
+  width:100%;
+  max-width:1000px;
+  padding:35px 5%;
+}
+
+.page-title{
+  margin-bottom:25px;
+}
+
+.page-title h1{
+  font-size:25px;
+  margin-bottom:7px;
+}
+
+.page-title p{
+  color:var(--gray);
+  font-size:13px;
+}
+
+/* WALLET */
+
+.wallet{
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(22,163,74,.25),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--dark-blue)
+    );
+
+  color:white;
+
+  border-radius:16px;
+
+  padding:25px;
+
+  margin-bottom:20px;
+}
+
+.wallet-label{
+  color:#cbdcf7;
+  font-size:11px;
+  margin-bottom:7px;
+}
+
+.wallet-balance{
+  font-size:30px;
+  font-weight:800;
+}
+
+/* CARD */
+
+.card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:25px;
+}
+
+.card h2{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.description{
+  color:var(--gray);
+  font-size:11px;
+  line-height:1.6;
+  margin-bottom:22px;
+}
+
+/* MESSAGE */
+
+.message{
+  display:none;
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:17px;
+  font-size:11px;
+  line-height:1.5;
+}
+
+.message.success{
+  display:block;
+  color:#08752e;
+  background:#edfff3;
+  border:1px solid #bceccc;
+}
+
+.message.error{
+  display:block;
+  color:#b42318;
+  background:#fff0f0;
+  border:1px solid #ffd0d0;
+}
+
+/* SAVED ACCOUNT */
+
+.saved-account{
+  display:none;
+
+  background:#f2fff6;
+
+  border:1px solid #bceccc;
+
+  border-radius:11px;
+
+  padding:17px;
+
+  margin-bottom:22px;
+}
+
+.saved-account.show{
+  display:block;
+}
+
+.saved-title{
+  color:var(--green);
+
+  font-size:11px;
+
+  font-weight:800;
+
+  margin-bottom:12px;
+}
+
+.saved-row{
+  display:flex;
+  justify-content:space-between;
+
+  padding:8px 0;
+
+  border-bottom:1px solid #d8f1df;
+
+  font-size:11px;
+}
+
+.saved-row:last-child{
+  border-bottom:0;
+}
+
+.saved-row span:first-child{
+  color:var(--gray);
+}
+
+.saved-row span:last-child{
+  font-weight:700;
+}
+
+/* FORM */
+
+.form-group{
+  margin-bottom:17px;
+}
+
+label{
+  display:block;
+
+  font-size:12px;
+  font-weight:700;
+
+  margin-bottom:7px;
+}
+
+input,
+select{
+  width:100%;
+  height:49px;
+
+  border:1px solid var(--border);
+
+  border-radius:8px;
+
+  padding:0 13px;
+
+  background:white;
+
+  color:var(--dark);
+
+  font-family:inherit;
+
+  font-size:13px;
+
+  outline:none;
+}
+
+input:focus,
+select:focus{
+  border-color:var(--blue);
+
+  box-shadow:
+    0 0 0 3px rgba(7,87,201,.08);
+}
+
+/* BUTTON */
+
+.btn{
+  width:100%;
+  height:49px;
+
+  border:0;
+
+  border-radius:8px;
+
+  background:var(--green);
+
+  color:white;
+
+  font-family:inherit;
+
+  font-size:13px;
+
+  font-weight:800;
+
+  cursor:pointer;
+}
+
+.btn:hover{
+  background:var(--green-dark);
+}
+
+.btn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+/* NOTE */
+
+.note{
+  margin-top:17px;
+
+  padding:13px;
+
+  border-radius:8px;
+
+  background:#f4f8ff;
+
+  color:var(--gray);
+
+  font-size:10px;
+
+  line-height:1.6;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  .layout{
+    display:block;
+  }
+
+  .sidebar{
+    width:100%;
+    border-right:0;
+    border-bottom:1px solid var(--border);
+    padding:10px;
+    overflow-x:auto;
+  }
+
+  .menu-title{
+    display:none;
+  }
+
+  .menu{
+    flex-direction:row;
+    width:max-content;
+  }
+
+  .menu-item{
+    width:auto;
+    white-space:nowrap;
+  }
+
+  .logout{
+    margin-top:0;
+  }
+
+  .main{
+    padding:25px 18px 40px;
+  }
+
+  .user-name{
+    display:none;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+  <a href="dashboard.html" class="logo">
+    Beez <span>Gift Card</span>
+  </a>
+
+  <div class="user-area">
+
+    <span class="user-name" id="topName">
+      Customer
+    </span>
+
+    <div class="avatar" id="avatar">
+      B
+    </div>
+
+  </div>
+
+</header>
+
+
+<div class="layout">
+
+
+<aside class="sidebar">
+
+  <div class="menu-title">
+    Main Menu
+  </div>
+
+  <nav class="menu">
+
+    <a href="dashboard.html" class="menu-item">
+      <span class="menu-icon">🏠</span>
+      Dashboard
+    </a>
+
+    <a href="sell-gift-card.html" class="menu-item">
+      <span class="menu-icon">🎁</span>
+      Sell Gift Card
+    </a>
+
+    <a href="rates.html" class="menu-item">
+      <span class="menu-icon">💰</span>
+      Gift Card Rates
+    </a>
+
+    <a href="transactions.html" class="menu-item">
+      <span class="menu-icon">📋</span>
+      Transactions
+    </a>
+
+    <a href="withdraw.html" class="menu-item active">
+      <span class="menu-icon">🏦</span>
+      Withdraw
+    </a>
+
+    <div class="menu-title">
+      Account
+    </div>
+
+    <a href="profile.html" class="menu-item">
+      <span class="menu-icon">👤</span>
+      Profile
+    </a>
+
+    <a href="support.html" class="menu-item">
+      <span class="menu-icon">💬</span>
+      Customer Support
+    </a>
+
+    <button class="menu-item logout" id="logoutBtn">
+      <span class="menu-icon">🚪</span>
+      Logout
+    </button>
+
+  </nav>
+
+</aside>
+
+
+<main class="main">
+
+
+<div class="page-title">
+
+  <h1>
+    Withdraw
+  </h1>
+
+  <p>
+    Withdraw your available Beez Gift Card wallet balance to your Nigerian bank account.
+  </p>
+
+</div>
+
+
+<!-- WALLET -->
+
+<div class="wallet">
+
+  <div class="wallet-label">
+    Available Wallet Balance
+  </div>
+
+  <div
+    class="wallet-balance"
+    id="walletBalance"
+  >
+    ₦0.00
+  </div>
+
+</div>
+
+
+<!-- CARD -->
+
+<div class="card">
+
+  <h2>
+    Bank Account
+  </h2>
+
+  <p class="description">
+    Save your Nigerian bank account details. Once saved,
+    they will remain available for future withdrawals.
+  </p>
+
+
+  <div
+    id="message"
+    class="message"
+  ></div>
+
+
+  <!-- SAVED ACCOUNT -->
+
+  <div
+    id="savedAccount"
+    class="saved-account"
+  >
+
+    <div class="saved-title">
+      ✓ SAVED WITHDRAWAL ACCOUNT
+    </div>
+
+
+    <div class="saved-row">
+
+      <span>
+        Bank
+      </span>
+
+      <span id="savedBank">
+        -
+      </span>
+
+    </div>
+
+
+    <div class="saved-row">
+
+      <span>
+        Account Name
+      </span>
+
+      <span id="savedName">
+        -
+      </span>
+
+    </div>
+
+
+    <div class="saved-row">
+
+      <span>
+        Account Number
+      </span>
+
+      <span id="savedNumber">
+        -
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <form id="withdrawForm">
+
+
+    <!-- BANK -->
+
+    <div class="form-group">
+
+      <label>
+        Select Bank
+      </label>
+
+      <select
+        id="bankName"
+        required
+      >
+
+        <option value="">
+          Select your bank
+        </option>
+
+        <option>
+          Access Bank
+        </option>
+
+        <option>
+          United Bank for Africa (UBA)
+        </option>
+
+        <option>
+          First Bank of Nigeria
+        </option>
+
+        <option>
+          Guaranty Trust Bank (GTBank)
+        </option>
+
+        <option>
+          Zenith Bank
+        </option>
+
+        <option>
+          Fidelity Bank
+        </option>
+
+        <option>
+          First City Monument Bank (FCMB)
+        </option>
+
+        <option>
+          Sterling Bank
+        </option>
+
+        <option>
+          Stanbic IBTC Bank
+        </option>
+
+        <option>
+          Union Bank
+        </option>
+
+        <option>
+          Wema Bank
+        </option>
+
+        <option>
+          Ecobank Nigeria
+        </option>
+
+        <option>
+          Keystone Bank
+        </option>
+
+        <option>
+          Polaris Bank
+        </option>
+
+        <option>
+          Unity Bank
+        </option>
+
+        <option>
+          Jaiz Bank
+        </option>
+
+        <option>
+          Providus Bank
+        </option>
+
+        <option>
+          Opay
+        </option>
+
+        <option>
+          PalmPay
+        </option>
+
+        <option>
+          Kuda Bank
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <!-- ACCOUNT NAME -->
+
+    <div class="form-group">
+
+      <label>
+        Account Name
+      </label>
+
+      <input
+        type="text"
+        id="accountName"
+        placeholder="Enter your bank account name"
+        required
+      >
+
+    </div>
+
+
+    <!-- ACCOUNT NUMBER -->
+
+    <div class="form-group">
+
+      <label>
+        Account Number
+      </label>
+
+      <input
+        type="text"
+        id="accountNumber"
+        inputmode="numeric"
+        maxlength="10"
+        placeholder="Enter 10-digit account number"
+        required
+      >
+
+    </div>
+
+
+    <button
+      type="submit"
+      class="btn"
+      id="saveBankBtn"
+    >
+      Save Bank Account
+    </button>
+
+
+  </form>
+
+
+  <div class="note">
+
+    🔒 Your bank information is stored in your Beez Gift Card
+    account and can be reused for future withdrawals.
+
+  </div>
+
+
+</div>
+
+
+</main>
+
+</div>
+
+
+<script type="module">
+
+
+import {
+  initializeApp
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+  serverTimestamp
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+/* FIREBASE */
+
+const firebaseConfig = {
+
+  apiKey:
+    "AIzaSyDKJescGQhaWB_-E5qH6mnjtmQvVPmlkUI",
+
+  authDomain:
+    "beezgiftcard.firebaseapp.com",
+
+  projectId:
+    "beezgiftcard",
+
+  storageBucket:
+    "beezgiftcard.firebasestorage.app",
+
+  messagingSenderId:
+    "875969788899",
+
+  appId:
+    "1:875969788899:web:b8f1d6f03bf8752438bed6",
+
+  measurementId:
+    "G-85CETQ7LEN"
+
+};
+
+
+const app =
+  initializeApp(firebaseConfig);
+
+const auth =
+  getAuth(app);
+
+const db =
+  getFirestore(app);
+
+
+/* ELEMENTS */
+
+const walletBalance =
+  document.getElementById(
+    "walletBalance"
+  );
+
+const bankName =
+  document.getElementById(
+    "bankName"
+  );
+
+const accountName =
+  document.getElementById(
+    "accountName"
+  );
+
+const accountNumber =
+  document.getElementById(
+    "accountNumber"
+  );
+
+const message =
+  document.getElementById(
+    "message"
+  );
+
+const savedAccount =
+  document.getElementById(
+    "savedAccount"
+  );
+
+
+function formatNaira(amount){
+
+  return "₦" +
+    Number(amount || 0)
+      .toLocaleString(
+        "en-NG",
+        {
+          minimumFractionDigits:2,
+          maximumFractionDigits:2
+        }
+      );
+
+}
+
+
+function showMessage(
+  text,
+  type
+){
+
+  message.textContent =
+    text;
+
+  message.className =
+    "message " + type;
+
+}
+
+
+function getInitials(name){
+
+  if(!name) return "B";
+
+  const parts =
+    name.trim().split(/\s+/);
+
+  if(parts.length === 1){
+
+    return parts[0]
+      .substring(0,2)
+      .toUpperCase();
+
+  }
+
+  return (
+    parts[0][0] +
+    parts[parts.length - 1][0]
+  ).toUpperCase();
+
+}
+
+
+/* ACCOUNT NUMBER */
+
+accountNumber.addEventListener(
+  "input",
+  () => {
+
+    accountNumber.value =
+      accountNumber.value
+        .replace(/\D/g,"")
+        .substring(0,10);
+
+  }
+);
+
+
+/* AUTH */
+
+onAuthStateChanged(
+  auth,
+  async user => {
+
+    if(!user){
+
+      window.location.replace(
+        "login.html"
+      );
+
+      return;
+
+    }
+
+
+    document.getElementById(
+      "topName"
+    ).textContent =
+      user.displayName ||
+      "Customer";
+
+
+    document.getElementById(
+      "avatar"
+    ).textContent =
+      getInitials(
+        user.displayName ||
+        "Customer"
+      );
+
+
+    try{
+
+      const ref =
+        doc(
+          db,
+          "users",
+          user.uid
+        );
+
+
+      const snap =
+        await getDoc(ref);
+
+
+      if(!snap.exists()){
+
+        return;
+
+      }
+
+
+      const data =
+        snap.data();
+
+
+      /* WALLET */
+
+      walletBalance.textContent =
+        formatNaira(
+          data.walletBalance || 0
+        );
+
+
+      /* SAVED BANK */
+
+      if(
+        data.bankName &&
+        data.accountName &&
+        data.accountNumber
+      ){
+
+        savedAccount.classList.add(
+          "show"
+        );
+
+
+        document.getElementById(
+          "savedBank"
+        ).textContent =
+          data.bankName;
+
+
+        document.getElementById(
+          "savedName"
+        ).textContent =
+          data.accountName;
+
+
+        document.getElementById(
+          "savedNumber"
+        ).textContent =
+          data.accountNumber;
+
+
+        /* PUT SAVED VALUES INTO FORM */
+
+        bankName.value =
+          data.bankName;
+
+
+        accountName.value =
+          data.accountName;
+
+
+        accountNumber.value =
+          data.accountNumber;
+
+      }
+
+    }catch(error){
+
+      console.error(
+        "Load withdrawal data:",
+        error
+      );
+
+    }
+
+  }
+);
+
+
+/* SAVE BANK ACCOUNT */
+
+document
+.getElementById("withdrawForm")
+.addEventListener(
+  "submit",
+  async event => {
+
+    event.preventDefault();
+
+
+    const user =
+      auth.currentUser;
+
+
+    if(!user) return;
+
+
+    const bank =
+      bankName.value;
+
+
+    const name =
+      accountName.value.trim();
+
+
+    const number =
+      accountNumber.value.trim();
+
+
+    /* VALIDATE */
+
+    if(!bank){
+
+      showMessage(
+        "Please select your bank.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if(name.length < 2){
+
+      showMessage(
+        "Please enter the account name.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if(!/^\d{10}$/.test(number)){
+
+      showMessage(
+        "Account number must contain exactly 10 digits.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const button =
+      document.getElementById(
+        "saveBankBtn"
+      );
+
+
+    button.disabled = true;
+
+    button.textContent =
+      "Saving Account...";
+
+
+    try{
+
+      await setDoc(
+        doc(
+          db,
+          "users",
+          user.uid
+        ),
+        {
+
+          bankName:bank,
+
+          accountName:name,
+
+          accountNumber:number,
+
+          bankDetailsUpdatedAt:
+            serverTimestamp()
+
+        },
+        {
+          merge:true
+        }
+      );
+
+
+      /* UPDATE DISPLAY */
+
+      document.getElementById(
+        "savedBank"
+      ).textContent =
+        bank;
+
+
+      document.getElementById(
+        "savedName"
+      ).textContent =
+        name;
+
+
+      document.getElementById(
+        "savedNumber"
+      ).textContent =
+        number;
+
+
+      savedAccount.classList.add(
+        "show"
+      );
+
+
+      showMessage(
+        "Bank account saved successfully. You can use this account for future withdrawals.",
+        "success"
+      );
+
+
+    }catch(error){
+
+      console.error(
+        "Save bank account:",
+        error
+      );
+
+
+      showMessage(
+        "Unable to save your bank account. Please try again.",
+        "error"
+      );
+
+    }
+
+
+    button.disabled = false;
+
+    button.textContent =
+      "Save Bank Account";
+
+  }
+);
+
+
+/* LOGOUT */
+
+document
+.getElementById("logoutBtn")
+.addEventListener(
+  "click",
+  async () => {
+
+    await signOut(auth);
+
+    window.location.replace(
+      "login.html"
+    );
+
+  }
+);
+
+</script>
+
+</body>
+  </html>
