@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Profile | Beez Gift Card</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+rel="stylesheet"
+>
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --blue:#0757c9;
+  --dark-blue:#043b8f;
+  --green:#16a34a;
+  --green-dark:#0d7a35;
+  --dark:#10233f;
+  --gray:#687891;
+  --light:#f4f8ff;
+  --border:#dfe7f1;
+  --red:#dc2626;
+}
+
+body{
+  font-family:Inter,sans-serif;
+  background:var(--light);
+  color:var(--dark);
+  min-height:100vh;
+}
+
+/* TOPBAR */
+
+.topbar{
+  height:72px;
+  background:white;
+  border-bottom:1px solid var(--border);
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 5%;
+
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.logo{
+  color:var(--blue);
+  text-decoration:none;
+  font-size:23px;
+  font-weight:800;
+}
+
+.logo span{
+  color:var(--green);
+}
+
+.user-area{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.user-name{
+  font-size:12px;
+  font-weight:700;
+}
+
+.avatar{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:var(--blue);
+  color:white;
+
+  display:grid;
+  place-items:center;
+
+  font-size:13px;
+  font-weight:800;
+}
+
+/* LAYOUT */
+
+.layout{
+  display:flex;
+  min-height:calc(100vh - 72px);
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  width:245px;
+  background:white;
+  border-right:1px solid var(--border);
+  padding:25px 15px;
+  flex-shrink:0;
+}
+
+.menu-title{
+  color:#91a0b5;
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1px;
+
+  padding:0 13px;
+  margin:8px 0 12px;
+}
+
+.menu{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.menu-item{
+  width:100%;
+
+  border:0;
+  background:transparent;
+
+  padding:12px 13px;
+
+  border-radius:9px;
+
+  display:flex;
+  align-items:center;
+
+  gap:12px;
+
+  color:var(--gray);
+
+  font-family:inherit;
+  font-size:13px;
+  font-weight:600;
+
+  text-decoration:none;
+
+  cursor:pointer;
+  text-align:left;
+
+  transition:.2s;
+}
+
+.menu-item:hover{
+  background:#edf5ff;
+  color:var(--blue);
+}
+
+.menu-item.active{
+  background:#eaf2ff;
+  color:var(--blue);
+}
+
+.menu-icon{
+  width:22px;
+  text-align:center;
+  font-size:16px;
+}
+
+.logout{
+  color:var(--red);
+  margin-top:15px;
+}
+
+/* MAIN */
+
+.main{
+  width:100%;
+  max-width:1000px;
+  padding:35px 5%;
+}
+
+.page-title{
+  margin-bottom:25px;
+}
+
+.page-title h1{
+  font-size:25px;
+  margin-bottom:7px;
+}
+
+.page-title p{
+  color:var(--gray);
+  font-size:13px;
+}
+
+/* CARD */
+
+.card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:25px;
+  margin-bottom:20px;
+}
+
+.card h2{
+  font-size:17px;
+  margin-bottom:5px;
+}
+
+.card-description{
+  color:var(--gray);
+  font-size:11px;
+  margin-bottom:22px;
+}
+
+/* FORM */
+
+.form-group{
+  margin-bottom:17px;
+}
+
+label{
+  display:block;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+
+input{
+  width:100%;
+  height:48px;
+
+  border:1px solid var(--border);
+  border-radius:8px;
+
+  padding:0 13px;
+
+  font-family:inherit;
+  font-size:13px;
+
+  outline:none;
+}
+
+input:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(7,87,201,.08);
+}
+
+input:disabled{
+  background:#f4f7fa;
+  color:#7c8999;
+}
+
+/* BUTTON */
+
+.btn{
+  height:48px;
+
+  border:0;
+  border-radius:8px;
+
+  background:var(--green);
+  color:white;
+
+  padding:0 20px;
+
+  font-family:inherit;
+  font-size:12px;
+  font-weight:800;
+
+  cursor:pointer;
+}
+
+.btn:hover{
+  background:var(--green-dark);
+}
+
+.btn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+/* MESSAGE */
+
+.message{
+  display:none;
+
+  padding:12px;
+
+  border-radius:8px;
+
+  margin-bottom:17px;
+
+  font-size:11px;
+
+  line-height:1.5;
+}
+
+.message.success{
+  display:block;
+  background:#edfff3;
+  border:1px solid #bceccc;
+  color:#08752e;
+}
+
+.message.error{
+  display:block;
+  background:#fff0f0;
+  border:1px solid #ffd0d0;
+  color:#b42318;
+}
+
+/* SECURITY */
+
+.security-note{
+  margin-top:15px;
+
+  background:#f4f8ff;
+
+  border-radius:8px;
+
+  padding:12px;
+
+  color:var(--gray);
+
+  font-size:10px;
+
+  line-height:1.6;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  .layout{
+    display:block;
+  }
+
+  .sidebar{
+    width:100%;
+    border-right:0;
+    border-bottom:1px solid var(--border);
+    padding:10px;
+    overflow-x:auto;
+  }
+
+  .menu-title{
+    display:none;
+  }
+
+  .menu{
+    flex-direction:row;
+    width:max-content;
+  }
+
+  .menu-item{
+    width:auto;
+    white-space:nowrap;
+  }
+
+  .logout{
+    margin-top:0;
+  }
+
+  .main{
+    padding:25px 18px 40px;
+  }
+
+  .user-name{
+    display:none;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+  <a href="dashboard.html" class="logo">
+    Beez <span>Gift Card</span>
+  </a>
+
+  <div class="user-area">
+
+    <span class="user-name" id="topName">
+      Customer
+    </span>
+
+    <div class="avatar" id="avatar">
+      B
+    </div>
+
+  </div>
+
+</header>
+
+
+<div class="layout">
+
+
+<aside class="sidebar">
+
+  <div class="menu-title">
+    Main Menu
+  </div>
+
+  <nav class="menu">
+
+    <a href="dashboard.html" class="menu-item">
+      <span class="menu-icon">🏠</span>
+      Dashboard
+    </a>
+
+    <a href="sell-gift-card.html" class="menu-item">
+      <span class="menu-icon">🎁</span>
+      Sell Gift Card
+    </a>
+
+    <a href="rates.html" class="menu-item">
+      <span class="menu-icon">💰</span>
+      Gift Card Rates
+    </a>
+
+    <a href="transactions.html" class="menu-item">
+      <span class="menu-icon">📋</span>
+      Transactions
+    </a>
+
+    <a href="withdraw.html" class="menu-item">
+      <span class="menu-icon">🏦</span>
+      Withdraw
+    </a>
+
+    <div class="menu-title">
+      Account
+    </div>
+
+    <a href="profile.html" class="menu-item active">
+      <span class="menu-icon">👤</span>
+      Profile
+    </a>
+
+    <a href="support.html" class="menu-item">
+      <span class="menu-icon">💬</span>
+      Customer Support
+    </a>
+
+    <button class="menu-item logout" id="logoutBtn">
+      <span class="menu-icon">🚪</span>
+      Logout
+    </button>
+
+  </nav>
+
+</aside>
+
+
+<main class="main">
+
+
+<div class="page-title">
+
+  <h1>
+    My Profile
+  </h1>
+
+  <p>
+    Manage your personal information and account security.
+  </p>
+
+</div>
+
+
+<!-- PERSONAL INFORMATION -->
+
+<div class="card">
+
+  <h2>
+    Personal Information
+  </h2>
+
+  <p class="card-description">
+    Update your account information below.
+  </p>
+
+  <div id="profileMessage" class="message"></div>
+
+
+  <form id="profileForm">
+
+    <div class="form-group">
+
+      <label>
+        Full Name
+      </label>
+
+      <input
+        type="text"
+        id="fullName"
+        placeholder="Your full name"
+        required
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Gmail
+      </label>
+
+      <input
+        type="email"
+        id="email"
+        disabled
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Number
+      </label>
+
+      <input
+        type="tel"
+        id="phone"
+        disabled
+      >
+
+    </div>
+
+
+    <button
+      type="submit"
+      class="btn"
+      id="saveProfileBtn"
+    >
+      Save Changes
+    </button>
+
+  </form>
+
+</div>
+
+
+<!-- PASSWORD -->
+
+<div class="card">
+
+  <h2>
+    Change Password
+  </h2>
+
+  <p class="card-description">
+    For security, confirm your current password before creating a new one.
+  </p>
+
+  <div id="passwordMessage" class="message"></div>
+
+
+  <form id="passwordForm">
+
+
+    <div class="form-group">
+
+      <label>
+        Current Password
+      </label>
+
+      <input
+        type="password"
+        id="currentPassword"
+        placeholder="Enter current password"
+        required
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        New Password
+      </label>
+
+      <input
+        type="password"
+        id="newPassword"
+        placeholder="Minimum 6 characters"
+        minlength="6"
+        required
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Confirm New Password
+      </label>
+
+      <input
+        type="password"
+        id="confirmNewPassword"
+        placeholder="Confirm new password"
+        minlength="6"
+        required
+      >
+
+    </div>
+
+
+    <button
+      type="submit"
+      class="btn"
+      id="changePasswordBtn"
+    >
+      Change Password
+    </button>
+
+
+  </form>
+
+
+  <div class="security-note">
+    🔒 Your password is handled securely by Firebase Authentication.
+    Beez Gift Card does not store your password in Firestore.
+  </div>
+
+</div>
+
+
+</main>
+
+</div>
+
+
+<script type="module">
+
+
+import {
+  initializeApp
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+
+import {
+  getAuth,
+  onAuthStateChanged,
+  updateProfile,
+  updatePassword,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+  signOut
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  updateDoc,
+  serverTimestamp
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+/* FIREBASE */
+
+const firebaseConfig = {
+
+  apiKey:
+    "AIzaSyDKJescGQhaWB_-E5qH6mnjtmQvVPmlkUI",
+
+  authDomain:
+    "beezgiftcard.firebaseapp.com",
+
+  projectId:
+    "beezgiftcard",
+
+  storageBucket:
+    "beezgiftcard.firebasestorage.app",
+
+  messagingSenderId:
+    "875969788899",
+
+  appId:
+    "1:875969788899:web:b8f1d6f03bf8752438bed6",
+
+  measurementId:
+    "G-85CETQ7LEN"
+
+};
+
+
+const app =
+  initializeApp(firebaseConfig);
+
+const auth =
+  getAuth(app);
+
+const db =
+  getFirestore(app);
+
+
+/* ELEMENTS */
+
+const fullName =
+  document.getElementById("fullName");
+
+const email =
+  document.getElementById("email");
+
+const phone =
+  document.getElementById("phone");
+
+const topName =
+  document.getElementById("topName");
+
+const avatar =
+  document.getElementById("avatar");
+
+
+function initials(name){
+
+  if(!name) return "B";
+
+  const parts =
+    name.trim().split(/\s+/);
+
+  if(parts.length === 1){
+
+    return parts[0]
+      .substring(0,2)
+      .toUpperCase();
+
+  }
+
+  return (
+    parts[0][0] +
+    parts[parts.length - 1][0]
+  ).toUpperCase();
+
+}
+
+
+function showMessage(element,text,type){
+
+  element.textContent = text;
+
+  element.className =
+    "message " + type;
+
+}
+
+
+/* AUTH */
+
+onAuthStateChanged(
+  auth,
+  async user => {
+
+    if(!user){
+
+      window.location.replace(
+        "login.html"
+      );
+
+      return;
+
+    }
+
+
+    email.value =
+      user.email || "";
+
+    phone.value =
+      "Loading...";
+
+
+    let name =
+      user.displayName ||
+      "Customer";
+
+
+    fullName.value =
+      name;
+
+    topName.textContent =
+      name;
+
+    avatar.textContent =
+      initials(name);
+
+
+    try{
+
+      const ref =
+        doc(
+          db,
+          "users",
+          user.uid
+        );
+
+
+      const snap =
+        await getDoc(ref);
+
+
+      if(snap.exists()){
+
+        const data =
+          snap.data();
+
+
+        fullName.value =
+          data.fullName ||
+          name;
+
+
+        phone.value =
+          data.phone ||
+          "";
+
+
+        topName.textContent =
+          data.fullName ||
+          name;
+
+
+        avatar.textContent =
+          initials(
+            data.fullName || name
+          );
+
+      }
+
+    }catch(error){
+
+      console.error(error);
+
+      phone.value =
+        "Unable to load";
+
+    }
+
+  }
+);
+
+
+/* SAVE PROFILE */
+
+document
+.getElementById("profileForm")
+.addEventListener(
+  "submit",
+  async event => {
+
+    event.preventDefault();
+
+
+    const user =
+      auth.currentUser;
+
+
+    if(!user) return;
+
+
+    const name =
+      fullName.value.trim();
+
+
+    if(name.length < 2){
+
+      showMessage(
+        document.getElementById(
+          "profileMessage"
+        ),
+        "Please enter your full name.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const button =
+      document.getElementById(
+        "saveProfileBtn"
+      );
+
+
+    button.disabled = true;
+
+    button.textContent =
+      "Saving...";
+
+
+    try{
+
+      await updateProfile(
+        user,
+        {
+          displayName:name
+        }
+      );
+
+
+      await updateDoc(
+        doc(
+          db,
+          "users",
+          user.uid
+        ),
+        {
+          fullName:name,
+          updatedAt:
+            serverTimestamp()
+        }
+      );
+
+
+      topName.textContent =
+        name;
+
+
+      avatar.textContent =
+        initials(name);
+
+
+      showMessage(
+        document.getElementById(
+          "profileMessage"
+        ),
+        "Profile updated successfully.",
+        "success"
+      );
+
+
+    }catch(error){
+
+      console.error(error);
+
+
+      showMessage(
+        document.getElementById(
+          "profileMessage"
+        ),
+        "Unable to update profile. Please try again.",
+        "error"
+      );
+
+    }
+
+
+    button.disabled = false;
+
+    button.textContent =
+      "Save Changes";
+
+  }
+);
+
+
+/* CHANGE PASSWORD */
+
+document
+.getElementById("passwordForm")
+.addEventListener(
+  "submit",
+  async event => {
+
+    event.preventDefault();
+
+
+    const user =
+      auth.currentUser;
+
+
+    if(!user) return;
+
+
+    const currentPassword =
+      document.getElementById(
+        "currentPassword"
+      ).value;
+
+
+    const newPassword =
+      document.getElementById(
+        "newPassword"
+      ).value;
+
+
+    const confirmPassword =
+      document.getElementById(
+        "confirmNewPassword"
+      ).value;
+
+
+    const message =
+      document.getElementById(
+        "passwordMessage"
+      );
+
+
+    if(newPassword.length < 6){
+
+      showMessage(
+        message,
+        "Password must contain at least 6 characters.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if(newPassword !== confirmPassword){
+
+      showMessage(
+        message,
+        "New passwords do not match.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const button =
+      document.getElementById(
+        "changePasswordBtn"
+      );
+
+
+    button.disabled = true;
+
+    button.textContent =
+      "Changing Password...";
+
+
+    try{
+
+      const credential =
+        EmailAuthProvider.credential(
+          user.email,
+          currentPassword
+        );
+
+
+      await reauthenticateWithCredential(
+        user,
+        credential
+      );
+
+
+      await updatePassword(
+        user,
+        newPassword
+      );
+
+
+      document
+        .getElementById(
+          "passwordForm"
+        )
+        .reset();
+
+
+      showMessage(
+        message,
+        "Password changed successfully.",
+        "success"
+      );
+
+
+    }catch(error){
+
+      console.error(error);
+
+
+      let text =
+        "Unable to change password.";
+
+
+      if(
+        error.code ===
+        "auth/wrong-password"
+      ){
+
+        text =
+          "Current password is incorrect.";
+
+      }
+
+
+      if(
+        error.code ===
+        "auth/invalid-credential"
+      ){
+
+        text =
+          "Current password is incorrect.";
+
+      }
+
+
+      if(
+        error.code ===
+        "auth/weak-password"
+      ){
+
+        text =
+          "New password must contain at least 6 characters.";
+
+      }
+
+
+      showMessage(
+        message,
+        text,
+        "error"
+      );
+
+    }
+
+
+    button.disabled = false;
+
+    button.textContent =
+      "Change Password";
+
+  }
+);
+
+
+/* LOGOUT */
+
+document
+.getElementById("logoutBtn")
+.addEventListener(
+  "click",
+  async () => {
+
+    await signOut(auth);
+
+    window.location.replace(
+      "login.html"
+    );
+
+  }
+);
+
+</script>
+
+</body>
+        </html>
