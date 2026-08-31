@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Dashboard | Beez Gift Card</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
 
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
+
 
   <style>
 
@@ -23,111 +34,259 @@
       box-sizing: border-box;
     }
 
+
     :root {
+
       --blue: #0757c9;
+
       --dark-blue: #043b8f;
+
       --green: #16a34a;
+
       --green-dark: #0d7a35;
+
       --white: #ffffff;
+
       --dark: #10233f;
+
       --gray: #687891;
+
       --light: #f4f8ff;
+
       --border: #e0e8f2;
+
       --red: #dc2626;
+
     }
+
 
     body {
+
       font-family: "Inter", sans-serif;
-      background: #f4f8ff;
+
+      background: var(--light);
+
       color: var(--dark);
+
       min-height: 100vh;
+
     }
 
-    /* =========================
-       TOPBAR
-    ========================= */
+
+    /* =========================================
+       LOADING SCREEN
+    ========================================= */
+
+    .loading-screen {
+
+      position: fixed;
+
+      inset: 0;
+
+      background: #ffffff;
+
+      z-index: 99999;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      flex-direction: column;
+
+      gap: 16px;
+
+    }
+
+
+    .loading-logo {
+
+      font-size: 25px;
+
+      font-weight: 800;
+
+      color: var(--blue);
+
+    }
+
+
+    .loading-logo span {
+
+      color: var(--green);
+
+    }
+
+
+    .loader {
+
+      width: 34px;
+
+      height: 34px;
+
+      border: 3px solid #dce8f7;
+
+      border-top-color: var(--green);
+
+      border-radius: 50%;
+
+      animation: spin .7s linear infinite;
+
+    }
+
+
+    .loading-text {
+
+      color: var(--gray);
+
+      font-size: 12px;
+
+    }
+
+
+    @keyframes spin {
+
+      to {
+
+        transform: rotate(360deg);
+
+      }
+
+    }
+
+
+    /* =========================================
+       TOP BAR
+    ========================================= */
 
     .topbar {
+
       height: 72px;
-      background: white;
+
+      background: #ffffff;
+
       border-bottom: 1px solid var(--border);
 
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
 
       padding: 0 5%;
 
       position: sticky;
+
       top: 0;
-      z-index: 100;
+
+      z-index: 1000;
+
     }
+
 
     .logo {
-      font-size: 23px;
-      font-weight: 800;
+
       color: var(--blue);
+
+      font-size: 23px;
+
+      font-weight: 800;
+
       text-decoration: none;
+
     }
+
 
     .logo span {
+
       color: var(--green);
+
     }
+
 
     .top-right {
+
       display: flex;
+
       align-items: center;
-      gap: 14px;
+
+      gap: 12px;
+
     }
+
 
     .welcome-name {
-      font-size: 13px;
+
+      font-size: 12px;
+
       font-weight: 700;
+
       color: var(--dark);
+
     }
 
+
     .avatar {
-      width: 39px;
-      height: 39px;
+
+      width: 40px;
+
+      height: 40px;
 
       border-radius: 50%;
 
       background: var(--blue);
-      color: white;
+
+      color: #ffffff;
 
       display: grid;
+
       place-items: center;
 
-      font-size: 14px;
+      font-size: 13px;
+
       font-weight: 800;
+
     }
 
-    /* =========================
-       LAYOUT
-    ========================= */
+
+    /* =========================================
+       MAIN LAYOUT
+    ========================================= */
 
     .layout {
+
       display: flex;
+
       min-height: calc(100vh - 72px);
+
     }
 
-    /* =========================
+
+    /* =========================================
        SIDEBAR
-    ========================= */
+    ========================================= */
 
     .sidebar {
+
       width: 245px;
-      background: white;
+
+      background: #ffffff;
+
       border-right: 1px solid var(--border);
 
       padding: 25px 15px;
 
       flex-shrink: 0;
+
     }
 
+
     .menu-title {
+
       color: #91a0b5;
+
       font-size: 10px;
+
       font-weight: 800;
 
       text-transform: uppercase;
@@ -137,18 +296,27 @@
       padding: 0 13px;
 
       margin: 8px 0 12px;
+
     }
+
 
     .menu {
+
       display: flex;
+
       flex-direction: column;
+
       gap: 5px;
+
     }
 
+
     .menu-item {
+
       width: 100%;
 
       border: 0;
+
       background: transparent;
 
       padding: 12px 13px;
@@ -156,6 +324,7 @@
       border-radius: 9px;
 
       display: flex;
+
       align-items: center;
 
       gap: 12px;
@@ -163,7 +332,9 @@
       color: var(--gray);
 
       font-family: inherit;
+
       font-size: 13px;
+
       font-weight: 600;
 
       text-decoration: none;
@@ -173,181 +344,321 @@
       transition: .2s;
 
       text-align: left;
+
     }
+
 
     .menu-item:hover {
+
       background: #edf5ff;
+
       color: var(--blue);
+
     }
+
 
     .menu-item.active {
+
       background: #eaf2ff;
+
       color: var(--blue);
+
     }
+
 
     .menu-icon {
+
       width: 22px;
+
       text-align: center;
+
       font-size: 16px;
+
     }
+
 
     .logout {
+
       color: var(--red);
+
       margin-top: 15px;
+
     }
+
 
     .logout:hover {
+
       background: #fff0f0;
+
       color: var(--red);
+
     }
 
-    /* =========================
+
+    /* =========================================
        MAIN
-    ========================= */
+    ========================================= */
 
     .main {
+
       flex: 1;
+
+      width: 100%;
+
+      max-width: 1400px;
+
       padding: 35px 5%;
-      max-width: 1350px;
+
     }
+
 
     .page-title {
+
       margin-bottom: 25px;
+
     }
+
 
     .page-title h1 {
+
       font-size: 25px;
-      margin-bottom: 6px;
+
+      line-height: 1.3;
+
+      margin-bottom: 7px;
+
     }
+
 
     .page-title p {
+
       color: var(--gray);
+
       font-size: 13px;
+
     }
 
-    /* =========================
-       WALLET CARD
-    ========================= */
+
+    /* =========================================
+       WALLET
+    ========================================= */
 
     .wallet-card {
+
+      min-height: 195px;
+
+      border-radius: 18px;
+
+      padding: 28px;
+
+      color: #ffffff;
+
       background:
+
         radial-gradient(
           circle at 85% 15%,
-          rgba(22,163,74,.25),
+          rgba(22,163,74,.30),
           transparent 30%
         ),
+
         linear-gradient(
           135deg,
           var(--blue),
           var(--dark-blue)
         );
 
-      color: white;
-
-      border-radius: 18px;
-
-      padding: 28px;
-
-      min-height: 190px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
       box-shadow:
         0 12px 30px rgba(7,87,201,.18);
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
     }
+
 
     .wallet-top {
+
       display: flex;
-      justify-content: space-between;
+
       align-items: flex-start;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
     }
+
 
     .wallet-label {
-      font-size: 12px;
+
       color: #cbdcf7;
+
+      font-size: 12px;
+
       margin-bottom: 8px;
+
     }
+
 
     .wallet-balance {
+
       font-size: 34px;
+
       font-weight: 800;
+
       letter-spacing: -1px;
+
     }
 
+
     .wallet-status {
+
       padding: 7px 11px;
 
       border-radius: 20px;
 
-      background: rgba(22,163,74,.95);
+      background: var(--green);
 
-      font-size: 10px;
+      color: white;
+
+      font-size: 9px;
+
       font-weight: 800;
+
     }
+
 
     .wallet-bottom {
+
       display: flex;
-      align-items: center;
+
+      align-items: flex-end;
+
       justify-content: space-between;
+
+      gap: 20px;
+
     }
+
 
     .wallet-note {
+
       color: #cbdcf7;
+
       font-size: 11px;
+
+      line-height: 1.5;
+
     }
 
+
     .withdraw-btn {
+
       border: 0;
 
-      padding: 10px 16px;
+      padding: 10px 17px;
 
       border-radius: 8px;
 
-      background: white;
+      background: #ffffff;
+
       color: var(--blue);
 
       font-family: inherit;
+
       font-size: 11px;
+
       font-weight: 800;
 
       cursor: pointer;
+
+      white-space: nowrap;
+
     }
 
-    /* =========================
-       QUICK ACTIONS
-    ========================= */
+
+    .withdraw-btn:hover {
+
+      background: #f0fff5;
+
+    }
+
+
+    /* =========================================
+       SECTIONS
+    ========================================= */
 
     .section {
-      margin-top: 28px;
+
+      margin-top: 30px;
+
     }
+
 
     .section-header {
+
       display: flex;
-      justify-content: space-between;
+
       align-items: center;
 
+      justify-content: space-between;
+
       margin-bottom: 14px;
+
     }
+
 
     .section-header h2 {
+
       font-size: 17px;
+
     }
+
 
     .section-header span {
+
       color: var(--gray);
+
       font-size: 11px;
+
     }
+
+
+    .view-all {
+
+      color: var(--blue);
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      text-decoration: none;
+
+    }
+
+
+    /* =========================================
+       ACTIONS
+    ========================================= */
 
     .actions {
+
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
       gap: 13px;
+
     }
 
+
     .action-card {
-      background: white;
+
+      background: #ffffff;
 
       border: 1px solid var(--border);
 
@@ -360,19 +671,26 @@
       color: var(--dark);
 
       transition: .2s;
+
     }
 
+
     .action-card:hover {
+
       border-color: var(--blue);
 
       transform: translateY(-2px);
 
       box-shadow:
         0 8px 25px rgba(7,87,201,.08);
+
     }
 
+
     .action-icon {
+
       width: 42px;
+
       height: 42px;
 
       border-radius: 10px;
@@ -380,229 +698,288 @@
       background: #edf5ff;
 
       display: grid;
+
       place-items: center;
 
       font-size: 19px;
 
       margin-bottom: 13px;
+
     }
+
 
     .action-card h3 {
+
       font-size: 13px;
+
       margin-bottom: 5px;
+
     }
+
 
     .action-card p {
+
       color: var(--gray);
+
       font-size: 10px;
+
       line-height: 1.5;
+
     }
 
-    /* =========================
+
+    /* =========================================
        STATS
-    ========================= */
+    ========================================= */
 
     .stats {
+
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
       gap: 13px;
+
     }
 
+
     .stat-card {
-      background: white;
+
+      background: #ffffff;
 
       border: 1px solid var(--border);
 
       border-radius: 13px;
 
       padding: 20px;
+
     }
+
 
     .stat-card p {
+
       color: var(--gray);
+
       font-size: 11px;
+
       margin-bottom: 8px;
+
     }
+
 
     .stat-card h3 {
+
       font-size: 21px;
+
       font-weight: 800;
+
     }
+
 
     .green-text {
+
       color: var(--green);
+
     }
 
-    /* =========================
-       RECENT TRANSACTIONS
-    ========================= */
+
+    /* =========================================
+       TRANSACTIONS
+    ========================================= */
 
     .transactions {
-      background: white;
+
+      background: #ffffff;
 
       border: 1px solid var(--border);
 
       border-radius: 13px;
 
       overflow: hidden;
+
     }
 
+
     .empty-state {
-      padding: 40px 20px;
+
+      padding: 42px 20px;
 
       text-align: center;
 
       color: var(--gray);
 
       font-size: 12px;
+
     }
+
 
     .empty-icon {
+
       font-size: 30px;
+
       margin-bottom: 10px;
+
     }
 
-    /* =========================
-       LOADING
-    ========================= */
 
-    .loading-screen {
-      position: fixed;
-
-      inset: 0;
-
-      background: white;
-
-      z-index: 9999;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      flex-direction: column;
-
-      gap: 15px;
-    }
-
-    .loader {
-      width: 35px;
-      height: 35px;
-
-      border: 3px solid #dce8f7;
-
-      border-top-color: var(--green);
-
-      border-radius: 50%;
-
-      animation: spin .7s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .loading-screen p {
-      color: var(--gray);
-      font-size: 12px;
-    }
-
-    /* =========================
+    /* =========================================
        MOBILE
-    ========================= */
+    ========================================= */
 
     @media (max-width: 900px) {
 
       .sidebar {
+
         width: 210px;
+
       }
 
+
       .actions {
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
       }
 
     }
 
+
     @media (max-width: 700px) {
 
       .topbar {
+
         padding: 0 18px;
+
       }
+
 
       .welcome-name {
+
         display: none;
+
       }
+
 
       .layout {
+
         display: block;
+
       }
 
+
       .sidebar {
+
         width: 100%;
 
         border-right: 0;
+
         border-bottom: 1px solid var(--border);
 
         padding: 10px;
 
         overflow-x: auto;
+
       }
+
 
       .menu-title {
+
         display: none;
+
       }
 
+
       .menu {
+
         flex-direction: row;
 
         width: max-content;
+
       }
+
 
       .menu-item {
+
         width: auto;
+
         white-space: nowrap;
+
       }
+
 
       .logout {
+
         margin-top: 0;
+
       }
+
 
       .main {
-        padding: 25px 18px;
+
+        padding: 25px 18px 40px;
+
       }
 
-      .actions {
-        grid-template-columns: repeat(2, 1fr);
-      }
 
       .stats {
+
         grid-template-columns: 1fr;
+
       }
 
     }
 
+
     @media (max-width: 450px) {
 
-      .wallet-card {
-        padding: 22px;
+      .page-title h1 {
+
+        font-size: 22px;
+
       }
+
+
+      .wallet-card {
+
+        padding: 22px;
+
+      }
+
 
       .wallet-balance {
+
         font-size: 28px;
+
       }
+
+
+      .wallet-top {
+
+        gap: 10px;
+
+      }
+
 
       .wallet-bottom {
+
         align-items: flex-end;
-        gap: 10px;
+
       }
+
 
       .actions {
-        grid-template-columns: 1fr 1fr;
+
+        gap: 10px;
+
       }
 
+
       .action-card {
+
         padding: 16px 12px;
+
       }
 
     }
@@ -615,27 +992,31 @@
 <body>
 
 
-<!-- =========================
-     AUTH LOADING
-========================= -->
+<!-- =========================================
+     LOADING SCREEN
+========================================= -->
 
 <div
   class="loading-screen"
   id="loadingScreen"
 >
 
+  <div class="loading-logo">
+    Beez <span>Gift Card</span>
+  </div>
+
   <div class="loader"></div>
 
-  <p>
+  <div class="loading-text">
     Loading your account...
-  </p>
+  </div>
 
 </div>
 
 
-<!-- =========================
-     TOPBAR
-========================= -->
+<!-- =========================================
+     TOP BAR
+========================================= -->
 
 <header class="topbar">
 
@@ -656,6 +1037,7 @@
       Welcome
     </span>
 
+
     <div
       class="avatar"
       id="avatar"
@@ -668,18 +1050,19 @@
 </header>
 
 
-<!-- =========================
+<!-- =========================================
      LAYOUT
-========================= -->
+========================================= -->
 
 <div class="layout">
 
 
-  <!-- =========================
+  <!-- =======================================
        SIDEBAR
-  ========================= -->
+  ======================================== -->
 
   <aside class="sidebar">
+
 
     <div class="menu-title">
       Main Menu
@@ -793,6 +1176,7 @@
 
 
       <button
+        type="button"
         class="menu-item logout"
         id="logoutBtn"
       >
@@ -811,17 +1195,22 @@
   </aside>
 
 
-  <!-- =========================
-       MAIN
-  ========================= -->
+  <!-- =======================================
+       MAIN CONTENT
+  ======================================== -->
 
   <main class="main">
 
 
+    <!-- PAGE TITLE -->
+
     <div class="page-title">
 
       <h1>
-        Welcome back, <span id="userName">Customer</span>
+        Welcome back,
+        <span id="userName">
+          Customer
+        </span>
       </h1>
 
       <p>
@@ -831,19 +1220,22 @@
     </div>
 
 
-    <!-- =========================
+    <!-- =====================================
          WALLET
-    ========================= -->
+    ====================================== -->
 
     <section class="wallet-card">
 
+
       <div class="wallet-top">
+
 
         <div>
 
           <div class="wallet-label">
             Available Wallet Balance
           </div>
+
 
           <div
             class="wallet-balance"
@@ -859,33 +1251,42 @@
           ACTIVE
         </div>
 
+
       </div>
 
 
       <div class="wallet-bottom">
 
+
         <div class="wallet-note">
-          Your approved gift card earnings appear here.
+
+          Your approved gift card earnings
+          appear here.
+
         </div>
 
 
         <button
+          type="button"
           class="withdraw-btn"
           onclick="window.location.href='withdraw.html'"
         >
           Withdraw
         </button>
 
+
       </div>
+
 
     </section>
 
 
-    <!-- =========================
+    <!-- =====================================
          QUICK ACTIONS
-    ========================= -->
+    ====================================== -->
 
     <section class="section">
+
 
       <div class="section-header">
 
@@ -985,14 +1386,16 @@
 
       </div>
 
+
     </section>
 
 
-    <!-- =========================
-         STATS
-    ========================= -->
+    <!-- =====================================
+         ACCOUNT OVERVIEW
+    ====================================== -->
 
     <section class="section">
+
 
       <div class="section-header">
 
@@ -1053,14 +1456,16 @@
 
       </div>
 
+
     </section>
 
 
-    <!-- =========================
+    <!-- =====================================
          RECENT TRANSACTIONS
-    ========================= -->
+    ====================================== -->
 
     <section class="section">
+
 
       <div class="section-header">
 
@@ -1068,14 +1473,10 @@
           Recent Transactions
         </h2>
 
+
         <a
           href="transactions.html"
-          style="
-            color:#0757c9;
-            font-size:11px;
-            font-weight:700;
-            text-decoration:none;
-          "
+          class="view-all"
         >
           View All
         </a>
@@ -1084,6 +1485,7 @@
 
 
       <div class="transactions">
+
 
         <div class="empty-state">
 
@@ -1097,139 +1499,206 @@
 
         </div>
 
+
       </div>
+
 
     </section>
 
 
   </main>
 
+
 </div>
 
 
-<!-- ==================================================
+<!-- =========================================
      FIREBASE
-================================================== -->
+========================================= -->
 
 <script type="module">
 
+
+  /* =========================================
+     IMPORT FIREBASE APP
+  ========================================= */
+
   import {
     initializeApp
-  } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+  } from
+  "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
+
+  /* =========================================
+     IMPORT FIREBASE AUTH
+  ========================================= */
 
   import {
     getAuth,
     onAuthStateChanged,
     signOut
-  } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+  } from
+  "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
+
+  /* =========================================
+     IMPORT FIRESTORE
+  ========================================= */
 
   import {
     getFirestore,
     doc,
     getDoc
-  } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+  } from
+  "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-  /* ==================================================
+  /* =========================================
      FIREBASE CONFIG
-  ================================================== */
+  ========================================= */
 
   const firebaseConfig = {
 
-    apiKey: "YOUR_API_KEY",
+    apiKey:
+      "AIzaSyDKJescGQhaWB_-E5qH6mnjtmQvVPmlkUI",
 
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    authDomain:
+      "beezgiftcard.firebaseapp.com",
 
-    projectId: "YOUR_PROJECT_ID",
+    projectId:
+      "beezgiftcard",
 
-    storageBucket: "YOUR_PROJECT_ID.firebasestorage.app",
+    storageBucket:
+      "beezgiftcard.firebasestorage.app",
 
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    messagingSenderId:
+      "875969788899",
 
-    appId: "YOUR_APP_ID"
+    appId:
+      "1:875969788899:web:b8f1d6f03bf8752438bed6",
+
+    measurementId:
+      "G-85CETQ7LEN"
 
   };
 
 
-  /* ==================================================
+  /* =========================================
      INITIALIZE
-  ================================================== */
+  ========================================= */
 
   const app =
     initializeApp(firebaseConfig);
 
+
   const auth =
     getAuth(app);
+
 
   const db =
     getFirestore(app);
 
 
-  /* ==================================================
+  /* =========================================
      ELEMENTS
-  ================================================== */
+  ========================================= */
 
   const loadingScreen =
-    document.getElementById("loadingScreen");
+    document.getElementById(
+      "loadingScreen"
+    );
+
 
   const userName =
-    document.getElementById("userName");
+    document.getElementById(
+      "userName"
+    );
+
 
   const topName =
-    document.getElementById("topName");
+    document.getElementById(
+      "topName"
+    );
+
 
   const avatar =
-    document.getElementById("avatar");
+    document.getElementById(
+      "avatar"
+    );
+
 
   const walletBalance =
-    document.getElementById("walletBalance");
+    document.getElementById(
+      "walletBalance"
+    );
+
 
   const totalTrades =
-    document.getElementById("totalTrades");
+    document.getElementById(
+      "totalTrades"
+    );
+
 
   const totalEarnings =
-    document.getElementById("totalEarnings");
+    document.getElementById(
+      "totalEarnings"
+    );
+
 
   const accountStatus =
-    document.getElementById("accountStatus");
+    document.getElementById(
+      "accountStatus"
+    );
+
 
   const logoutBtn =
-    document.getElementById("logoutBtn");
+    document.getElementById(
+      "logoutBtn"
+    );
 
 
-  /* ==================================================
+  /* =========================================
      FORMAT NAIRA
-  ================================================== */
+  ========================================= */
 
   function formatNaira(amount) {
 
-    const number =
+    const value =
       Number(amount || 0);
 
-    return "₦" +
-      number.toLocaleString(
+
+    return (
+      "₦" +
+      value.toLocaleString(
         "en-NG",
         {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2
         }
-      );
+      )
+    );
 
   }
 
 
-  /* ==================================================
+  /* =========================================
      GET INITIALS
-  ================================================== */
+  ========================================= */
 
   function getInitials(name) {
 
-    if (!name) return "B";
+    if (!name) {
+
+      return "B";
+
+    }
+
 
     const parts =
-      name.trim().split(/\s+/);
+      name
+        .trim()
+        .split(/\s+/);
+
 
     if (parts.length === 1) {
 
@@ -1239,6 +1708,7 @@
 
     }
 
+
     return (
       parts[0][0] +
       parts[parts.length - 1][0]
@@ -1247,33 +1717,99 @@
   }
 
 
-  /* ==================================================
-     AUTH STATE
-  ================================================== */
+  /* =========================================
+     HIDE LOADING SCREEN
+  ========================================= */
+
+  function hideLoading() {
+
+    if (loadingScreen) {
+
+      loadingScreen.style.display =
+        "none";
+
+    }
+
+  }
+
+
+  /* =========================================
+     AUTHENTICATION
+  ========================================= */
 
   onAuthStateChanged(
     auth,
     async (user) => {
 
-      /* =========================
-         NOT LOGGED IN
-      ========================= */
+
+      /* =====================================
+         USER NOT LOGGED IN
+      ===================================== */
 
       if (!user) {
 
-        window.location.href =
-          "login.html";
+        window.location.replace(
+          "./login.html"
+        );
 
         return;
 
       }
 
 
-      try {
+      /* =====================================
+         DISPLAY AUTH INFORMATION FIRST
+         
+         This makes sure the dashboard
+         opens even if Firestore has a delay.
+      ===================================== */
 
-        /* =========================
-           GET USER PROFILE
-        ========================= */
+      const authName =
+        user.displayName ||
+        "Customer";
+
+
+      userName.textContent =
+        authName;
+
+
+      topName.textContent =
+        authName;
+
+
+      avatar.textContent =
+        getInitials(authName);
+
+
+      walletBalance.textContent =
+        "₦0.00";
+
+
+      totalTrades.textContent =
+        "0";
+
+
+      totalEarnings.textContent =
+        "₦0.00";
+
+
+      accountStatus.textContent =
+        "Active";
+
+
+      /* =====================================
+         IMPORTANT:
+         SHOW DASHBOARD IMMEDIATELY
+      ===================================== */
+
+      hideLoading();
+
+
+      /* =====================================
+         GET USER FIRESTORE PROFILE
+      ===================================== */
+
+      try {
 
         const userRef =
           doc(
@@ -1287,127 +1823,107 @@
           await getDoc(userRef);
 
 
-        let name =
-          user.displayName ||
-          "Customer";
+        /* ===================================
+           PROFILE DOES NOT EXIST
+        =================================== */
 
+        if (!userSnap.exists()) {
 
-        let balance = 0;
+          console.warn(
+            "No Firestore profile found for:",
+            user.uid
+          );
 
-        let earnings = 0;
-
-        let trades = 0;
-
-        let status = "Active";
-
-
-        if (userSnap.exists()) {
-
-          const data =
-            userSnap.data();
-
-
-          name =
-            data.fullName ||
-            user.displayName ||
-            "Customer";
-
-
-          balance =
-            Number(
-              data.walletBalance || 0
-            );
-
-
-          earnings =
-            Number(
-              data.totalEarnings || 0
-            );
-
-
-          trades =
-            Number(
-              data.totalTrades || 0
-            );
-
-
-          status =
-            data.accountStatus ||
-            "active";
+          return;
 
         }
 
 
-        /* =========================
-           DISPLAY DATA
-        ========================= */
+        const data =
+          userSnap.data();
+
+
+        /* ===================================
+           NAME
+        =================================== */
+
+        const fullName =
+          data.fullName ||
+          user.displayName ||
+          "Customer";
+
 
         userName.textContent =
-          name;
+          fullName;
 
 
         topName.textContent =
-          name;
+          fullName;
 
 
         avatar.textContent =
-          getInitials(name);
+          getInitials(fullName);
 
+
+        /* ===================================
+           WALLET
+        =================================== */
 
         walletBalance.textContent =
-          formatNaira(balance);
+          formatNaira(
+            data.walletBalance || 0
+          );
 
+
+        /* ===================================
+           TOTAL EARNINGS
+        =================================== */
 
         totalEarnings.textContent =
-          formatNaira(earnings);
+          formatNaira(
+            data.totalEarnings || 0
+          );
 
+
+        /* ===================================
+           TOTAL TRADES
+        =================================== */
 
         totalTrades.textContent =
-          trades;
+          Number(
+            data.totalTrades || 0
+          );
+
+
+        /* ===================================
+           ACCOUNT STATUS
+        =================================== */
+
+        const status =
+          data.accountStatus ||
+          "active";
 
 
         accountStatus.textContent =
-          status.charAt(0).toUpperCase() +
+          status
+            .charAt(0)
+            .toUpperCase() +
           status.slice(1);
-
-
-        /* =========================
-           SHOW PAGE
-        ========================= */
-
-        loadingScreen.style.display =
-          "none";
 
 
       } catch (error) {
 
         console.error(
-          "Dashboard error:",
+          "Firestore profile error:",
           error
         );
 
-        loadingScreen.innerHTML = `
-          <div style="
-            text-align:center;
-            padding:20px;
-          ">
+        /*
+          Do not block the dashboard.
 
-            <div style="
-              font-size:30px;
-              margin-bottom:10px;
-            ">
-              ⚠️
-            </div>
-
-            <p style="
-              color:#687891;
-              font-size:13px;
-            ">
-              Unable to load your account.
-            </p>
-
-          </div>
-        `;
+          The authenticated user's basic
+          information is already displayed.
+        */
 
       }
 
@@ -1415,15 +1931,18 @@
   );
 
 
-  /* ==================================================
+  /* =========================================
      LOGOUT
-  ================================================== */
+  ========================================= */
 
   logoutBtn.addEventListener(
     "click",
     async () => {
 
-      logoutBtn.disabled = true;
+
+      logoutBtn.disabled =
+        true;
+
 
       logoutBtn.innerHTML =
         "⏳ Logging out...";
@@ -1433,8 +1952,11 @@
 
         await signOut(auth);
 
-        window.location.href =
-          "login.html";
+
+        window.location.replace(
+          "./login.html"
+        );
+
 
       } catch (error) {
 
@@ -1443,7 +1965,10 @@
           error
         );
 
-        logoutBtn.disabled = false;
+
+        logoutBtn.disabled =
+          false;
+
 
         logoutBtn.innerHTML =
           "🚪 Logout";
@@ -1453,8 +1978,10 @@
     }
   );
 
+
 </script>
 
 
 </body>
+
 </html>
