@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,9 +19,9 @@
   <style>
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     :root {
@@ -31,17 +33,16 @@
       --dark: #10233f;
       --gray: #687891;
       --border: #d9e4f2;
-      --light: #f4f8ff;
     }
 
     body {
-      font-family: "Inter", sans-serif;
+      font-family: Inter, sans-serif;
       min-height: 100vh;
 
       background:
         radial-gradient(
           circle at 15% 15%,
-          rgba(22, 163, 74, 0.18),
+          rgba(22, 163, 74, .18),
           transparent 30%
         ),
         linear-gradient(
@@ -54,37 +55,37 @@
       align-items: center;
       justify-content: center;
 
-      padding: 30px 15px;
-
-      color: var(--dark);
+      padding: 20px;
     }
 
-    .page {
+    .container {
       width: 100%;
       max-width: 1050px;
-      min-height: 650px;
 
-      background: var(--white);
+      background: white;
 
       border-radius: 24px;
+
       overflow: hidden;
 
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
+      grid-template-columns: .9fr 1.1fr;
 
       box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.20);
+        0 25px 70px rgba(0,0,0,.2);
     }
 
-    /* =========================
-       LEFT SIDE
-    ========================= */
+    /* LEFT */
 
-    .left-side {
+    .left {
+      padding: 55px 45px;
+
+      color: white;
+
       background:
         radial-gradient(
           circle at 80% 20%,
-          rgba(22, 163, 74, 0.25),
+          rgba(22,163,74,.25),
           transparent 30%
         ),
         linear-gradient(
@@ -92,10 +93,6 @@
           #0757c9,
           #043b8f
         );
-
-      color: white;
-
-      padding: 55px 45px;
 
       display: flex;
       flex-direction: column;
@@ -105,7 +102,6 @@
     .logo {
       font-size: 27px;
       font-weight: 800;
-      letter-spacing: -1px;
     }
 
     .logo span {
@@ -120,7 +116,6 @@
       font-size: 39px;
       line-height: 1.15;
       margin-bottom: 18px;
-      letter-spacing: -1.2px;
     }
 
     .left-content h1 span {
@@ -128,10 +123,12 @@
     }
 
     .left-content p {
+      max-width: 380px;
+
       color: #dceaff;
+
       font-size: 14px;
       line-height: 1.8;
-      max-width: 380px;
     }
 
     .features {
@@ -149,8 +146,6 @@
 
       gap: 12px;
 
-      color: #e9f2ff;
-
       font-size: 13px;
       font-weight: 600;
     }
@@ -162,26 +157,19 @@
       display: grid;
       place-items: center;
 
-      background: rgba(255,255,255,0.12);
-
-      border: 1px solid rgba(255,255,255,0.15);
-
       border-radius: 9px;
 
-      flex-shrink: 0;
+      background: rgba(255,255,255,.12);
     }
 
-    .left-footer {
+    .footer {
       color: #bdd0ea;
       font-size: 11px;
     }
 
+    /* RIGHT */
 
-    /* =========================
-       RIGHT SIDE
-    ========================= */
-
-    .right-side {
+    .right {
       padding: 50px 55px;
 
       display: flex;
@@ -189,36 +177,68 @@
       justify-content: center;
     }
 
-    .form-container {
+    .form-box {
       width: 100%;
-      max-width: 460px;
+      max-width: 440px;
     }
 
-    .form-header {
-      margin-bottom: 28px;
+    .heading {
+      margin-bottom: 25px;
     }
 
-    .form-header h2 {
+    .heading h2 {
       font-size: 29px;
       margin-bottom: 7px;
-      letter-spacing: -0.8px;
     }
 
-    .form-header p {
+    .heading p {
       color: var(--gray);
       font-size: 13px;
     }
 
+    /* MESSAGE */
 
-    /* =========================
-       FORM
-    ========================= */
+    #message {
+      display: none;
 
-    .form-group {
+      padding: 12px;
+
+      border-radius: 8px;
+
+      margin-bottom: 17px;
+
+      font-size: 12px;
+
+      line-height: 1.5;
+    }
+
+    #message.error {
+      display: block;
+
+      color: #b42318;
+
+      background: #fff0f0;
+
+      border: 1px solid #ffd0d0;
+    }
+
+    #message.success {
+      display: block;
+
+      color: #08752e;
+
+      background: #edfff3;
+
+      border: 1px solid #bceccc;
+    }
+
+    /* INPUTS */
+
+    .group {
       margin-bottom: 17px;
     }
 
-    .form-group label {
+    label {
       display: block;
 
       font-size: 13px;
@@ -227,11 +247,11 @@
       margin-bottom: 7px;
     }
 
-    .input-wrapper {
+    .input-wrap {
       position: relative;
     }
 
-    .input-icon {
+    .icon {
       position: absolute;
 
       left: 14px;
@@ -240,13 +260,11 @@
       transform: translateY(-50%);
 
       font-size: 16px;
-
-      pointer-events: none;
     }
 
-    .form-input {
+    input {
       width: 100%;
-      height: 49px;
+      height: 50px;
 
       border: 1px solid var(--border);
 
@@ -254,35 +272,28 @@
 
       outline: none;
 
-      padding: 0 14px 0 42px;
+      padding: 0 43px;
 
       font-family: inherit;
+
       font-size: 13px;
 
-      color: var(--dark);
-
       background: #fbfdff;
-
-      transition: 0.2s;
     }
 
-    .form-input:focus {
+    input:focus {
       border-color: var(--blue);
 
       box-shadow:
-        0 0 0 3px rgba(7, 87, 201, 0.09);
+        0 0 0 3px rgba(7,87,201,.09);
 
       background: white;
     }
 
-    .password-input {
-      padding-right: 45px;
-    }
-
-    .password-toggle {
+    .eye {
       position: absolute;
 
-      right: 13px;
+      right: 12px;
       top: 50%;
 
       transform: translateY(-50%);
@@ -294,22 +305,18 @@
       cursor: pointer;
 
       font-size: 16px;
-
-      color: var(--gray);
     }
 
-
-    /* =========================
-       TERMS
-    ========================= */
+    /* TERMS */
 
     .terms {
       display: flex;
+
       align-items: flex-start;
 
-      gap: 9px;
+      gap: 8px;
 
-      margin: 20px 0;
+      margin: 18px 0;
 
       color: var(--gray);
 
@@ -319,8 +326,20 @@
     }
 
     .terms input {
+      width: auto;
+      height: auto;
+
       margin-top: 2px;
+
+      padding: 0;
+
       accent-color: var(--green);
+    }
+
+    .terms label {
+      margin: 0;
+      font-size: 11px;
+      font-weight: 400;
     }
 
     .terms a {
@@ -328,12 +347,9 @@
       font-weight: 700;
     }
 
+    /* BUTTON */
 
-    /* =========================
-       BUTTON
-    ========================= */
-
-    .register-btn {
+    .btn {
       width: 100%;
       height: 50px;
 
@@ -345,31 +361,31 @@
 
       color: white;
 
+      font-family: inherit;
+
       font-size: 14px;
       font-weight: 800;
 
       cursor: pointer;
 
-      transition: 0.25s;
+      transition: .2s;
     }
 
-    .register-btn:hover {
+    .btn:hover {
       background: var(--green-dark);
+
       transform: translateY(-1px);
     }
 
-    .register-btn:disabled {
-      opacity: 0.65;
+    .btn:disabled {
+      opacity: .65;
+
       cursor: not-allowed;
+
       transform: none;
     }
 
-
-    /* =========================
-       LOGIN
-    ========================= */
-
-    .login-text {
+    .login {
       text-align: center;
 
       margin-top: 20px;
@@ -379,70 +395,29 @@
       font-size: 12px;
     }
 
-    .login-text a {
+    .login a {
       color: var(--blue);
+
       font-weight: 800;
+
+      text-decoration: none;
     }
 
-
-    /* =========================
-       MESSAGES
-    ========================= */
-
-    .message {
-      display: none;
-
-      padding: 11px 13px;
-
-      border-radius: 8px;
-
-      font-size: 12px;
-
-      margin-bottom: 17px;
-    }
-
-    .message.error {
-      display: block;
-
-      background: #fff0f0;
-
-      color: #b42318;
-
-      border: 1px solid #ffd0d0;
-    }
-
-    .message.success {
-      display: block;
-
-      background: #edfff3;
-
-      color: #08752e;
-
-      border: 1px solid #bceccc;
-    }
-
-
-    /* =========================
-       MOBILE
-    ========================= */
+    /* MOBILE */
 
     @media (max-width: 800px) {
 
-      body {
-        padding: 15px;
-      }
-
-      .page {
-        grid-template-columns: 1fr;
+      .container {
+        display: block;
 
         max-width: 520px;
       }
 
-      .left-side {
+      .left {
         display: none;
       }
 
-      .right-side {
+      .right {
         padding: 40px 25px;
       }
 
@@ -450,31 +425,30 @@
 
     @media (max-width: 400px) {
 
-      .right-side {
-        padding: 32px 19px;
+      .right {
+        padding: 32px 18px;
       }
 
-      .form-header h2 {
+      .heading h2 {
         font-size: 25px;
       }
 
     }
 
   </style>
+
 </head>
 
 
 <body>
 
 
-<div class="page">
+<div class="container">
 
 
-  <!-- =========================
-       LEFT SIDE
-  ========================= -->
+  <!-- LEFT -->
 
-  <div class="left-side">
+  <section class="left">
 
     <div class="logo">
       Beez <span>Gift Card</span>
@@ -489,8 +463,9 @@
       </h1>
 
       <p>
-        Create your Beez Gift Card account and start
-        trading your gift cards at competitive rates.
+        Create your Beez Gift Card account and
+        start trading your gift cards at competitive
+        rates.
       </p>
 
 
@@ -498,9 +473,7 @@
 
         <div class="feature">
 
-          <div class="feature-icon">
-            ⚡
-          </div>
+          <div class="feature-icon">⚡</div>
 
           Fast Processing
 
@@ -509,9 +482,7 @@
 
         <div class="feature">
 
-          <div class="feature-icon">
-            🔒
-          </div>
+          <div class="feature-icon">🔒</div>
 
           Secure Transactions
 
@@ -520,9 +491,7 @@
 
         <div class="feature">
 
-          <div class="feature-icon">
-            💰
-          </div>
+          <div class="feature-icon">💰</div>
 
           Competitive Rates
 
@@ -531,9 +500,7 @@
 
         <div class="feature">
 
-          <div class="feature-icon">
-            🏦
-          </div>
+          <div class="feature-icon">🏦</div>
 
           Easy Withdrawals
 
@@ -544,23 +511,21 @@
     </div>
 
 
-    <div class="left-footer">
+    <div class="footer">
       © 2026 Beez Gift Card. All Rights Reserved.
     </div>
 
-  </div>
+  </section>
 
 
-  <!-- =========================
-       RIGHT SIDE
-  ========================= -->
+  <!-- RIGHT -->
 
-  <div class="right-side">
+  <section class="right">
 
-    <div class="form-container">
+    <div class="form-box">
 
 
-      <div class="form-header">
+      <div class="heading">
 
         <h2>
           Create Account
@@ -573,10 +538,7 @@
       </div>
 
 
-      <div
-        id="message"
-        class="message"
-      ></div>
+      <div id="message"></div>
 
 
       <form id="registerForm">
@@ -584,22 +546,19 @@
 
         <!-- FULL NAME -->
 
-        <div class="form-group">
+        <div class="group">
 
           <label for="fullName">
             Full Name
           </label>
 
-          <div class="input-wrapper">
+          <div class="input-wrap">
 
-            <span class="input-icon">
-              👤
-            </span>
+            <span class="icon">👤</span>
 
             <input
-              type="text"
               id="fullName"
-              class="form-input"
+              type="text"
               placeholder="Enter your full name"
               autocomplete="name"
               required
@@ -612,22 +571,19 @@
 
         <!-- NUMBER -->
 
-        <div class="form-group">
+        <div class="group">
 
           <label for="phone">
             Number
           </label>
 
-          <div class="input-wrapper">
+          <div class="input-wrap">
 
-            <span class="input-icon">
-              📱
-            </span>
+            <span class="icon">📱</span>
 
             <input
-              type="tel"
               id="phone"
-              class="form-input"
+              type="tel"
               placeholder="Enter your phone number"
               autocomplete="tel"
               required
@@ -640,22 +596,19 @@
 
         <!-- GMAIL -->
 
-        <div class="form-group">
+        <div class="group">
 
           <label for="email">
             Gmail
           </label>
 
-          <div class="input-wrapper">
+          <div class="input-wrap">
 
-            <span class="input-icon">
-              ✉️
-            </span>
+            <span class="icon">✉️</span>
 
             <input
-              type="email"
               id="email"
-              class="form-input"
+              type="email"
               placeholder="Enter your Gmail address"
               autocomplete="email"
               required
@@ -668,22 +621,19 @@
 
         <!-- PASSWORD -->
 
-        <div class="form-group">
+        <div class="group">
 
           <label for="password">
             Password
           </label>
 
-          <div class="input-wrapper">
+          <div class="input-wrap">
 
-            <span class="input-icon">
-              🔐
-            </span>
+            <span class="icon">🔐</span>
 
             <input
-              type="password"
               id="password"
-              class="form-input password-input"
+              type="password"
               placeholder="Create a password"
               autocomplete="new-password"
               minlength="6"
@@ -692,8 +642,8 @@
 
             <button
               type="button"
-              class="password-toggle"
-              onclick="togglePassword('password', this)"
+              class="eye"
+              id="passwordEye"
             >
               👁️
             </button>
@@ -703,24 +653,21 @@
         </div>
 
 
-        <!-- CONFIRM PASSWORD -->
+        <!-- CONFIRM -->
 
-        <div class="form-group">
+        <div class="group">
 
           <label for="confirmPassword">
             Confirm Password
           </label>
 
-          <div class="input-wrapper">
+          <div class="input-wrap">
 
-            <span class="input-icon">
-              🔐
-            </span>
+            <span class="icon">🔐</span>
 
             <input
-              type="password"
               id="confirmPassword"
-              class="form-input password-input"
+              type="password"
               placeholder="Confirm your password"
               autocomplete="new-password"
               minlength="6"
@@ -729,8 +676,8 @@
 
             <button
               type="button"
-              class="password-toggle"
-              onclick="togglePassword('confirmPassword', this)"
+              class="eye"
+              id="confirmEye"
             >
               👁️
             </button>
@@ -762,11 +709,11 @@
         </div>
 
 
-        <!-- REGISTER -->
+        <!-- BUTTON -->
 
         <button
           type="submit"
-          class="register-btn"
+          class="btn"
           id="registerBtn"
         >
           Create Account
@@ -776,7 +723,7 @@
       </form>
 
 
-      <div class="login-text">
+      <div class="login">
 
         Already have an account?
 
@@ -789,27 +736,30 @@
 
     </div>
 
-  </div>
+  </section>
+
 
 </div>
 
 
-<!-- ==================================================
-     FIREBASE
-================================================== -->
-
 <script type="module">
+
+  /* ==========================================
+     FIREBASE IMPORTS
+  ========================================== */
 
   import {
     initializeApp
-  } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+  } from
+  "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
 
   import {
     getAuth,
     createUserWithEmailAndPassword,
     updateProfile
-  } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+  } from
+  "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
   import {
@@ -817,158 +767,204 @@
     doc,
     setDoc,
     serverTimestamp
-  } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+  } from
+  "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-  /* ==================================================
-     YOUR FIREBASE CONFIGURATION
-     
-     Replace the values below with your Firebase
-     project's Web App configuration.
-  ================================================== */
+  /* ==========================================
+     YOUR FIREBASE CONFIG
+  ========================================== */
 
   const firebaseConfig = {
 
-    apiKey: "YOUR_API_KEY",
+    apiKey:
+      "AIzaSyDKJescGQhaWB_-E5qH6mnjtmQvVPmlkUI",
 
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    authDomain:
+      "beezgiftcard.firebaseapp.com",
 
-    projectId: "YOUR_PROJECT_ID",
+    projectId:
+      "beezgiftcard",
 
-    storageBucket: "YOUR_PROJECT_ID.firebasestorage.app",
+    storageBucket:
+      "beezgiftcard.firebasestorage.app",
 
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    messagingSenderId:
+      "875969788899",
 
-    appId: "YOUR_APP_ID"
+    appId:
+      "1:875969788899:web:b8f1d6f03bf8752438bed6",
+
+    measurementId:
+      "G-85CETQ7LEN"
 
   };
 
 
-  /* ==================================================
+  /* ==========================================
      INITIALIZE FIREBASE
-  ================================================== */
+  ========================================== */
 
   const app =
     initializeApp(firebaseConfig);
 
+
   const auth =
     getAuth(app);
+
 
   const db =
     getFirestore(app);
 
 
-  /* ==================================================
+  /* ==========================================
      ELEMENTS
-  ================================================== */
+  ========================================== */
 
-  const registerForm =
+  const form =
     document.getElementById("registerForm");
 
-  const registerBtn =
+  const button =
     document.getElementById("registerBtn");
 
   const message =
     document.getElementById("message");
 
 
-  /* ==================================================
+  /* ==========================================
      PASSWORD TOGGLE
-  ================================================== */
+  ========================================== */
 
-  window.togglePassword = function(inputId, button) {
+  document
+    .getElementById("passwordEye")
+    .addEventListener("click", () => {
 
-    const input =
-      document.getElementById(inputId);
+      const input =
+        document.getElementById("password");
 
-    if (input.type === "password") {
+      if (input.type === "password") {
 
-      input.type = "text";
+        input.type = "text";
 
-      button.textContent = "🙈";
+        document.getElementById("passwordEye")
+          .textContent = "🙈";
 
-    } else {
+      } else {
 
-      input.type = "password";
+        input.type = "password";
 
-      button.textContent = "👁️";
+        document.getElementById("passwordEye")
+          .textContent = "👁️";
 
-    }
+      }
 
-  };
+    });
 
 
-  /* ==================================================
-     SHOW ERROR
-  ================================================== */
+  document
+    .getElementById("confirmEye")
+    .addEventListener("click", () => {
 
-  function showError(text) {
+      const input =
+        document.getElementById("confirmPassword");
+
+      if (input.type === "password") {
+
+        input.type = "text";
+
+        document.getElementById("confirmEye")
+          .textContent = "🙈";
+
+      } else {
+
+        input.type = "password";
+
+        document.getElementById("confirmEye")
+          .textContent = "👁️";
+
+      }
+
+    });
+
+
+  /* ==========================================
+     MESSAGE
+  ========================================== */
+
+  function showMessage(text, type) {
 
     message.textContent = text;
 
-    message.className =
-      "message error";
+    message.className = type;
 
   }
 
 
-  /* ==================================================
-     SHOW SUCCESS
-  ================================================== */
+  /* ==========================================
+     FIREBASE ERROR
+  ========================================== */
 
-  function showSuccess(text) {
+  function getErrorMessage(error) {
 
-    message.textContent = text;
+    console.error(
+      "Firebase error:",
+      error.code,
+      error.message
+    );
 
-    message.className =
-      "message success";
 
-  }
-
-
-  /* ==================================================
-     FIREBASE ERROR MESSAGE
-  ================================================== */
-
-  function getFirebaseError(errorCode) {
-
-    switch (errorCode) {
+    switch (error.code) {
 
       case "auth/email-already-in-use":
-        return "An account with this Gmail already exists.";
+
+        return "This Gmail is already registered. Please login instead.";
+
 
       case "auth/invalid-email":
+
         return "Please enter a valid Gmail address.";
 
-      case "auth/weak-password":
-        return "Password is too weak. Use at least 6 characters.";
 
-      case "auth/network-request-failed":
-        return "Network error. Please check your internet connection.";
+      case "auth/weak-password":
+
+        return "Password must contain at least 6 characters.";
+
 
       case "auth/operation-not-allowed":
-        return "Email and password registration is not enabled in Firebase Authentication.";
+
+        return "Email/Password authentication is not enabled in Firebase.";
+
+
+      case "auth/network-request-failed":
+
+        return "Network error. Please check your internet connection.";
+
+
+      case "permission-denied":
+
+        return "Firestore permission denied. Please check your Firestore Rules.";
+
 
       default:
-        return "Registration failed. Please try again.";
+
+        return error.message ||
+          "Registration failed. Please try again.";
 
     }
 
   }
 
 
-  /* ==================================================
-     REGISTRATION
-  ================================================== */
+  /* ==========================================
+     REGISTER
+  ========================================== */
 
-  registerForm.addEventListener(
+  form.addEventListener(
     "submit",
-    async function(event) {
+    async (event) => {
 
       event.preventDefault();
 
-
-      /* Get values */
 
       const fullName =
         document
@@ -1004,27 +1000,15 @@
           .value;
 
 
-      const terms =
-        document
-          .getElementById("terms")
-          .checked;
-
-
-      /* Clear old message */
-
-      message.className = "message";
-
-      message.textContent = "";
-
-
-      /* =========================
+      /* ======================================
          VALIDATION
-      ========================= */
+      ====================================== */
 
       if (fullName.length < 2) {
 
-        showError(
-          "Please enter your full name."
+        showMessage(
+          "Please enter your full name.",
+          "error"
         );
 
         return;
@@ -1034,8 +1018,9 @@
 
       if (phone.length < 7) {
 
-        showError(
-          "Please enter a valid phone number."
+        showMessage(
+          "Please enter a valid phone number.",
+          "error"
         );
 
         return;
@@ -1043,14 +1028,11 @@
       }
 
 
-      const gmailPattern =
-        /^[a-zA-Z0-9._%+-]+@gmail\.com$/i;
+      if (!email.endsWith("@gmail.com")) {
 
-
-      if (!gmailPattern.test(email)) {
-
-        showError(
-          "Please enter a valid Gmail address."
+        showMessage(
+          "Please enter a valid Gmail address.",
+          "error"
         );
 
         return;
@@ -1060,8 +1042,9 @@
 
       if (password.length < 6) {
 
-        showError(
-          "Password must contain at least 6 characters."
+        showMessage(
+          "Password must contain at least 6 characters.",
+          "error"
         );
 
         return;
@@ -1071,8 +1054,9 @@
 
       if (password !== confirmPassword) {
 
-        showError(
-          "Passwords do not match."
+        showMessage(
+          "Passwords do not match.",
+          "error"
         );
 
         return;
@@ -1080,35 +1064,24 @@
       }
 
 
-      if (!terms) {
-
-        showError(
-          "Please accept the Terms & Conditions."
-        );
-
-        return;
-
-      }
-
-
-      /* =========================
+      /* ======================================
          LOADING
-      ========================= */
+      ====================================== */
 
-      registerBtn.disabled = true;
+      button.disabled = true;
 
-      registerBtn.textContent =
+      button.textContent =
         "Creating Account...";
 
 
       try {
 
 
-        /* =========================
-           CREATE FIREBASE ACCOUNT
-        ========================= */
+        /* ====================================
+           CREATE FIREBASE AUTH ACCOUNT
+        ==================================== */
 
-        const userCredential =
+        const credential =
           await createUserWithEmailAndPassword(
             auth,
             email,
@@ -1117,12 +1090,12 @@
 
 
         const user =
-          userCredential.user;
+          credential.user;
 
 
-        /* =========================
+        /* ====================================
            SAVE DISPLAY NAME
-        ========================= */
+        ==================================== */
 
         await updateProfile(
           user,
@@ -1132,12 +1105,16 @@
         );
 
 
-        /* =========================
-           CREATE FIRESTORE PROFILE
-        ========================= */
+        /* ====================================
+           CREATE FIRESTORE USER PROFILE
+        ==================================== */
 
         await setDoc(
-          doc(db, "users", user.uid),
+          doc(
+            db,
+            "users",
+            user.uid
+          ),
           {
 
             uid: user.uid,
@@ -1150,6 +1127,10 @@
 
             walletBalance: 0,
 
+            totalEarnings: 0,
+
+            totalTrades: 0,
+
             accountStatus: "active",
 
             createdAt: serverTimestamp(),
@@ -1160,47 +1141,46 @@
         );
 
 
-        /* =========================
+        /* ====================================
            SUCCESS
-        ========================= */
+        ==================================== */
 
-        showSuccess(
-          "Account created successfully. Redirecting..."
+        showMessage(
+          "Account created successfully. Opening dashboard...",
+          "success"
         );
 
 
-        registerBtn.textContent =
+        button.textContent =
           "Account Created";
 
 
-        /* =========================
-           REDIRECT
-        ========================= */
+        /* ====================================
+           DASHBOARD
+        ==================================== */
 
-        setTimeout(() => {
+        setTimeout(
+          () => {
 
-          window.location.href =
-            "dashboard.html";
+            window.location.href =
+              "dashboard.html";
 
-        }, 1200);
+          },
+          1000
+        );
 
 
       } catch (error) {
 
-        console.error(
-          "Registration error:",
-          error
+        showMessage(
+          getErrorMessage(error),
+          "error"
         );
 
 
-        showError(
-          getFirebaseError(error.code)
-        );
+        button.disabled = false;
 
-
-        registerBtn.disabled = false;
-
-        registerBtn.textContent =
+        button.textContent =
           "Create Account";
 
       }
@@ -1209,6 +1189,7 @@
   );
 
 </script>
+
 
 </body>
 </html>
