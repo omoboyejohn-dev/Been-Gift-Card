@@ -5,10 +5,7 @@
 
 <meta charset="UTF-8">
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Withdraw | Beez Gift Card</title>
 
@@ -46,7 +43,9 @@ body{
   min-height:100vh;
 }
 
-/* TOPBAR */
+/* =========================
+   TOPBAR
+========================= */
 
 .topbar{
   height:72px;
@@ -89,7 +88,9 @@ body{
 .avatar{
   width:40px;
   height:40px;
+
   border-radius:50%;
+
   background:var(--blue);
   color:white;
 
@@ -100,31 +101,43 @@ body{
   font-weight:800;
 }
 
-/* LAYOUT */
+/* =========================
+   LAYOUT
+========================= */
 
 .layout{
   display:flex;
   min-height:calc(100vh - 72px);
 }
 
-/* SIDEBAR */
+/* =========================
+   SIDEBAR
+========================= */
 
 .sidebar{
   width:245px;
+
   background:white;
+
   border-right:1px solid var(--border);
+
   padding:25px 15px;
+
   flex-shrink:0;
 }
 
 .menu-title{
   color:#91a0b5;
+
   font-size:10px;
   font-weight:800;
+
   text-transform:uppercase;
+
   letter-spacing:1px;
 
   padding:0 13px;
+
   margin:8px 0 12px;
 }
 
@@ -138,6 +151,7 @@ body{
   width:100%;
 
   border:0;
+
   background:transparent;
 
   padding:12px 13px;
@@ -152,13 +166,17 @@ body{
   color:var(--gray);
 
   font-family:inherit;
+
   font-size:13px;
   font-weight:600;
 
   text-decoration:none;
 
   cursor:pointer;
+
   text-align:left;
+
+  transition:.2s;
 }
 
 .menu-item:hover{
@@ -182,11 +200,15 @@ body{
   margin-top:15px;
 }
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 .main{
   width:100%;
+
   max-width:1000px;
+
   padding:35px 5%;
 }
 
@@ -196,15 +218,19 @@ body{
 
 .page-title h1{
   font-size:25px;
+
   margin-bottom:7px;
 }
 
 .page-title p{
   color:var(--gray);
+
   font-size:13px;
 }
 
-/* WALLET */
+/* =========================
+   WALLET
+========================= */
 
 .wallet{
   background:
@@ -230,62 +256,91 @@ body{
 
 .wallet-label{
   color:#cbdcf7;
+
   font-size:11px;
+
   margin-bottom:7px;
 }
 
 .wallet-balance{
   font-size:30px;
+
   font-weight:800;
 }
 
-/* CARD */
+/* =========================
+   CARD
+========================= */
 
 .card{
   background:white;
+
   border:1px solid var(--border);
+
   border-radius:15px;
+
   padding:25px;
+
+  margin-bottom:20px;
 }
 
 .card h2{
   font-size:18px;
+
   margin-bottom:6px;
 }
 
 .description{
   color:var(--gray);
+
   font-size:11px;
+
   line-height:1.6;
+
   margin-bottom:22px;
 }
 
-/* MESSAGE */
+/* =========================
+   MESSAGE
+========================= */
 
 .message{
   display:none;
+
   padding:12px;
+
   border-radius:8px;
+
   margin-bottom:17px;
+
   font-size:11px;
+
   line-height:1.5;
 }
 
 .message.success{
   display:block;
+
   color:#08752e;
+
   background:#edfff3;
+
   border:1px solid #bceccc;
 }
 
 .message.error{
   display:block;
+
   color:#b42318;
+
   background:#fff0f0;
+
   border:1px solid #ffd0d0;
 }
 
-/* SAVED ACCOUNT */
+/* =========================
+   SAVED ACCOUNT
+========================= */
 
 .saved-account{
   display:none;
@@ -317,7 +372,10 @@ body{
 
 .saved-row{
   display:flex;
+
   justify-content:space-between;
+
+  gap:20px;
 
   padding:8px 0;
 
@@ -336,9 +394,13 @@ body{
 
 .saved-row span:last-child{
   font-weight:700;
+
+  text-align:right;
 }
 
-/* FORM */
+/* =========================
+   FORM
+========================= */
 
 .form-group{
   margin-bottom:17px;
@@ -348,6 +410,7 @@ label{
   display:block;
 
   font-size:12px;
+
   font-weight:700;
 
   margin-bottom:7px;
@@ -356,6 +419,7 @@ label{
 input,
 select{
   width:100%;
+
   height:49px;
 
   border:1px solid var(--border);
@@ -383,10 +447,17 @@ select:focus{
     0 0 0 3px rgba(7,87,201,.08);
 }
 
-/* BUTTON */
+input:disabled{
+  background:#f4f7fa;
+}
+
+/* =========================
+   BUTTON
+========================= */
 
 .btn{
   width:100%;
+
   height:49px;
 
   border:0;
@@ -404,6 +475,8 @@ select:focus{
   font-weight:800;
 
   cursor:pointer;
+
+  transition:.2s;
 }
 
 .btn:hover{
@@ -412,10 +485,47 @@ select:focus{
 
 .btn:disabled{
   opacity:.6;
+
   cursor:not-allowed;
 }
 
-/* NOTE */
+/* =========================
+   WITHDRAW SECTION
+========================= */
+
+.withdraw-section{
+  display:none;
+}
+
+.withdraw-section.show{
+  display:block;
+}
+
+.amount-box{
+  position:relative;
+}
+
+.amount-symbol{
+  position:absolute;
+
+  left:14px;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  font-weight:800;
+
+  color:var(--green);
+}
+
+.amount-input{
+  padding-left:35px;
+}
+
+/* =========================
+   INFO
+========================= */
 
 .note{
   margin-top:17px;
@@ -433,7 +543,53 @@ select:focus{
   line-height:1.6;
 }
 
-/* MOBILE */
+/* =========================
+   RECENT REQUEST
+========================= */
+
+.request-card{
+  background:#f8fafc;
+
+  border:1px solid var(--border);
+
+  border-radius:10px;
+
+  padding:15px;
+
+  margin-top:20px;
+}
+
+.request-title{
+  font-size:11px;
+
+  font-weight:800;
+
+  margin-bottom:10px;
+}
+
+.request-row{
+  display:flex;
+
+  justify-content:space-between;
+
+  padding:7px 0;
+
+  font-size:10px;
+}
+
+.request-row span:first-child{
+  color:var(--gray);
+}
+
+.status{
+  font-weight:800;
+
+  color:#ca8a04;
+}
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
 
@@ -443,9 +599,13 @@ select:focus{
 
   .sidebar{
     width:100%;
+
     border-right:0;
+
     border-bottom:1px solid var(--border);
+
     padding:10px;
+
     overflow-x:auto;
   }
 
@@ -455,11 +615,13 @@ select:focus{
 
   .menu{
     flex-direction:row;
+
     width:max-content;
   }
 
   .menu-item{
     width:auto;
+
     white-space:nowrap;
   }
 
@@ -485,19 +647,33 @@ select:focus{
 <body>
 
 
+<!-- =========================
+     TOPBAR
+========================= -->
+
 <header class="topbar">
 
-  <a href="dashboard.html" class="logo">
+  <a
+    href="dashboard.html"
+    class="logo"
+  >
     Beez <span>Gift Card</span>
   </a>
 
+
   <div class="user-area">
 
-    <span class="user-name" id="topName">
+    <span
+      class="user-name"
+      id="topName"
+    >
       Customer
     </span>
 
-    <div class="avatar" id="avatar">
+    <div
+      class="avatar"
+      id="avatar"
+    >
       B
     </div>
 
@@ -509,55 +685,108 @@ select:focus{
 <div class="layout">
 
 
+<!-- =========================
+     SIDEBAR
+========================= -->
+
 <aside class="sidebar">
 
   <div class="menu-title">
     Main Menu
   </div>
 
+
   <nav class="menu">
 
-    <a href="dashboard.html" class="menu-item">
-      <span class="menu-icon">🏠</span>
+    <a
+      href="dashboard.html"
+      class="menu-item"
+    >
+      <span class="menu-icon">
+        🏠
+      </span>
       Dashboard
     </a>
 
-    <a href="sell-gift-card.html" class="menu-item">
-      <span class="menu-icon">🎁</span>
+
+    <a
+      href="sell-gift-card.html"
+      class="menu-item"
+    >
+      <span class="menu-icon">
+        🎁
+      </span>
       Sell Gift Card
     </a>
 
-    <a href="rates.html" class="menu-item">
-      <span class="menu-icon">💰</span>
+
+    <a
+      href="rates.html"
+      class="menu-item"
+    >
+      <span class="menu-icon">
+        💰
+      </span>
       Gift Card Rates
     </a>
 
-    <a href="transactions.html" class="menu-item">
-      <span class="menu-icon">📋</span>
+
+    <a
+      href="transactions.html"
+      class="menu-item"
+    >
+      <span class="menu-icon">
+        📋
+      </span>
       Transactions
     </a>
 
-    <a href="withdraw.html" class="menu-item active">
-      <span class="menu-icon">🏦</span>
+
+    <a
+      href="withdraw.html"
+      class="menu-item active"
+    >
+      <span class="menu-icon">
+        🏦
+      </span>
       Withdraw
     </a>
+
 
     <div class="menu-title">
       Account
     </div>
 
-    <a href="profile.html" class="menu-item">
-      <span class="menu-icon">👤</span>
+
+    <a
+      href="profile.html"
+      class="menu-item"
+    >
+      <span class="menu-icon">
+        👤
+      </span>
       Profile
     </a>
 
-    <a href="support.html" class="menu-item">
-      <span class="menu-icon">💬</span>
+
+    <a
+      href="support.html"
+      class="menu-item"
+    >
+      <span class="menu-icon">
+        💬
+      </span>
       Customer Support
     </a>
 
-    <button class="menu-item logout" id="logoutBtn">
-      <span class="menu-icon">🚪</span>
+
+    <button
+      class="menu-item logout"
+      id="logoutBtn"
+    >
+      <span class="menu-icon">
+        🚪
+      </span>
       Logout
     </button>
 
@@ -565,6 +794,10 @@ select:focus{
 
 </aside>
 
+
+<!-- =========================
+     MAIN
+========================= -->
 
 <main class="main">
 
@@ -600,7 +833,9 @@ select:focus{
 </div>
 
 
-<!-- CARD -->
+<!-- =========================
+     BANK ACCOUNT
+========================= -->
 
 <div class="card">
 
@@ -609,8 +844,7 @@ select:focus{
   </h2>
 
   <p class="description">
-    Save your Nigerian bank account details. Once saved,
-    they will remain available for future withdrawals.
+    Save your Nigerian bank account details before making a withdrawal.
   </p>
 
 
@@ -673,10 +907,8 @@ select:focus{
   </div>
 
 
-  <form id="withdrawForm">
+  <form id="bankForm">
 
-
-    <!-- BANK -->
 
     <div class="form-group">
 
@@ -778,8 +1010,6 @@ select:focus{
     </div>
 
 
-    <!-- ACCOUNT NAME -->
-
     <div class="form-group">
 
       <label>
@@ -789,14 +1019,12 @@ select:focus{
       <input
         type="text"
         id="accountName"
-        placeholder="Enter your bank account name"
+        placeholder="Enter account name"
         required
       >
 
     </div>
 
-
-    <!-- ACCOUNT NUMBER -->
 
     <div class="form-group">
 
@@ -828,10 +1056,137 @@ select:focus{
   </form>
 
 
+</div>
+
+
+<!-- =========================
+     WITHDRAW MONEY
+========================= -->
+
+<div
+  class="card withdraw-section"
+  id="withdrawSection"
+>
+
+  <h2>
+    Withdraw Money
+  </h2>
+
+  <p class="description">
+    Enter the amount you want to withdraw to your saved bank account.
+  </p>
+
+
+  <div
+    id="withdrawMessage"
+    class="message"
+  ></div>
+
+
+  <form id="withdrawForm">
+
+
+    <div class="form-group">
+
+      <label>
+        Withdrawal Amount
+      </label>
+
+
+      <div class="amount-box">
+
+        <span class="amount-symbol">
+          ₦
+        </span>
+
+        <input
+          type="number"
+          id="withdrawAmount"
+          class="amount-input"
+          min="1"
+          step="1"
+          placeholder="Enter amount"
+          required
+        >
+
+      </div>
+
+    </div>
+
+
+    <button
+      type="submit"
+      class="btn"
+      id="withdrawBtn"
+    >
+      Submit Withdrawal
+    </button>
+
+
+  </form>
+
+
   <div class="note">
 
-    🔒 Your bank information is stored in your Beez Gift Card
-    account and can be reused for future withdrawals.
+    🔒 Your withdrawal will first be reviewed and processed.
+    Do not submit a withdrawal request more than once for the same transaction.
+
+  </div>
+
+
+  <!-- RECENT REQUEST -->
+
+  <div
+    id="recentRequest"
+    class="request-card"
+    style="display:none;"
+  >
+
+    <div class="request-title">
+      Latest Withdrawal Request
+    </div>
+
+
+    <div class="request-row">
+
+      <span>
+        Amount
+      </span>
+
+      <span id="requestAmount">
+        ₦0.00
+      </span>
+
+    </div>
+
+
+    <div class="request-row">
+
+      <span>
+        Bank
+      </span>
+
+      <span id="requestBank">
+        -
+      </span>
+
+    </div>
+
+
+    <div class="request-row">
+
+      <span>
+        Status
+      </span>
+
+      <span
+        class="status"
+        id="requestStatus"
+      >
+        Pending
+      </span>
+
+    </div>
 
   </div>
 
@@ -846,6 +1201,10 @@ select:focus{
 
 <script type="module">
 
+
+/* =========================
+   FIREBASE
+========================= */
 
 import {
   initializeApp
@@ -866,18 +1225,17 @@ import {
   doc,
   getDoc,
   setDoc,
-  updateDoc,
+  collection,
+  addDoc,
   serverTimestamp
 } from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-/* FIREBASE */
-
 const firebaseConfig = {
 
   apiKey:
-    "AIzaSyDKJescGQhaWB_-E5qH6mnjtmQvVPmlkUI",
+    "AIzaSyDKJescGQhaWB_-E5qH6mnjtmqVVPmlkUI",
 
   authDomain:
     "beezgiftcard.firebaseapp.com",
@@ -910,7 +1268,9 @@ const db =
   getFirestore(app);
 
 
-/* ELEMENTS */
+/* =========================
+   ELEMENTS
+========================= */
 
 const walletBalance =
   document.getElementById(
@@ -932,16 +1292,33 @@ const accountNumber =
     "accountNumber"
   );
 
-const message =
-  document.getElementById(
-    "message"
-  );
-
 const savedAccount =
   document.getElementById(
     "savedAccount"
   );
 
+const withdrawSection =
+  document.getElementById(
+    "withdrawSection"
+  );
+
+const message =
+  document.getElementById(
+    "message"
+  );
+
+const withdrawMessage =
+  document.getElementById(
+    "withdrawMessage"
+  );
+
+
+let currentWalletBalance = 0;
+
+
+/* =========================
+   FORMAT NAIRA
+========================= */
 
 function formatNaira(amount){
 
@@ -958,26 +1335,39 @@ function formatNaira(amount){
 }
 
 
+/* =========================
+   MESSAGE
+========================= */
+
 function showMessage(
+  element,
   text,
   type
 ){
 
-  message.textContent =
+  element.textContent =
     text;
 
-  message.className =
+  element.className =
     "message " + type;
 
 }
 
 
+/* =========================
+   INITIALS
+========================= */
+
 function getInitials(name){
 
-  if(!name) return "B";
+  if(!name){
+    return "B";
+  }
+
 
   const parts =
     name.trim().split(/\s+/);
+
 
   if(parts.length === 1){
 
@@ -987,6 +1377,7 @@ function getInitials(name){
 
   }
 
+
   return (
     parts[0][0] +
     parts[parts.length - 1][0]
@@ -995,7 +1386,9 @@ function getInitials(name){
 }
 
 
-/* ACCOUNT NUMBER */
+/* =========================
+   ACCOUNT NUMBER
+========================= */
 
 accountNumber.addEventListener(
   "input",
@@ -1010,7 +1403,9 @@ accountNumber.addEventListener(
 );
 
 
-/* AUTH */
+/* =========================
+   LOAD USER
+========================= */
 
 onAuthStateChanged(
   auth,
@@ -1045,7 +1440,7 @@ onAuthStateChanged(
 
     try{
 
-      const ref =
+      const userRef =
         doc(
           db,
           "users",
@@ -1053,11 +1448,11 @@ onAuthStateChanged(
         );
 
 
-      const snap =
-        await getDoc(ref);
+      const userSnap =
+        await getDoc(userRef);
 
 
-      if(!snap.exists()){
+      if(!userSnap.exists()){
 
         return;
 
@@ -1065,14 +1460,20 @@ onAuthStateChanged(
 
 
       const data =
-        snap.data();
+        userSnap.data();
 
 
       /* WALLET */
 
+      currentWalletBalance =
+        Number(
+          data.walletBalance || 0
+        );
+
+
       walletBalance.textContent =
         formatNaira(
-          data.walletBalance || 0
+          currentWalletBalance
         );
 
 
@@ -1084,49 +1485,23 @@ onAuthStateChanged(
         data.accountNumber
       ){
 
-        savedAccount.classList.add(
-          "show"
+        showSavedAccount(
+          data
         );
-
-
-        document.getElementById(
-          "savedBank"
-        ).textContent =
-          data.bankName;
-
-
-        document.getElementById(
-          "savedName"
-        ).textContent =
-          data.accountName;
-
-
-        document.getElementById(
-          "savedNumber"
-        ).textContent =
-          data.accountNumber;
-
-
-        /* PUT SAVED VALUES INTO FORM */
-
-        bankName.value =
-          data.bankName;
-
-
-        accountName.value =
-          data.accountName;
-
-
-        accountNumber.value =
-          data.accountNumber;
 
       }
 
     }catch(error){
 
       console.error(
-        "Load withdrawal data:",
+        "Loading user:",
         error
+      );
+
+      showMessage(
+        message,
+        "Unable to load your account information.",
+        "error"
       );
 
     }
@@ -1135,10 +1510,62 @@ onAuthStateChanged(
 );
 
 
-/* SAVE BANK ACCOUNT */
+/* =========================
+   SHOW SAVED ACCOUNT
+========================= */
+
+function showSavedAccount(data){
+
+  savedAccount.classList.add(
+    "show"
+  );
+
+
+  document.getElementById(
+    "savedBank"
+  ).textContent =
+    data.bankName;
+
+
+  document.getElementById(
+    "savedName"
+  ).textContent =
+    data.accountName;
+
+
+  document.getElementById(
+    "savedNumber"
+  ).textContent =
+    data.accountNumber;
+
+
+  bankName.value =
+    data.bankName;
+
+
+  accountName.value =
+    data.accountName;
+
+
+  accountNumber.value =
+    data.accountNumber;
+
+
+  /* ENABLE WITHDRAW */
+
+  withdrawSection.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================
+   SAVE BANK ACCOUNT
+========================= */
 
 document
-.getElementById("withdrawForm")
+.getElementById("bankForm")
 .addEventListener(
   "submit",
   async event => {
@@ -1150,7 +1577,11 @@ document
       auth.currentUser;
 
 
-    if(!user) return;
+    if(!user){
+
+      return;
+
+    }
 
 
     const bank =
@@ -1165,11 +1596,10 @@ document
       accountNumber.value.trim();
 
 
-    /* VALIDATE */
-
     if(!bank){
 
       showMessage(
+        message,
         "Please select your bank.",
         "error"
       );
@@ -1182,7 +1612,8 @@ document
     if(name.length < 2){
 
       showMessage(
-        "Please enter the account name.",
+        message,
+        "Please enter your account name.",
         "error"
       );
 
@@ -1194,6 +1625,7 @@ document
     if(!/^\d{10}$/.test(number)){
 
       showMessage(
+        message,
         "Account number must contain exactly 10 digits.",
         "error"
       );
@@ -1217,12 +1649,16 @@ document
 
     try{
 
-      await setDoc(
+      const userRef =
         doc(
           db,
           "users",
           user.uid
-        ),
+        );
+
+
+      await setDoc(
+        userRef,
         {
 
           bankName:bank,
@@ -1241,33 +1677,20 @@ document
       );
 
 
-      /* UPDATE DISPLAY */
+      showSavedAccount({
 
-      document.getElementById(
-        "savedBank"
-      ).textContent =
-        bank;
+        bankName:bank,
 
+        accountName:name,
 
-      document.getElementById(
-        "savedName"
-      ).textContent =
-        name;
+        accountNumber:number
 
-
-      document.getElementById(
-        "savedNumber"
-      ).textContent =
-        number;
-
-
-      savedAccount.classList.add(
-        "show"
-      );
+      });
 
 
       showMessage(
-        "Bank account saved successfully. You can use this account for future withdrawals.",
+        message,
+        "Bank account saved successfully. You can now make a withdrawal.",
         "success"
       );
 
@@ -1275,12 +1698,13 @@ document
     }catch(error){
 
       console.error(
-        "Save bank account:",
+        "Saving bank:",
         error
       );
 
 
       showMessage(
+        message,
         "Unable to save your bank account. Please try again.",
         "error"
       );
@@ -1297,7 +1721,223 @@ document
 );
 
 
-/* LOGOUT */
+/* =========================
+   SUBMIT WITHDRAWAL
+========================= */
+
+document
+.getElementById("withdrawForm")
+.addEventListener(
+  "submit",
+  async event => {
+
+    event.preventDefault();
+
+
+    const user =
+      auth.currentUser;
+
+
+    if(!user){
+
+      return;
+
+    }
+
+
+    const amount =
+      Number(
+        document.getElementById(
+          "withdrawAmount"
+        ).value
+      );
+
+
+    /* VALIDATE */
+
+    if(!Number.isFinite(amount) || amount <= 0){
+
+      showMessage(
+        withdrawMessage,
+        "Please enter a valid withdrawal amount.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if(amount > currentWalletBalance){
+
+      showMessage(
+        withdrawMessage,
+        "Insufficient wallet balance.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if(!bankName.value ||
+       !accountName.value ||
+       !accountNumber.value){
+
+      showMessage(
+        withdrawMessage,
+        "Please save your bank account before withdrawing.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const button =
+      document.getElementById(
+        "withdrawBtn"
+      );
+
+
+    button.disabled = true;
+
+    button.textContent =
+      "Submitting...";
+
+
+    try{
+
+      /*
+
+        IMPORTANT:
+
+        This creates a withdrawal request.
+
+        It does NOT deduct the wallet balance
+        from the customer in the browser.
+
+        Your admin/backend should approve the
+        request and securely update the balance.
+
+      */
+
+
+      const withdrawalRef =
+        await addDoc(
+          collection(
+            db,
+            "withdrawalRequests"
+          ),
+          {
+
+            userId:
+              user.uid,
+
+            email:
+              user.email || "",
+
+            fullName:
+              user.displayName || "",
+
+            amount:
+              amount,
+
+            bankName:
+              bankName.value,
+
+            accountName:
+              accountName.value.trim(),
+
+            accountNumber:
+              accountNumber.value.trim(),
+
+            status:
+              "pending",
+
+            createdAt:
+              serverTimestamp()
+
+          }
+        );
+
+
+      /* DISPLAY REQUEST */
+
+      document.getElementById(
+        "recentRequest"
+      ).style.display =
+        "block";
+
+
+      document.getElementById(
+        "requestAmount"
+      ).textContent =
+        formatNaira(amount);
+
+
+      document.getElementById(
+        "requestBank"
+      ).textContent =
+        bankName.value;
+
+
+      document.getElementById(
+        "requestStatus"
+      ).textContent =
+        "Pending";
+
+
+      document.getElementById(
+        "withdrawAmount"
+      ).value =
+        "";
+
+
+      showMessage(
+        withdrawMessage,
+        "Withdrawal request submitted successfully. Your request is now pending review.",
+        "success"
+      );
+
+
+      console.log(
+        "Withdrawal request ID:",
+        withdrawalRef.id
+      );
+
+
+    }catch(error){
+
+      console.error(
+        "Withdrawal request:",
+        error
+      );
+
+
+      showMessage(
+        withdrawMessage,
+        "Unable to submit withdrawal request. Please try again.",
+        "error"
+      );
+
+    }
+
+
+    button.disabled = false;
+
+    button.textContent =
+      "Submit Withdrawal";
+
+  }
+);
+
+
+/* =========================
+   LOGOUT
+========================= */
 
 document
 .getElementById("logoutBtn")
@@ -1317,4 +1957,4 @@ document
 </script>
 
 </body>
-  </html>
+</html>
