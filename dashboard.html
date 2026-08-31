@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dashboard | Beez Gift Card</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --blue: #0757c9;
+      --dark-blue: #043b8f;
+      --green: #16a34a;
+      --green-dark: #0d7a35;
+      --white: #ffffff;
+      --dark: #10233f;
+      --gray: #687891;
+      --light: #f4f8ff;
+      --border: #e0e8f2;
+      --red: #dc2626;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #f4f8ff;
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    /* =========================
+       TOPBAR
+    ========================= */
+
+    .topbar {
+      height: 72px;
+      background: white;
+      border-bottom: 1px solid var(--border);
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 5%;
+
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .welcome-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .avatar {
+      width: 39px;
+      height: 39px;
+
+      border-radius: 50%;
+
+      background: var(--blue);
+      color: white;
+
+      display: grid;
+      place-items: center;
+
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    /* =========================
+       LAYOUT
+    ========================= */
+
+    .layout {
+      display: flex;
+      min-height: calc(100vh - 72px);
+    }
+
+    /* =========================
+       SIDEBAR
+    ========================= */
+
+    .sidebar {
+      width: 245px;
+      background: white;
+      border-right: 1px solid var(--border);
+
+      padding: 25px 15px;
+
+      flex-shrink: 0;
+    }
+
+    .menu-title {
+      color: #91a0b5;
+      font-size: 10px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+
+      padding: 0 13px;
+
+      margin: 8px 0 12px;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .menu-item {
+      width: 100%;
+
+      border: 0;
+      background: transparent;
+
+      padding: 12px 13px;
+
+      border-radius: 9px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 12px;
+
+      color: var(--gray);
+
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+
+      text-decoration: none;
+
+      cursor: pointer;
+
+      transition: .2s;
+
+      text-align: left;
+    }
+
+    .menu-item:hover {
+      background: #edf5ff;
+      color: var(--blue);
+    }
+
+    .menu-item.active {
+      background: #eaf2ff;
+      color: var(--blue);
+    }
+
+    .menu-icon {
+      width: 22px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .logout {
+      color: var(--red);
+      margin-top: 15px;
+    }
+
+    .logout:hover {
+      background: #fff0f0;
+      color: var(--red);
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    .main {
+      flex: 1;
+      padding: 35px 5%;
+      max-width: 1350px;
+    }
+
+    .page-title {
+      margin-bottom: 25px;
+    }
+
+    .page-title h1 {
+      font-size: 25px;
+      margin-bottom: 6px;
+    }
+
+    .page-title p {
+      color: var(--gray);
+      font-size: 13px;
+    }
+
+    /* =========================
+       WALLET CARD
+    ========================= */
+
+    .wallet-card {
+      background:
+        radial-gradient(
+          circle at 85% 15%,
+          rgba(22,163,74,.25),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          var(--blue),
+          var(--dark-blue)
+        );
+
+      color: white;
+
+      border-radius: 18px;
+
+      padding: 28px;
+
+      min-height: 190px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      box-shadow:
+        0 12px 30px rgba(7,87,201,.18);
+    }
+
+    .wallet-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .wallet-label {
+      font-size: 12px;
+      color: #cbdcf7;
+      margin-bottom: 8px;
+    }
+
+    .wallet-balance {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .wallet-status {
+      padding: 7px 11px;
+
+      border-radius: 20px;
+
+      background: rgba(22,163,74,.95);
+
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .wallet-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .wallet-note {
+      color: #cbdcf7;
+      font-size: 11px;
+    }
+
+    .withdraw-btn {
+      border: 0;
+
+      padding: 10px 16px;
+
+      border-radius: 8px;
+
+      background: white;
+      color: var(--blue);
+
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 800;
+
+      cursor: pointer;
+    }
+
+    /* =========================
+       QUICK ACTIONS
+    ========================= */
+
+    .section {
+      margin-top: 28px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin-bottom: 14px;
+    }
+
+    .section-header h2 {
+      font-size: 17px;
+    }
+
+    .section-header span {
+      color: var(--gray);
+      font-size: 11px;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 13px;
+    }
+
+    .action-card {
+      background: white;
+
+      border: 1px solid var(--border);
+
+      border-radius: 13px;
+
+      padding: 20px 15px;
+
+      text-decoration: none;
+
+      color: var(--dark);
+
+      transition: .2s;
+    }
+
+    .action-card:hover {
+      border-color: var(--blue);
+
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 8px 25px rgba(7,87,201,.08);
+    }
+
+    .action-icon {
+      width: 42px;
+      height: 42px;
+
+      border-radius: 10px;
+
+      background: #edf5ff;
+
+      display: grid;
+      place-items: center;
+
+      font-size: 19px;
+
+      margin-bottom: 13px;
+    }
+
+    .action-card h3 {
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .action-card p {
+      color: var(--gray);
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 13px;
+    }
+
+    .stat-card {
+      background: white;
+
+      border: 1px solid var(--border);
+
+      border-radius: 13px;
+
+      padding: 20px;
+    }
+
+    .stat-card p {
+      color: var(--gray);
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+
+    .stat-card h3 {
+      font-size: 21px;
+      font-weight: 800;
+    }
+
+    .green-text {
+      color: var(--green);
+    }
+
+    /* =========================
+       RECENT TRANSACTIONS
+    ========================= */
+
+    .transactions {
+      background: white;
+
+      border: 1px solid var(--border);
+
+      border-radius: 13px;
+
+      overflow: hidden;
+    }
+
+    .empty-state {
+      padding: 40px 20px;
+
+      text-align: center;
+
+      color: var(--gray);
+
+      font-size: 12px;
+    }
+
+    .empty-icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    /* =========================
+       LOADING
+    ========================= */
+
+    .loading-screen {
+      position: fixed;
+
+      inset: 0;
+
+      background: white;
+
+      z-index: 9999;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-direction: column;
+
+      gap: 15px;
+    }
+
+    .loader {
+      width: 35px;
+      height: 35px;
+
+      border: 3px solid #dce8f7;
+
+      border-top-color: var(--green);
+
+      border-radius: 50%;
+
+      animation: spin .7s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loading-screen p {
+      color: var(--gray);
+      font-size: 12px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .sidebar {
+        width: 210px;
+      }
+
+      .actions {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 700px) {
+
+      .topbar {
+        padding: 0 18px;
+      }
+
+      .welcome-name {
+        display: none;
+      }
+
+      .layout {
+        display: block;
+      }
+
+      .sidebar {
+        width: 100%;
+
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+
+        padding: 10px;
+
+        overflow-x: auto;
+      }
+
+      .menu-title {
+        display: none;
+      }
+
+      .menu {
+        flex-direction: row;
+
+        width: max-content;
+      }
+
+      .menu-item {
+        width: auto;
+        white-space: nowrap;
+      }
+
+      .logout {
+        margin-top: 0;
+      }
+
+      .main {
+        padding: 25px 18px;
+      }
+
+      .actions {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    @media (max-width: 450px) {
+
+      .wallet-card {
+        padding: 22px;
+      }
+
+      .wallet-balance {
+        font-size: 28px;
+      }
+
+      .wallet-bottom {
+        align-items: flex-end;
+        gap: 10px;
+      }
+
+      .actions {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .action-card {
+        padding: 16px 12px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     AUTH LOADING
+========================= -->
+
+<div
+  class="loading-screen"
+  id="loadingScreen"
+>
+
+  <div class="loader"></div>
+
+  <p>
+    Loading your account...
+  </p>
+
+</div>
+
+
+<!-- =========================
+     TOPBAR
+========================= -->
+
+<header class="topbar">
+
+  <a
+    href="dashboard.html"
+    class="logo"
+  >
+    Beez <span>Gift Card</span>
+  </a>
+
+
+  <div class="top-right">
+
+    <span
+      class="welcome-name"
+      id="topName"
+    >
+      Welcome
+    </span>
+
+    <div
+      class="avatar"
+      id="avatar"
+    >
+      B
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- =========================
+     LAYOUT
+========================= -->
+
+<div class="layout">
+
+
+  <!-- =========================
+       SIDEBAR
+  ========================= -->
+
+  <aside class="sidebar">
+
+    <div class="menu-title">
+      Main Menu
+    </div>
+
+
+    <nav class="menu">
+
+
+      <a
+        href="dashboard.html"
+        class="menu-item active"
+      >
+
+        <span class="menu-icon">
+          🏠
+        </span>
+
+        Dashboard
+
+      </a>
+
+
+      <a
+        href="sell-gift-card.html"
+        class="menu-item"
+      >
+
+        <span class="menu-icon">
+          🎁
+        </span>
+
+        Sell Gift Card
+
+      </a>
+
+
+      <a
+        href="rates.html"
+        class="menu-item"
+      >
+
+        <span class="menu-icon">
+          💰
+        </span>
+
+        Gift Card Rates
+
+      </a>
+
+
+      <a
+        href="transactions.html"
+        class="menu-item"
+      >
+
+        <span class="menu-icon">
+          📋
+        </span>
+
+        Transactions
+
+      </a>
+
+
+      <a
+        href="withdraw.html"
+        class="menu-item"
+      >
+
+        <span class="menu-icon">
+          🏦
+        </span>
+
+        Withdraw
+
+      </a>
+
+
+      <div class="menu-title">
+        Account
+      </div>
+
+
+      <a
+        href="profile.html"
+        class="menu-item"
+      >
+
+        <span class="menu-icon">
+          👤
+        </span>
+
+        Profile
+
+      </a>
+
+
+      <a
+        href="support.html"
+        class="menu-item"
+      >
+
+        <span class="menu-icon">
+          💬
+        </span>
+
+        Customer Support
+
+      </a>
+
+
+      <button
+        class="menu-item logout"
+        id="logoutBtn"
+      >
+
+        <span class="menu-icon">
+          🚪
+        </span>
+
+        Logout
+
+      </button>
+
+
+    </nav>
+
+  </aside>
+
+
+  <!-- =========================
+       MAIN
+  ========================= -->
+
+  <main class="main">
+
+
+    <div class="page-title">
+
+      <h1>
+        Welcome back, <span id="userName">Customer</span>
+      </h1>
+
+      <p>
+        Manage your gift card trades and wallet from here.
+      </p>
+
+    </div>
+
+
+    <!-- =========================
+         WALLET
+    ========================= -->
+
+    <section class="wallet-card">
+
+      <div class="wallet-top">
+
+        <div>
+
+          <div class="wallet-label">
+            Available Wallet Balance
+          </div>
+
+          <div
+            class="wallet-balance"
+            id="walletBalance"
+          >
+            ₦0.00
+          </div>
+
+        </div>
+
+
+        <div class="wallet-status">
+          ACTIVE
+        </div>
+
+      </div>
+
+
+      <div class="wallet-bottom">
+
+        <div class="wallet-note">
+          Your approved gift card earnings appear here.
+        </div>
+
+
+        <button
+          class="withdraw-btn"
+          onclick="window.location.href='withdraw.html'"
+        >
+          Withdraw
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         QUICK ACTIONS
+    ========================= -->
+
+    <section class="section">
+
+      <div class="section-header">
+
+        <h2>
+          Quick Actions
+        </h2>
+
+        <span>
+          Manage your account
+        </span>
+
+      </div>
+
+
+      <div class="actions">
+
+
+        <a
+          href="sell-gift-card.html"
+          class="action-card"
+        >
+
+          <div class="action-icon">
+            🎁
+          </div>
+
+          <h3>
+            Sell Gift Card
+          </h3>
+
+          <p>
+            Submit a gift card for verification.
+          </p>
+
+        </a>
+
+
+        <a
+          href="rates.html"
+          class="action-card"
+        >
+
+          <div class="action-icon">
+            💰
+          </div>
+
+          <h3>
+            View Rates
+          </h3>
+
+          <p>
+            Check current gift card rates.
+          </p>
+
+        </a>
+
+
+        <a
+          href="transactions.html"
+          class="action-card"
+        >
+
+          <div class="action-icon">
+            📋
+          </div>
+
+          <h3>
+            Transactions
+          </h3>
+
+          <p>
+            View your trading history.
+          </p>
+
+        </a>
+
+
+        <a
+          href="withdraw.html"
+          class="action-card"
+        >
+
+          <div class="action-icon">
+            🏦
+          </div>
+
+          <h3>
+            Withdraw
+          </h3>
+
+          <p>
+            Withdraw your available balance.
+          </p>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         STATS
+    ========================= -->
+
+    <section class="section">
+
+      <div class="section-header">
+
+        <h2>
+          Account Overview
+        </h2>
+
+      </div>
+
+
+      <div class="stats">
+
+
+        <div class="stat-card">
+
+          <p>
+            Total Gift Cards Sold
+          </p>
+
+          <h3 id="totalTrades">
+            0
+          </h3>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <p>
+            Total Earnings
+          </p>
+
+          <h3
+            class="green-text"
+            id="totalEarnings"
+          >
+            ₦0.00
+          </h3>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <p>
+            Account Status
+          </p>
+
+          <h3
+            class="green-text"
+            id="accountStatus"
+          >
+            Active
+          </h3>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         RECENT TRANSACTIONS
+    ========================= -->
+
+    <section class="section">
+
+      <div class="section-header">
+
+        <h2>
+          Recent Transactions
+        </h2>
+
+        <a
+          href="transactions.html"
+          style="
+            color:#0757c9;
+            font-size:11px;
+            font-weight:700;
+            text-decoration:none;
+          "
+        >
+          View All
+        </a>
+
+      </div>
+
+
+      <div class="transactions">
+
+        <div class="empty-state">
+
+          <div class="empty-icon">
+            📋
+          </div>
+
+          <p>
+            No transactions yet.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+</div>
+
+
+<!-- ==================================================
+     FIREBASE
+================================================== -->
+
+<script type="module">
+
+  import {
+    initializeApp
+  } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+
+
+  import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+
+
+  import {
+    getFirestore,
+    doc,
+    getDoc
+  } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+
+  /* ==================================================
+     FIREBASE CONFIG
+  ================================================== */
+
+  const firebaseConfig = {
+
+    apiKey: "YOUR_API_KEY",
+
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+
+    projectId: "YOUR_PROJECT_ID",
+
+    storageBucket: "YOUR_PROJECT_ID.firebasestorage.app",
+
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+
+    appId: "YOUR_APP_ID"
+
+  };
+
+
+  /* ==================================================
+     INITIALIZE
+  ================================================== */
+
+  const app =
+    initializeApp(firebaseConfig);
+
+  const auth =
+    getAuth(app);
+
+  const db =
+    getFirestore(app);
+
+
+  /* ==================================================
+     ELEMENTS
+  ================================================== */
+
+  const loadingScreen =
+    document.getElementById("loadingScreen");
+
+  const userName =
+    document.getElementById("userName");
+
+  const topName =
+    document.getElementById("topName");
+
+  const avatar =
+    document.getElementById("avatar");
+
+  const walletBalance =
+    document.getElementById("walletBalance");
+
+  const totalTrades =
+    document.getElementById("totalTrades");
+
+  const totalEarnings =
+    document.getElementById("totalEarnings");
+
+  const accountStatus =
+    document.getElementById("accountStatus");
+
+  const logoutBtn =
+    document.getElementById("logoutBtn");
+
+
+  /* ==================================================
+     FORMAT NAIRA
+  ================================================== */
+
+  function formatNaira(amount) {
+
+    const number =
+      Number(amount || 0);
+
+    return "₦" +
+      number.toLocaleString(
+        "en-NG",
+        {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }
+      );
+
+  }
+
+
+  /* ==================================================
+     GET INITIALS
+  ================================================== */
+
+  function getInitials(name) {
+
+    if (!name) return "B";
+
+    const parts =
+      name.trim().split(/\s+/);
+
+    if (parts.length === 1) {
+
+      return parts[0]
+        .substring(0, 2)
+        .toUpperCase();
+
+    }
+
+    return (
+      parts[0][0] +
+      parts[parts.length - 1][0]
+    ).toUpperCase();
+
+  }
+
+
+  /* ==================================================
+     AUTH STATE
+  ================================================== */
+
+  onAuthStateChanged(
+    auth,
+    async (user) => {
+
+      /* =========================
+         NOT LOGGED IN
+      ========================= */
+
+      if (!user) {
+
+        window.location.href =
+          "login.html";
+
+        return;
+
+      }
+
+
+      try {
+
+        /* =========================
+           GET USER PROFILE
+        ========================= */
+
+        const userRef =
+          doc(
+            db,
+            "users",
+            user.uid
+          );
+
+
+        const userSnap =
+          await getDoc(userRef);
+
+
+        let name =
+          user.displayName ||
+          "Customer";
+
+
+        let balance = 0;
+
+        let earnings = 0;
+
+        let trades = 0;
+
+        let status = "Active";
+
+
+        if (userSnap.exists()) {
+
+          const data =
+            userSnap.data();
+
+
+          name =
+            data.fullName ||
+            user.displayName ||
+            "Customer";
+
+
+          balance =
+            Number(
+              data.walletBalance || 0
+            );
+
+
+          earnings =
+            Number(
+              data.totalEarnings || 0
+            );
+
+
+          trades =
+            Number(
+              data.totalTrades || 0
+            );
+
+
+          status =
+            data.accountStatus ||
+            "active";
+
+        }
+
+
+        /* =========================
+           DISPLAY DATA
+        ========================= */
+
+        userName.textContent =
+          name;
+
+
+        topName.textContent =
+          name;
+
+
+        avatar.textContent =
+          getInitials(name);
+
+
+        walletBalance.textContent =
+          formatNaira(balance);
+
+
+        totalEarnings.textContent =
+          formatNaira(earnings);
+
+
+        totalTrades.textContent =
+          trades;
+
+
+        accountStatus.textContent =
+          status.charAt(0).toUpperCase() +
+          status.slice(1);
+
+
+        /* =========================
+           SHOW PAGE
+        ========================= */
+
+        loadingScreen.style.display =
+          "none";
+
+
+      } catch (error) {
+
+        console.error(
+          "Dashboard error:",
+          error
+        );
+
+        loadingScreen.innerHTML = `
+          <div style="
+            text-align:center;
+            padding:20px;
+          ">
+
+            <div style="
+              font-size:30px;
+              margin-bottom:10px;
+            ">
+              ⚠️
+            </div>
+
+            <p style="
+              color:#687891;
+              font-size:13px;
+            ">
+              Unable to load your account.
+            </p>
+
+          </div>
+        `;
+
+      }
+
+    }
+  );
+
+
+  /* ==================================================
+     LOGOUT
+  ================================================== */
+
+  logoutBtn.addEventListener(
+    "click",
+    async () => {
+
+      logoutBtn.disabled = true;
+
+      logoutBtn.innerHTML =
+        "⏳ Logging out...";
+
+
+      try {
+
+        await signOut(auth);
+
+        window.location.href =
+          "login.html";
+
+      } catch (error) {
+
+        console.error(
+          "Logout error:",
+          error
+        );
+
+        logoutBtn.disabled = false;
+
+        logoutBtn.innerHTML =
+          "🚪 Logout";
+
+      }
+
+    }
+  );
+
+</script>
+
+
+</body>
+</html>
