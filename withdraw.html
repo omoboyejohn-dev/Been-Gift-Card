@@ -11,17 +11,19 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link
-href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-rel="stylesheet"
->
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet">
 
 <style>
 
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
 }
 
 :root{
@@ -29,27 +31,86 @@ rel="stylesheet"
   --dark-blue:#043b8f;
   --green:#16a34a;
   --green-dark:#0d7a35;
+  --white:#ffffff;
   --dark:#10233f;
   --gray:#687891;
   --light:#f4f8ff;
-  --border:#dfe7f1;
+  --border:#e0e8f2;
   --red:#dc2626;
+  --orange:#d97706;
 }
 
 body{
-  font-family:Inter,sans-serif;
+  font-family:"Inter",sans-serif;
   background:var(--light);
   color:var(--dark);
   min-height:100vh;
 }
 
-/* =========================
+
+/* =========================================
+   LOADING SCREEN
+========================================= */
+
+.loading-screen{
+  position:fixed;
+  inset:0;
+  background:#ffffff;
+  z-index:99999;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+
+  gap:15px;
+}
+
+.loading-logo{
+  font-size:25px;
+  font-weight:800;
+  color:var(--blue);
+}
+
+.loading-logo span{
+  color:var(--green);
+}
+
+.loader{
+  width:34px;
+  height:34px;
+
+  border:3px solid #dce8f7;
+  border-top-color:var(--green);
+
+  border-radius:50%;
+
+  animation:spin .7s linear infinite;
+}
+
+.loading-text{
+  color:var(--gray);
+  font-size:12px;
+}
+
+@keyframes spin{
+
+  to{
+    transform:rotate(360deg);
+  }
+
+}
+
+
+/* =========================================
    TOPBAR
-========================= */
+========================================= */
 
 .topbar{
   height:72px;
-  background:white;
+
+  background:#ffffff;
+
   border-bottom:1px solid var(--border);
 
   display:flex;
@@ -60,27 +121,30 @@ body{
 
   position:sticky;
   top:0;
-  z-index:100;
+
+  z-index:1000;
 }
 
 .logo{
   color:var(--blue);
-  text-decoration:none;
+
   font-size:23px;
   font-weight:800;
+
+  text-decoration:none;
 }
 
 .logo span{
   color:var(--green);
 }
 
-.user-area{
+.top-right{
   display:flex;
   align-items:center;
   gap:12px;
 }
 
-.user-name{
+.welcome-name{
   font-size:12px;
   font-weight:700;
 }
@@ -92,7 +156,7 @@ body{
   border-radius:50%;
 
   background:var(--blue);
-  color:white;
+  color:#ffffff;
 
   display:grid;
   place-items:center;
@@ -101,23 +165,26 @@ body{
   font-weight:800;
 }
 
-/* =========================
+
+/* =========================================
    LAYOUT
-========================= */
+========================================= */
 
 .layout{
   display:flex;
+
   min-height:calc(100vh - 72px);
 }
 
-/* =========================
+
+/* =========================================
    SIDEBAR
-========================= */
+========================================= */
 
 .sidebar{
   width:245px;
 
-  background:white;
+  background:#ffffff;
 
   border-right:1px solid var(--border);
 
@@ -174,9 +241,9 @@ body{
 
   cursor:pointer;
 
-  text-align:left;
-
   transition:.2s;
+
+  text-align:left;
 }
 
 .menu-item:hover{
@@ -191,23 +258,29 @@ body{
 
 .menu-icon{
   width:22px;
+
   text-align:center;
+
   font-size:16px;
 }
 
 .logout{
   color:var(--red);
+
   margin-top:15px;
 }
 
-/* =========================
+
+/* =========================================
    MAIN
-========================= */
+========================================= */
 
 .main{
+  flex:1;
+
   width:100%;
 
-  max-width:1000px;
+  max-width:1100px;
 
   padding:35px 5%;
 }
@@ -228,52 +301,67 @@ body{
   font-size:13px;
 }
 
-/* =========================
-   WALLET
-========================= */
 
-.wallet{
+/* =========================================
+   WALLET
+========================================= */
+
+.wallet-card{
+  min-height:175px;
+
+  border-radius:18px;
+
+  padding:28px;
+
+  color:#ffffff;
+
   background:
+
     radial-gradient(
       circle at 85% 15%,
-      rgba(22,163,74,.25),
+      rgba(22,163,74,.30),
       transparent 30%
     ),
+
     linear-gradient(
       135deg,
       var(--blue),
       var(--dark-blue)
     );
 
-  color:white;
+  box-shadow:
+    0 12px 30px rgba(7,87,201,.18);
 
-  border-radius:16px;
+  display:flex;
 
-  padding:25px;
+  flex-direction:column;
 
-  margin-bottom:20px;
+  justify-content:space-between;
+
+  margin-bottom:25px;
 }
 
 .wallet-label{
   color:#cbdcf7;
 
-  font-size:11px;
+  font-size:12px;
 
-  margin-bottom:7px;
+  margin-bottom:8px;
 }
 
 .wallet-balance{
-  font-size:30px;
+  font-size:34px;
 
   font-weight:800;
 }
 
-/* =========================
+
+/* =========================================
    CARD
-========================= */
+========================================= */
 
 .card{
-  background:white;
+  background:#ffffff;
 
   border:1px solid var(--border);
 
@@ -300,18 +388,19 @@ body{
   margin-bottom:22px;
 }
 
-/* =========================
+
+/* =========================================
    MESSAGE
-========================= */
+========================================= */
 
 .message{
   display:none;
 
-  padding:12px;
+  padding:13px;
 
-  border-radius:8px;
+  border-radius:9px;
 
-  margin-bottom:17px;
+  margin-bottom:18px;
 
   font-size:11px;
 
@@ -338,9 +427,99 @@ body{
   border:1px solid #ffd0d0;
 }
 
-/* =========================
+
+/* =========================================
+   FORM
+========================================= */
+
+.form-group{
+  margin-bottom:17px;
+}
+
+label{
+  display:block;
+
+  font-size:12px;
+
+  font-weight:700;
+
+  margin-bottom:7px;
+}
+
+input,
+select{
+  width:100%;
+
+  height:49px;
+
+  border:1px solid var(--border);
+
+  border-radius:8px;
+
+  padding:0 13px;
+
+  background:#ffffff;
+
+  color:var(--dark);
+
+  font-family:inherit;
+
+  font-size:13px;
+
+  outline:none;
+}
+
+input:focus,
+select:focus{
+  border-color:var(--blue);
+
+  box-shadow:
+    0 0 0 3px rgba(7,87,201,.08);
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.btn{
+  width:100%;
+
+  height:49px;
+
+  border:0;
+
+  border-radius:8px;
+
+  background:var(--green);
+
+  color:#ffffff;
+
+  font-family:inherit;
+
+  font-size:13px;
+
+  font-weight:800;
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.btn:hover{
+  background:var(--green-dark);
+}
+
+.btn:disabled{
+  opacity:.6;
+
+  cursor:not-allowed;
+}
+
+
+/* =========================================
    SAVED ACCOUNT
-========================= */
+========================================= */
 
 .saved-account{
   display:none;
@@ -398,100 +577,10 @@ body{
   text-align:right;
 }
 
-/* =========================
-   FORM
-========================= */
 
-.form-group{
-  margin-bottom:17px;
-}
-
-label{
-  display:block;
-
-  font-size:12px;
-
-  font-weight:700;
-
-  margin-bottom:7px;
-}
-
-input,
-select{
-  width:100%;
-
-  height:49px;
-
-  border:1px solid var(--border);
-
-  border-radius:8px;
-
-  padding:0 13px;
-
-  background:white;
-
-  color:var(--dark);
-
-  font-family:inherit;
-
-  font-size:13px;
-
-  outline:none;
-}
-
-input:focus,
-select:focus{
-  border-color:var(--blue);
-
-  box-shadow:
-    0 0 0 3px rgba(7,87,201,.08);
-}
-
-input:disabled{
-  background:#f4f7fa;
-}
-
-/* =========================
-   BUTTON
-========================= */
-
-.btn{
-  width:100%;
-
-  height:49px;
-
-  border:0;
-
-  border-radius:8px;
-
-  background:var(--green);
-
-  color:white;
-
-  font-family:inherit;
-
-  font-size:13px;
-
-  font-weight:800;
-
-  cursor:pointer;
-
-  transition:.2s;
-}
-
-.btn:hover{
-  background:var(--green-dark);
-}
-
-.btn:disabled{
-  opacity:.6;
-
-  cursor:not-allowed;
-}
-
-/* =========================
+/* =========================================
    WITHDRAW SECTION
-========================= */
+========================================= */
 
 .withdraw-section{
   display:none;
@@ -501,7 +590,7 @@ input:disabled{
   display:block;
 }
 
-.amount-box{
+.amount-wrapper{
   position:relative;
 }
 
@@ -514,18 +603,19 @@ input:disabled{
 
   transform:translateY(-50%);
 
-  font-weight:800;
-
   color:var(--green);
+
+  font-weight:800;
 }
 
 .amount-input{
   padding-left:35px;
 }
 
-/* =========================
-   INFO
-========================= */
+
+/* =========================================
+   NOTE
+========================================= */
 
 .note{
   margin-top:17px;
@@ -543,11 +633,14 @@ input:disabled{
   line-height:1.6;
 }
 
-/* =========================
-   RECENT REQUEST
-========================= */
+
+/* =========================================
+   REQUEST
+========================================= */
 
 .request-card{
+  display:none;
+
   background:#f8fafc;
 
   border:1px solid var(--border);
@@ -572,6 +665,8 @@ input:disabled{
 
   justify-content:space-between;
 
+  gap:20px;
+
   padding:7px 0;
 
   font-size:10px;
@@ -582,16 +677,25 @@ input:disabled{
 }
 
 .status{
-  font-weight:800;
+  color:var(--orange);
 
-  color:#ca8a04;
+  font-weight:800;
 }
 
-/* =========================
+
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
 @media(max-width:700px){
+
+  .topbar{
+    padding:0 18px;
+  }
+
+  .welcome-name{
+    display:none;
+  }
 
   .layout{
     display:block;
@@ -633,8 +737,8 @@ input:disabled{
     padding:25px 18px 40px;
   }
 
-  .user-name{
-    display:none;
+  .wallet-balance{
+    font-size:28px;
   }
 
 }
@@ -647,9 +751,31 @@ input:disabled{
 <body>
 
 
-<!-- =========================
-     TOPBAR
-========================= -->
+<!-- =========================================
+     LOADING
+========================================= -->
+
+<div
+  class="loading-screen"
+  id="loadingScreen"
+>
+
+  <div class="loading-logo">
+    Beez <span>Gift Card</span>
+  </div>
+
+  <div class="loader"></div>
+
+  <div class="loading-text">
+    Checking your account...
+  </div>
+
+</div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
 
 <header class="topbar">
 
@@ -661,14 +787,15 @@ input:disabled{
   </a>
 
 
-  <div class="user-area">
+  <div class="top-right">
 
     <span
-      class="user-name"
+      class="welcome-name"
       id="topName"
     >
-      Customer
+      Welcome
     </span>
+
 
     <div
       class="avatar"
@@ -685,9 +812,9 @@ input:disabled{
 <div class="layout">
 
 
-<!-- =========================
+<!-- =========================================
      SIDEBAR
-========================= -->
+========================================= -->
 
 <aside class="sidebar">
 
@@ -702,10 +829,13 @@ input:disabled{
       href="dashboard.html"
       class="menu-item"
     >
+
       <span class="menu-icon">
         🏠
       </span>
+
       Dashboard
+
     </a>
 
 
@@ -713,10 +843,13 @@ input:disabled{
       href="sell-gift-card.html"
       class="menu-item"
     >
+
       <span class="menu-icon">
         🎁
       </span>
+
       Sell Gift Card
+
     </a>
 
 
@@ -724,10 +857,13 @@ input:disabled{
       href="rates.html"
       class="menu-item"
     >
+
       <span class="menu-icon">
         💰
       </span>
+
       Gift Card Rates
+
     </a>
 
 
@@ -735,10 +871,13 @@ input:disabled{
       href="transactions.html"
       class="menu-item"
     >
+
       <span class="menu-icon">
         📋
       </span>
+
       Transactions
+
     </a>
 
 
@@ -746,10 +885,13 @@ input:disabled{
       href="withdraw.html"
       class="menu-item active"
     >
+
       <span class="menu-icon">
         🏦
       </span>
+
       Withdraw
+
     </a>
 
 
@@ -762,10 +904,13 @@ input:disabled{
       href="profile.html"
       class="menu-item"
     >
+
       <span class="menu-icon">
         👤
       </span>
+
       Profile
+
     </a>
 
 
@@ -773,21 +918,28 @@ input:disabled{
       href="support.html"
       class="menu-item"
     >
+
       <span class="menu-icon">
         💬
       </span>
+
       Customer Support
+
     </a>
 
 
     <button
+      type="button"
       class="menu-item logout"
       id="logoutBtn"
     >
+
       <span class="menu-icon">
         🚪
       </span>
+
       Logout
+
     </button>
 
   </nav>
@@ -795,403 +947,373 @@ input:disabled{
 </aside>
 
 
-<!-- =========================
+<!-- =========================================
      MAIN
-========================= -->
+========================================= -->
 
 <main class="main">
 
 
-<div class="page-title">
+  <div class="page-title">
 
-  <h1>
-    Withdraw
-  </h1>
+    <h1>
+      Withdraw
+    </h1>
 
-  <p>
-    Withdraw your available Beez Gift Card wallet balance to your Nigerian bank account.
-  </p>
+    <p>
+      Withdraw your available wallet balance to your Nigerian bank account.
+    </p>
 
-</div>
-
-
-<!-- WALLET -->
-
-<div class="wallet">
-
-  <div class="wallet-label">
-    Available Wallet Balance
   </div>
 
-  <div
-    class="wallet-balance"
-    id="walletBalance"
-  >
-    ₦0.00
-  </div>
 
-</div>
+  <!-- =======================================
+       WALLET
+  ======================================== -->
 
+  <div class="wallet-card">
 
-<!-- =========================
-     BANK ACCOUNT
-========================= -->
+    <div>
 
-<div class="card">
+      <div class="wallet-label">
+        Available Wallet Balance
+      </div>
 
-  <h2>
-    Bank Account
-  </h2>
-
-  <p class="description">
-    Save your Nigerian bank account details before making a withdrawal.
-  </p>
-
-
-  <div
-    id="message"
-    class="message"
-  ></div>
-
-
-  <!-- SAVED ACCOUNT -->
-
-  <div
-    id="savedAccount"
-    class="saved-account"
-  >
-
-    <div class="saved-title">
-      ✓ SAVED WITHDRAWAL ACCOUNT
-    </div>
-
-
-    <div class="saved-row">
-
-      <span>
-        Bank
-      </span>
-
-      <span id="savedBank">
-        -
-      </span>
-
-    </div>
-
-
-    <div class="saved-row">
-
-      <span>
-        Account Name
-      </span>
-
-      <span id="savedName">
-        -
-      </span>
-
-    </div>
-
-
-    <div class="saved-row">
-
-      <span>
-        Account Number
-      </span>
-
-      <span id="savedNumber">
-        -
-      </span>
+      <div
+        class="wallet-balance"
+        id="walletBalance"
+      >
+        ₦0.00
+      </div>
 
     </div>
 
   </div>
 
 
-  <form id="bankForm">
+  <!-- =======================================
+       BANK ACCOUNT
+  ======================================== -->
+
+  <div class="card">
+
+    <h2>
+      Bank Account
+    </h2>
+
+    <p class="description">
+      Save the Nigerian bank account where you want your withdrawals sent.
+    </p>
 
 
-    <div class="form-group">
-
-      <label>
-        Select Bank
-      </label>
-
-      <select
-        id="bankName"
-        required
-      >
-
-        <option value="">
-          Select your bank
-        </option>
-
-        <option>
-          Access Bank
-        </option>
-
-        <option>
-          United Bank for Africa (UBA)
-        </option>
-
-        <option>
-          First Bank of Nigeria
-        </option>
-
-        <option>
-          Guaranty Trust Bank (GTBank)
-        </option>
-
-        <option>
-          Zenith Bank
-        </option>
-
-        <option>
-          Fidelity Bank
-        </option>
-
-        <option>
-          First City Monument Bank (FCMB)
-        </option>
-
-        <option>
-          Sterling Bank
-        </option>
-
-        <option>
-          Stanbic IBTC Bank
-        </option>
-
-        <option>
-          Union Bank
-        </option>
-
-        <option>
-          Wema Bank
-        </option>
-
-        <option>
-          Ecobank Nigeria
-        </option>
-
-        <option>
-          Keystone Bank
-        </option>
-
-        <option>
-          Polaris Bank
-        </option>
-
-        <option>
-          Unity Bank
-        </option>
-
-        <option>
-          Jaiz Bank
-        </option>
-
-        <option>
-          Providus Bank
-        </option>
-
-        <option>
-          Opay
-        </option>
-
-        <option>
-          PalmPay
-        </option>
-
-        <option>
-          Kuda Bank
-        </option>
-
-      </select>
-
-    </div>
+    <div
+      id="bankMessage"
+      class="message"
+    ></div>
 
 
-    <div class="form-group">
+    <!-- SAVED ACCOUNT -->
 
-      <label>
-        Account Name
-      </label>
-
-      <input
-        type="text"
-        id="accountName"
-        placeholder="Enter account name"
-        required
-      >
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        Account Number
-      </label>
-
-      <input
-        type="text"
-        id="accountNumber"
-        inputmode="numeric"
-        maxlength="10"
-        placeholder="Enter 10-digit account number"
-        required
-      >
-
-    </div>
-
-
-    <button
-      type="submit"
-      class="btn"
-      id="saveBankBtn"
+    <div
+      id="savedAccount"
+      class="saved-account"
     >
-      Save Bank Account
-    </button>
+
+      <div class="saved-title">
+        ✓ SAVED WITHDRAWAL ACCOUNT
+      </div>
 
 
-  </form>
+      <div class="saved-row">
 
-
-</div>
-
-
-<!-- =========================
-     WITHDRAW MONEY
-========================= -->
-
-<div
-  class="card withdraw-section"
-  id="withdrawSection"
->
-
-  <h2>
-    Withdraw Money
-  </h2>
-
-  <p class="description">
-    Enter the amount you want to withdraw to your saved bank account.
-  </p>
-
-
-  <div
-    id="withdrawMessage"
-    class="message"
-  ></div>
-
-
-  <form id="withdrawForm">
-
-
-    <div class="form-group">
-
-      <label>
-        Withdrawal Amount
-      </label>
-
-
-      <div class="amount-box">
-
-        <span class="amount-symbol">
-          ₦
+        <span>
+          Bank
         </span>
 
-        <input
-          type="number"
-          id="withdrawAmount"
-          class="amount-input"
-          min="1"
-          step="1"
-          placeholder="Enter amount"
-          required
-        >
+        <span id="savedBank">
+          -
+        </span>
+
+      </div>
+
+
+      <div class="saved-row">
+
+        <span>
+          Account Name
+        </span>
+
+        <span id="savedName">
+          -
+        </span>
+
+      </div>
+
+
+      <div class="saved-row">
+
+        <span>
+          Account Number
+        </span>
+
+        <span id="savedNumber">
+          -
+        </span>
 
       </div>
 
     </div>
 
 
-    <button
-      type="submit"
-      class="btn"
-      id="withdrawBtn"
-    >
-      Submit Withdrawal
-    </button>
+    <!-- BANK FORM -->
+
+    <form id="bankForm">
 
 
-  </form>
+      <div class="form-group">
+
+        <label>
+          Select Bank
+        </label>
 
 
-  <div class="note">
+        <select
+          id="bankName"
+          required
+        >
 
-    🔒 Your withdrawal will first be reviewed and processed.
-    Do not submit a withdrawal request more than once for the same transaction.
+          <option value="">
+            Select your bank
+          </option>
+
+          <option>Access Bank</option>
+
+          <option>United Bank for Africa (UBA)</option>
+
+          <option>First Bank of Nigeria</option>
+
+          <option>Guaranty Trust Bank (GTBank)</option>
+
+          <option>Zenith Bank</option>
+
+          <option>Fidelity Bank</option>
+
+          <option>First City Monument Bank (FCMB)</option>
+
+          <option>Sterling Bank</option>
+
+          <option>Stanbic IBTC Bank</option>
+
+          <option>Union Bank</option>
+
+          <option>Wema Bank</option>
+
+          <option>Ecobank Nigeria</option>
+
+          <option>Keystone Bank</option>
+
+          <option>Polaris Bank</option>
+
+          <option>Unity Bank</option>
+
+          <option>Jaiz Bank</option>
+
+          <option>Providus Bank</option>
+
+          <option>Opay</option>
+
+          <option>PalmPay</option>
+
+          <option>Kuda Bank</option>
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Account Name
+        </label>
+
+        <input
+          type="text"
+          id="accountName"
+          placeholder="Enter account name"
+          autocomplete="name"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Account Number
+        </label>
+
+        <input
+          type="text"
+          id="accountNumber"
+          inputmode="numeric"
+          maxlength="10"
+          placeholder="Enter 10-digit account number"
+          autocomplete="off"
+          required
+        >
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="btn"
+        id="saveBankBtn"
+      >
+        Save Bank Account
+      </button>
+
+
+    </form>
 
   </div>
 
 
-  <!-- RECENT REQUEST -->
+  <!-- =======================================
+       WITHDRAW MONEY
+  ======================================== -->
 
   <div
-    id="recentRequest"
-    class="request-card"
-    style="display:none;"
+    class="card withdraw-section"
+    id="withdrawSection"
   >
 
-    <div class="request-title">
-      Latest Withdrawal Request
-    </div>
+    <h2>
+      Withdraw Money
+    </h2>
+
+    <p class="description">
+      Enter the amount you want to withdraw to your saved account.
+    </p>
 
 
-    <div class="request-row">
-
-      <span>
-        Amount
-      </span>
-
-      <span id="requestAmount">
-        ₦0.00
-      </span>
-
-    </div>
+    <div
+      id="withdrawMessage"
+      class="message"
+    ></div>
 
 
-    <div class="request-row">
-
-      <span>
-        Bank
-      </span>
-
-      <span id="requestBank">
-        -
-      </span>
-
-    </div>
+    <form id="withdrawForm">
 
 
-    <div class="request-row">
+      <div class="form-group">
 
-      <span>
-        Status
-      </span>
+        <label>
+          Amount to Withdraw
+        </label>
 
-      <span
-        class="status"
-        id="requestStatus"
+
+        <div class="amount-wrapper">
+
+          <span class="amount-symbol">
+            ₦
+          </span>
+
+
+          <input
+            type="number"
+            id="withdrawAmount"
+            class="amount-input"
+            min="1"
+            step="1"
+            placeholder="Enter amount"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="btn"
+        id="withdrawBtn"
       >
-        Pending
-      </span>
+        Submit Withdrawal
+      </button>
+
+
+    </form>
+
+
+    <div class="note">
+
+      🔒 Your withdrawal request will be reviewed before payment.
+      Make sure your bank details are correct before submitting.
 
     </div>
+
+
+    <!-- LATEST REQUEST -->
+
+    <div
+      class="request-card"
+      id="recentRequest"
+    >
+
+      <div class="request-title">
+        Latest Withdrawal Request
+      </div>
+
+
+      <div class="request-row">
+
+        <span>
+          Amount
+        </span>
+
+        <span id="requestAmount">
+          ₦0.00
+        </span>
+
+      </div>
+
+
+      <div class="request-row">
+
+        <span>
+          Bank
+        </span>
+
+        <span id="requestBank">
+          -
+        </span>
+
+      </div>
+
+
+      <div class="request-row">
+
+        <span>
+          Status
+        </span>
+
+        <span
+          class="status"
+          id="requestStatus"
+        >
+          Pending
+        </span>
+
+      </div>
+
+    </div>
+
 
   </div>
-
-
-</div>
 
 
 </main>
@@ -1199,26 +1321,40 @@ input:disabled{
 </div>
 
 
+<!-- =========================================
+     FIREBASE
+========================================= -->
+
 <script type="module">
 
 
-/* =========================
-   FIREBASE
-========================= */
+/* =========================================
+   FIREBASE APP
+========================================= */
 
 import {
   initializeApp
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
+
+/* =========================================
+   FIREBASE AUTH
+========================================= */
 
 import {
   getAuth,
   onAuthStateChanged,
   signOut
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
+
+/* =========================================
+   FIRESTORE
+========================================= */
 
 import {
   getFirestore,
@@ -1228,9 +1364,14 @@ import {
   collection,
   addDoc,
   serverTimestamp
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
+
+/* =========================================
+   EXACT CONFIG FROM YOUR WORKING DASHBOARD
+========================================= */
 
 const firebaseConfig = {
 
@@ -1258,54 +1399,103 @@ const firebaseConfig = {
 };
 
 
+/* =========================================
+   INITIALIZE FIREBASE
+========================================= */
+
 const app =
   initializeApp(firebaseConfig);
 
+
 const auth =
   getAuth(app);
+
 
 const db =
   getFirestore(app);
 
 
-/* =========================
+/* =========================================
    ELEMENTS
-========================= */
+========================================= */
+
+const loadingScreen =
+  document.getElementById(
+    "loadingScreen"
+  );
+
 
 const walletBalance =
   document.getElementById(
     "walletBalance"
   );
 
+
+const topName =
+  document.getElementById(
+    "topName"
+  );
+
+
+const avatar =
+  document.getElementById(
+    "avatar"
+  );
+
+
+const bankForm =
+  document.getElementById(
+    "bankForm"
+  );
+
+
 const bankName =
   document.getElementById(
     "bankName"
   );
+
 
 const accountName =
   document.getElementById(
     "accountName"
   );
 
+
 const accountNumber =
   document.getElementById(
     "accountNumber"
   );
+
 
 const savedAccount =
   document.getElementById(
     "savedAccount"
   );
 
+
 const withdrawSection =
   document.getElementById(
     "withdrawSection"
   );
 
-const message =
+
+const withdrawForm =
   document.getElementById(
-    "message"
+    "withdrawForm"
   );
+
+
+const withdrawAmount =
+  document.getElementById(
+    "withdrawAmount"
+  );
+
+
+const bankMessage =
+  document.getElementById(
+    "bankMessage"
+  );
+
 
 const withdrawMessage =
   document.getElementById(
@@ -1313,12 +1503,14 @@ const withdrawMessage =
   );
 
 
+let currentUser = null;
+
 let currentWalletBalance = 0;
 
 
-/* =========================
+/* =========================================
    FORMAT NAIRA
-========================= */
+========================================= */
 
 function formatNaira(amount){
 
@@ -1335,38 +1527,23 @@ function formatNaira(amount){
 }
 
 
-/* =========================
-   MESSAGE
-========================= */
-
-function showMessage(
-  element,
-  text,
-  type
-){
-
-  element.textContent =
-    text;
-
-  element.className =
-    "message " + type;
-
-}
-
-
-/* =========================
+/* =========================================
    INITIALS
-========================= */
+========================================= */
 
 function getInitials(name){
 
   if(!name){
+
     return "B";
+
   }
 
 
   const parts =
-    name.trim().split(/\s+/);
+    name
+      .trim()
+      .split(/\s+/);
 
 
   if(parts.length === 1){
@@ -1386,81 +1563,77 @@ function getInitials(name){
 }
 
 
-/* =========================
-   ACCOUNT NUMBER
-========================= */
+/* =========================================
+   MESSAGE
+========================================= */
 
-accountNumber.addEventListener(
-  "input",
-  () => {
+function showMessage(
+  element,
+  text,
+  type
+){
 
-    accountNumber.value =
-      accountNumber.value
-        .replace(/\D/g,"")
-        .substring(0,10);
+  element.textContent =
+    text;
 
-  }
-);
+  element.className =
+    "message " + type;
 
-
-/* =========================
-   LOAD USER
-========================= */
-
-onAuthStateChanged(
-  auth,
-  async user => {
-
-    if(!user){
-
-      window.location.replace(
-        "login.html"
-      );
-
-      return;
-
-    }
+}
 
 
-    document.getElementById(
-      "topName"
-    ).textContent =
-      user.displayName ||
-      "Customer";
+/* =========================================
+   HIDE LOADING
+========================================= */
+
+function hideLoading(){
+
+  loadingScreen.style.display =
+    "none";
+
+}
 
 
-    document.getElementById(
-      "avatar"
-    ).textContent =
-      getInitials(
-        user.displayName ||
-        "Customer"
+/* =========================================
+   LOAD USER PROFILE
+========================================= */
+
+async function loadUserProfile(user){
+
+  try{
+
+    const userRef =
+      doc(
+        db,
+        "users",
+        user.uid
       );
 
 
-    try{
-
-      const userRef =
-        doc(
-          db,
-          "users",
-          user.uid
-        );
+    const userSnap =
+      await getDoc(userRef);
 
 
-      const userSnap =
-        await getDoc(userRef);
-
-
-      if(!userSnap.exists()){
-
-        return;
-
-      }
-
+    if(userSnap.exists()){
 
       const data =
         userSnap.data();
+
+
+      /* NAME */
+
+      const fullName =
+        data.fullName ||
+        user.displayName ||
+        "Customer";
+
+
+      topName.textContent =
+        fullName;
+
+
+      avatar.textContent =
+        getInitials(fullName);
 
 
       /* WALLET */
@@ -1485,36 +1658,55 @@ onAuthStateChanged(
         data.accountNumber
       ){
 
-        showSavedAccount(
-          data
-        );
+        displaySavedAccount(data);
 
       }
 
-    }catch(error){
+    }
+    else{
 
-      console.error(
-        "Loading user:",
-        error
-      );
+      const authName =
+        user.displayName ||
+        "Customer";
 
-      showMessage(
-        message,
-        "Unable to load your account information.",
-        "error"
-      );
+
+      topName.textContent =
+        authName;
+
+
+      avatar.textContent =
+        getInitials(authName);
+
+
+      walletBalance.textContent =
+        "₦0.00";
 
     }
 
   }
-);
+  catch(error){
+
+    console.error(
+      "Profile loading error:",
+      error
+    );
 
 
-/* =========================
-   SHOW SAVED ACCOUNT
-========================= */
+    /*
+      Do not log the customer out
+      because of a Firestore error.
+    */
 
-function showSavedAccount(data){
+  }
+
+}
+
+
+/* =========================================
+   DISPLAY SAVED ACCOUNT
+========================================= */
+
+function displaySavedAccount(data){
 
   savedAccount.classList.add(
     "show"
@@ -1551,7 +1743,10 @@ function showSavedAccount(data){
     data.accountNumber;
 
 
-  /* ENABLE WITHDRAW */
+  /*
+    Once bank details exist,
+    show withdrawal section.
+  */
 
   withdrawSection.classList.add(
     "show"
@@ -1560,24 +1755,102 @@ function showSavedAccount(data){
 }
 
 
-/* =========================
-   SAVE BANK ACCOUNT
-========================= */
+/* =========================================
+   AUTH STATE
+========================================= */
 
-document
-.getElementById("bankForm")
-.addEventListener(
+onAuthStateChanged(
+  auth,
+  async user => {
+
+
+    /*
+      Firebase has now finished checking
+      the authentication state.
+    */
+
+
+    if(!user){
+
+      /*
+        Only redirect after Firebase
+        confirms there is no user.
+      */
+
+      window.location.replace(
+        "./login.html"
+      );
+
+      return;
+
+    }
+
+
+    /*
+      Store authenticated user.
+    */
+
+    currentUser =
+      user;
+
+
+    /*
+      Load Firestore profile.
+    */
+
+    await loadUserProfile(
+      user
+    );
+
+
+    /*
+      IMPORTANT:
+      Do not redirect after Firestore
+      errors. The Firebase Auth session
+      is valid.
+    */
+
+    hideLoading();
+
+  }
+);
+
+
+/* =========================================
+   ACCOUNT NUMBER VALIDATION
+========================================= */
+
+accountNumber.addEventListener(
+  "input",
+  () => {
+
+    accountNumber.value =
+      accountNumber.value
+        .replace(/\D/g,"")
+        .substring(0,10);
+
+  }
+);
+
+
+/* =========================================
+   SAVE BANK ACCOUNT
+========================================= */
+
+bankForm.addEventListener(
   "submit",
   async event => {
 
     event.preventDefault();
 
 
-    const user =
-      auth.currentUser;
+    if(!currentUser){
 
-
-    if(!user){
+      showMessage(
+        bankMessage,
+        "Your login session is not ready. Please wait a moment and try again.",
+        "error"
+      );
 
       return;
 
@@ -1596,10 +1869,12 @@ document
       accountNumber.value.trim();
 
 
+    /* VALIDATION */
+
     if(!bank){
 
       showMessage(
-        message,
+        bankMessage,
         "Please select your bank.",
         "error"
       );
@@ -1612,7 +1887,7 @@ document
     if(name.length < 2){
 
       showMessage(
-        message,
+        bankMessage,
         "Please enter your account name.",
         "error"
       );
@@ -1625,7 +1900,7 @@ document
     if(!/^\d{10}$/.test(number)){
 
       showMessage(
-        message,
+        bankMessage,
         "Account number must contain exactly 10 digits.",
         "error"
       );
@@ -1641,10 +1916,12 @@ document
       );
 
 
-    button.disabled = true;
+    button.disabled =
+      true;
+
 
     button.textContent =
-      "Saving Account...";
+      "Saving...";
 
 
     try{
@@ -1653,7 +1930,7 @@ document
         doc(
           db,
           "users",
-          user.uid
+          currentUser.uid
         );
 
 
@@ -1661,11 +1938,14 @@ document
         userRef,
         {
 
-          bankName:bank,
+          bankName:
+            bank,
 
-          accountName:name,
+          accountName:
+            name,
 
-          accountNumber:number,
+          accountNumber:
+            number,
 
           bankDetailsUpdatedAt:
             serverTimestamp()
@@ -1677,42 +1957,47 @@ document
       );
 
 
-      showSavedAccount({
+      displaySavedAccount({
 
-        bankName:bank,
+        bankName:
+          bank,
 
-        accountName:name,
+        accountName:
+          name,
 
-        accountNumber:number
+        accountNumber:
+          number
 
       });
 
 
       showMessage(
-        message,
-        "Bank account saved successfully. You can now make a withdrawal.",
+        bankMessage,
+        "Bank account saved successfully. You can now withdraw.",
         "success"
       );
 
-
-    }catch(error){
+    }
+    catch(error){
 
       console.error(
-        "Saving bank:",
+        "Bank save error:",
         error
       );
 
 
       showMessage(
-        message,
-        "Unable to save your bank account. Please try again.",
+        bankMessage,
+        "Unable to save your bank account. Please check your Firestore Rules.",
         "error"
       );
 
     }
 
 
-    button.disabled = false;
+    button.disabled =
+      false;
+
 
     button.textContent =
       "Save Bank Account";
@@ -1721,24 +2006,24 @@ document
 );
 
 
-/* =========================
-   SUBMIT WITHDRAWAL
-========================= */
+/* =========================================
+   WITHDRAW
+========================================= */
 
-document
-.getElementById("withdrawForm")
-.addEventListener(
+withdrawForm.addEventListener(
   "submit",
   async event => {
 
     event.preventDefault();
 
 
-    const user =
-      auth.currentUser;
+    if(!currentUser){
 
-
-    if(!user){
+      showMessage(
+        withdrawMessage,
+        "Your login session is not ready. Please try again.",
+        "error"
+      );
 
       return;
 
@@ -1747,15 +2032,16 @@ document
 
     const amount =
       Number(
-        document.getElementById(
-          "withdrawAmount"
-        ).value
+        withdrawAmount.value
       );
 
 
-    /* VALIDATE */
+    /* VALIDATE AMOUNT */
 
-    if(!Number.isFinite(amount) || amount <= 0){
+    if(
+      !Number.isFinite(amount) ||
+      amount <= 0
+    ){
 
       showMessage(
         withdrawMessage,
@@ -1781,13 +2067,15 @@ document
     }
 
 
-    if(!bankName.value ||
-       !accountName.value ||
-       !accountNumber.value){
+    if(
+      !bankName.value ||
+      !accountName.value ||
+      !accountNumber.value
+    ){
 
       showMessage(
         withdrawMessage,
-        "Please save your bank account before withdrawing.",
+        "Please save your bank account first.",
         "error"
       );
 
@@ -1802,7 +2090,9 @@ document
       );
 
 
-    button.disabled = true;
+    button.disabled =
+      true;
+
 
     button.textContent =
       "Submitting...";
@@ -1811,17 +2101,12 @@ document
     try{
 
       /*
+        CREATE WITHDRAWAL REQUEST
 
-        IMPORTANT:
-
-        This creates a withdrawal request.
-
-        It does NOT deduct the wallet balance
-        from the customer in the browser.
-
-        Your admin/backend should approve the
-        request and securely update the balance.
-
+        The wallet balance is NOT changed
+        here. The admin should approve the
+        request before the balance is deducted
+        and payment is made.
       */
 
 
@@ -1834,13 +2119,13 @@ document
           {
 
             userId:
-              user.uid,
+              currentUser.uid,
 
             email:
-              user.email || "",
+              currentUser.email || "",
 
             fullName:
-              user.displayName || "",
+              accountName.value.trim(),
 
             amount:
               amount,
@@ -1864,7 +2149,7 @@ document
         );
 
 
-      /* DISPLAY REQUEST */
+      /* DISPLAY */
 
       document.getElementById(
         "recentRequest"
@@ -1890,43 +2175,43 @@ document
         "Pending";
 
 
-      document.getElementById(
-        "withdrawAmount"
-      ).value =
+      withdrawAmount.value =
         "";
 
 
       showMessage(
         withdrawMessage,
-        "Withdrawal request submitted successfully. Your request is now pending review.",
+        "Withdrawal request submitted successfully. Your request is pending review.",
         "success"
       );
 
 
       console.log(
-        "Withdrawal request ID:",
+        "Withdrawal request created:",
         withdrawalRef.id
       );
 
-
-    }catch(error){
+    }
+    catch(error){
 
       console.error(
-        "Withdrawal request:",
+        "Withdrawal error:",
         error
       );
 
 
       showMessage(
         withdrawMessage,
-        "Unable to submit withdrawal request. Please try again.",
+        "Withdrawal failed. Please check your Firestore Rules and try again.",
         "error"
       );
 
     }
 
 
-    button.disabled = false;
+    button.disabled =
+      false;
+
 
     button.textContent =
       "Submit Withdrawal";
@@ -1935,9 +2220,9 @@ document
 );
 
 
-/* =========================
+/* =========================================
    LOGOUT
-========================= */
+========================================= */
 
 document
 .getElementById("logoutBtn")
@@ -1945,11 +2230,23 @@ document
   "click",
   async () => {
 
-    await signOut(auth);
+    try{
 
-    window.location.replace(
-      "login.html"
-    );
+      await signOut(auth);
+
+      window.location.replace(
+        "./login.html"
+      );
+
+    }
+    catch(error){
+
+      console.error(
+        "Logout error:",
+        error
+      );
+
+    }
 
   }
 );
@@ -1957,4 +2254,5 @@ document
 </script>
 
 </body>
+
 </html>
