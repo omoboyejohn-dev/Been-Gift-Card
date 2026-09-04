@@ -62,19 +62,25 @@ body{
     max-width:1050px;
 
     background:white;
+
     border-radius:24px;
+
     overflow:hidden;
 
     display:grid;
     grid-template-columns:.9fr 1.1fr;
 
-    box-shadow:0 25px 70px rgba(0,0,0,.2);
+    box-shadow:
+    0 25px 70px rgba(0,0,0,.2);
 }
 
-/* LEFT */
+/* =========================
+   LEFT
+========================= */
 
 .left{
     padding:55px 45px;
+
     color:white;
 
     background:
@@ -119,21 +125,27 @@ body{
 
 .left-content p{
     max-width:380px;
+
     color:#dceaff;
+
     font-size:14px;
+
     line-height:1.8;
 }
 
 .features{
     margin-top:30px;
+
     display:flex;
     flex-direction:column;
+
     gap:15px;
 }
 
 .feature{
     display:flex;
     align-items:center;
+
     gap:12px;
 
     font-size:13px;
@@ -148,6 +160,7 @@ body{
     place-items:center;
 
     border-radius:9px;
+
     background:rgba(255,255,255,.12);
 }
 
@@ -156,7 +169,9 @@ body{
     font-size:11px;
 }
 
-/* RIGHT */
+/* =========================
+   RIGHT
+========================= */
 
 .right{
     padding:50px 55px;
@@ -185,17 +200,21 @@ body{
     font-size:13px;
 }
 
-/* MESSAGE */
+/* =========================
+   MESSAGE
+========================= */
 
 #message{
     display:none;
 
     padding:12px;
+
     border-radius:8px;
 
     margin-bottom:17px;
 
     font-size:12px;
+
     line-height:1.5;
 }
 
@@ -203,7 +222,9 @@ body{
     display:block;
 
     color:#b42318;
+
     background:#fff0f0;
+
     border:1px solid #ffd0d0;
 }
 
@@ -211,11 +232,15 @@ body{
     display:block;
 
     color:#08752e;
+
     background:#edfff3;
+
     border:1px solid #bceccc;
 }
 
-/* INPUT */
+/* =========================
+   INPUTS
+========================= */
 
 .group{
     margin-bottom:17px;
@@ -250,6 +275,7 @@ input{
     height:50px;
 
     border:1px solid var(--border);
+
     border-radius:9px;
 
     outline:none;
@@ -257,6 +283,7 @@ input{
     padding:0 43px;
 
     font-family:inherit;
+
     font-size:13px;
 
     background:#fbfdff;
@@ -280,6 +307,7 @@ input:focus{
     transform:translateY(-50%);
 
     border:0;
+
     background:transparent;
 
     cursor:pointer;
@@ -287,10 +315,13 @@ input:focus{
     font-size:16px;
 }
 
-/* TERMS */
+/* =========================
+   TERMS
+========================= */
 
 .terms{
     display:flex;
+
     align-items:flex-start;
 
     gap:8px;
@@ -300,6 +331,7 @@ input:focus{
     color:var(--gray);
 
     font-size:11px;
+
     line-height:1.5;
 }
 
@@ -308,6 +340,7 @@ input:focus{
     height:auto;
 
     margin-top:2px;
+
     padding:0;
 
     accent-color:var(--green);
@@ -315,30 +348,38 @@ input:focus{
 
 .terms label{
     margin:0;
+
     font-size:11px;
+
     font-weight:400;
 }
 
 .terms a{
     color:var(--blue);
+
     font-weight:700;
 }
 
-/* BUTTON */
+/* =========================
+   BUTTON
+========================= */
 
 .btn{
     width:100%;
     height:50px;
 
     border:0;
+
     border-radius:9px;
 
     background:var(--green);
+
     color:white;
 
     font-family:inherit;
 
     font-size:14px;
+
     font-weight:800;
 
     cursor:pointer;
@@ -348,14 +389,21 @@ input:focus{
 
 .btn:hover{
     background:var(--green-dark);
+
     transform:translateY(-1px);
 }
 
 .btn:disabled{
     opacity:.65;
+
     cursor:not-allowed;
+
     transform:none;
 }
+
+/* =========================
+   LOGIN
+========================= */
 
 .login{
     text-align:center;
@@ -363,21 +411,27 @@ input:focus{
     margin-top:20px;
 
     color:var(--gray);
+
     font-size:12px;
 }
 
 .login a{
     color:var(--blue);
+
     font-weight:800;
+
     text-decoration:none;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:800px){
 
     .container{
         display:block;
+
         max-width:520px;
     }
 
@@ -388,6 +442,7 @@ input:focus{
     .right{
         padding:40px 25px;
     }
+
 }
 
 @media(max-width:400px){
@@ -399,21 +454,30 @@ input:focus{
     .heading h2{
         font-size:25px;
     }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
 
+
 <div class="container">
+
+
+<!-- =========================
+     LEFT
+========================= -->
 
 <section class="left">
 
     <div class="logo">
         Beez <span>Gift Card</span>
     </div>
+
 
     <div class="left-content">
 
@@ -422,37 +486,63 @@ input:focus{
             <span>Gift Cards.</span>
         </h1>
 
+
         <p>
             Create your Beez Gift Card account and
             start trading your gift cards at competitive
             rates.
         </p>
 
+
         <div class="features">
 
             <div class="feature">
-                <div class="feature-icon">⚡</div>
+
+                <div class="feature-icon">
+                    ⚡
+                </div>
+
                 Fast Processing
+
             </div>
 
+
             <div class="feature">
-                <div class="feature-icon">🔒</div>
+
+                <div class="feature-icon">
+                    🔒
+                </div>
+
                 Secure Transactions
+
             </div>
 
+
             <div class="feature">
-                <div class="feature-icon">💰</div>
+
+                <div class="feature-icon">
+                    💰
+                </div>
+
                 Competitive Rates
+
             </div>
 
+
             <div class="feature">
-                <div class="feature-icon">🏦</div>
+
+                <div class="feature-icon">
+                    🏦
+                </div>
+
                 Easy Withdrawals
+
             </div>
 
         </div>
 
     </div>
+
 
     <div class="footer">
         © 2026 Beez Gift Card. All Rights Reserved.
@@ -461,9 +551,14 @@ input:focus{
 </section>
 
 
+<!-- =========================
+     RIGHT
+========================= -->
+
 <section class="right">
 
 <div class="form-box">
+
 
     <div class="heading">
 
@@ -483,6 +578,9 @@ input:focus{
 
     <form id="registerForm">
 
+
+        <!-- FULL NAME -->
+
         <div class="group">
 
             <label for="fullName">
@@ -491,7 +589,9 @@ input:focus{
 
             <div class="input-wrap">
 
-                <span class="icon">👤</span>
+                <span class="icon">
+                    👤
+                </span>
 
                 <input
                     id="fullName"
@@ -506,6 +606,8 @@ input:focus{
         </div>
 
 
+        <!-- PHONE -->
+
         <div class="group">
 
             <label for="phone">
@@ -514,7 +616,9 @@ input:focus{
 
             <div class="input-wrap">
 
-                <span class="icon">📱</span>
+                <span class="icon">
+                    📱
+                </span>
 
                 <input
                     id="phone"
@@ -529,6 +633,8 @@ input:focus{
         </div>
 
 
+        <!-- GMAIL -->
+
         <div class="group">
 
             <label for="email">
@@ -537,7 +643,9 @@ input:focus{
 
             <div class="input-wrap">
 
-                <span class="icon">✉️</span>
+                <span class="icon">
+                    ✉️
+                </span>
 
                 <input
                     id="email"
@@ -552,6 +660,8 @@ input:focus{
         </div>
 
 
+        <!-- PASSWORD -->
+
         <div class="group">
 
             <label for="password">
@@ -560,7 +670,9 @@ input:focus{
 
             <div class="input-wrap">
 
-                <span class="icon">🔐</span>
+                <span class="icon">
+                    🔐
+                </span>
 
                 <input
                     id="password"
@@ -584,6 +696,8 @@ input:focus{
         </div>
 
 
+        <!-- CONFIRM PASSWORD -->
+
         <div class="group">
 
             <label for="confirmPassword">
@@ -592,7 +706,9 @@ input:focus{
 
             <div class="input-wrap">
 
-                <span class="icon">🔐</span>
+                <span class="icon">
+                    🔐
+                </span>
 
                 <input
                     id="confirmPassword"
@@ -616,6 +732,8 @@ input:focus{
         </div>
 
 
+        <!-- TERMS -->
+
         <div class="terms">
 
             <input
@@ -627,14 +745,23 @@ input:focus{
             <label for="terms">
 
                 I agree to the Beez Gift Card
-                <a href="#">Terms & Conditions</a>
+
+                <a href="#">
+                    Terms & Conditions
+                </a>
+
                 and
-                <a href="#">Privacy Policy</a>.
+
+                <a href="#">
+                    Privacy Policy
+                </a>.
 
             </label>
 
         </div>
 
+
+        <!-- BUTTON -->
 
         <button
             type="submit"
@@ -643,6 +770,7 @@ input:focus{
         >
             Create Account
         </button>
+
 
     </form>
 
@@ -657,6 +785,7 @@ input:focus{
 
     </div>
 
+
 </div>
 
 </section>
@@ -666,10 +795,17 @@ input:focus{
 
 <script type="module">
 
+
+/* ==========================================
+   FIREBASE IMPORTS
+========================================== */
+
 import {
     initializeApp
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
 
 import {
     getAuth,
@@ -677,15 +813,18 @@ import {
     updateProfile,
     setPersistence,
     browserLocalPersistence
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
 
 import {
     getFirestore,
     doc,
     setDoc,
     serverTimestamp
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
@@ -715,25 +854,28 @@ const firebaseConfig = {
 
     measurementId:
     "G-85CETQ7LEN"
+
 };
 
 
 /* ==========================================
-   INITIALIZE
+   INITIALIZE FIREBASE
 ========================================== */
 
 const app =
     initializeApp(firebaseConfig);
 
+
 const auth =
     getAuth(app);
+
 
 const db =
     getFirestore(app);
 
 
 /* ==========================================
-   KEEP USER LOGGED IN
+   KEEP AUTH SESSION
 ========================================== */
 
 await setPersistence(
@@ -747,13 +889,21 @@ await setPersistence(
 ========================================== */
 
 const form =
-    document.getElementById("registerForm");
+    document.getElementById(
+        "registerForm"
+    );
+
 
 const button =
-    document.getElementById("registerBtn");
+    document.getElementById(
+        "registerBtn"
+    );
+
 
 const message =
-    document.getElementById("message");
+    document.getElementById(
+        "message"
+    );
 
 
 /* ==========================================
@@ -762,23 +912,30 @@ const message =
 
 document
 .getElementById("passwordEye")
-.addEventListener("click", () => {
+.addEventListener(
+"click",
+()=>{
 
     const input =
-        document.getElementById("password");
+        document.getElementById(
+            "password"
+        );
+
 
     if(input.type === "password"){
 
         input.type = "text";
 
-        document.getElementById("passwordEye")
+        document
+        .getElementById("passwordEye")
         .textContent = "🙈";
 
     }else{
 
         input.type = "password";
 
-        document.getElementById("passwordEye")
+        document
+        .getElementById("passwordEye")
         .textContent = "👁️";
 
     }
@@ -788,23 +945,30 @@ document
 
 document
 .getElementById("confirmEye")
-.addEventListener("click", () => {
+.addEventListener(
+"click",
+()=>{
 
     const input =
-        document.getElementById("confirmPassword");
+        document.getElementById(
+            "confirmPassword"
+        );
+
 
     if(input.type === "password"){
 
         input.type = "text";
 
-        document.getElementById("confirmEye")
+        document
+        .getElementById("confirmEye")
         .textContent = "🙈";
 
     }else{
 
         input.type = "password";
 
-        document.getElementById("confirmEye")
+        document
+        .getElementById("confirmEye")
         .textContent = "👁️";
 
     }
@@ -816,50 +980,73 @@ document
    MESSAGE
 ========================================== */
 
-function showMessage(text,type){
+function showMessage(
+    text,
+    type
+){
 
-    message.textContent = text;
+    message.textContent =
+        text;
 
-    message.className = type;
+    message.className =
+        type;
 
 }
 
 
 /* ==========================================
-   ERROR MESSAGE
+   FIREBASE ERROR
 ========================================== */
 
 function getErrorMessage(error){
 
     console.error(
         "Firebase error:",
-        error.code,
-        error.message
+        error
     );
 
 
     switch(error.code){
 
         case "auth/email-already-in-use":
+
             return "This Gmail is already registered. Please login instead.";
 
+
         case "auth/invalid-email":
+
             return "Please enter a valid Gmail address.";
 
+
         case "auth/weak-password":
+
             return "Password must contain at least 6 characters.";
 
+
         case "auth/operation-not-allowed":
+
             return "Email/Password authentication is not enabled in Firebase.";
 
+
+        case "auth/api-key-not-valid":
+
+            return "Firebase API key is invalid. Please check your Firebase configuration.";
+
+
         case "auth/network-request-failed":
+
             return "Network error. Please check your internet connection.";
 
+
         case "permission-denied":
+
         case "firestore/permission-denied":
-            return "Your account was created, but your profile could not be saved because Firestore permissions are blocking it.";
+
+            return "Your account was created, but Firestore permission is blocking the profile."
+
 
         default:
+
             return error.message ||
             "Registration failed. Please try again.";
 
@@ -913,7 +1100,9 @@ async(event)=>{
         .value;
 
 
-    /* VALIDATION */
+    /* ======================================
+       VALIDATION
+    ====================================== */
 
     if(fullName.length < 2){
 
@@ -923,6 +1112,7 @@ async(event)=>{
         );
 
         return;
+
     }
 
 
@@ -934,6 +1124,7 @@ async(event)=>{
         );
 
         return;
+
     }
 
 
@@ -945,6 +1136,7 @@ async(event)=>{
         );
 
         return;
+
     }
 
 
@@ -956,6 +1148,7 @@ async(event)=>{
         );
 
         return;
+
     }
 
 
@@ -967,10 +1160,13 @@ async(event)=>{
         );
 
         return;
+
     }
 
 
-    /* LOADING */
+    /* ======================================
+       LOADING
+    ====================================== */
 
     button.disabled = true;
 
@@ -980,9 +1176,10 @@ async(event)=>{
 
     try{
 
-        /* ======================================
-           CREATE AUTH ACCOUNT
-        ====================================== */
+
+        /* ==================================
+           CREATE AUTH USER
+        ================================== */
 
         const credential =
             await createUserWithEmailAndPassword(
@@ -996,66 +1193,74 @@ async(event)=>{
             credential.user;
 
 
-        /* ======================================
+        /* ==================================
            SAVE DISPLAY NAME
-        ====================================== */
+        ================================== */
 
         await updateProfile(
             user,
             {
-                displayName:fullName
+                displayName:
+                    fullName
             }
         );
 
 
-        /* ======================================
-           CREATE USER PROFILE
-        ====================================== */
+        /* ==================================
+           CREATE FIRESTORE PROFILE
+        ================================== */
 
         await setDoc(
+
             doc(
                 db,
                 "users",
                 user.uid
             ),
+
             {
 
-                uid:user.uid,
+                uid:
+                    user.uid,
 
-                fullName:fullName,
+                fullName:
+                    fullName,
 
-                phone:phone,
+                phone:
+                    phone,
 
-                email:email,
+                email:
+                    email,
 
-                walletBalance:0,
+                walletBalance:
+                    0,
 
-                totalEarnings:0,
+                totalEarnings:
+                    0,
 
-                totalTrades:0,
+                totalTrades:
+                    0,
 
-                accountStatus:"active",
+                accountStatus:
+                    "active",
 
-                createdAt:serverTimestamp(),
+                createdAt:
+                    serverTimestamp(),
 
-                updatedAt:serverTimestamp()
+                updatedAt:
+                    serverTimestamp()
 
             }
+
         );
 
 
-        /* ======================================
-           MAKE SURE AUTH SESSION EXISTS
-        ====================================== */
-
-        await setPersistence(
-            auth,
-            browserLocalPersistence
-        );
-
+        /* ==================================
+           SUCCESS
+        ================================== */
 
         showMessage(
-            "Account created successfully. Opening your dashboard...",
+            "Account created successfully. Opening dashboard...",
             "success"
         );
 
@@ -1064,20 +1269,24 @@ async(event)=>{
             "Account Created";
 
 
-        /* ======================================
+        /* ==================================
            REDIRECT
-        ====================================== */
+        ================================== */
 
-        setTimeout(()=>{
+        setTimeout(
+        ()=>{
 
             window.location.replace(
                 "dashboard.html"
             );
 
-        },700);
+        },
+        700
+        );
 
 
     }catch(error){
+
 
         console.error(
             "REGISTRATION ERROR:",
@@ -1091,7 +1300,9 @@ async(event)=>{
         );
 
 
-        button.disabled = false;
+        button.disabled =
+            false;
+
 
         button.textContent =
             "Create Account";
