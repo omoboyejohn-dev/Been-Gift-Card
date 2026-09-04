@@ -1,1613 +1,1145 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-  <title>Dashboard | Beez Gift Card</title>
+<title>Dashboard | Beez Gift Card</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet">
 
-  <style>
+<style>
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:#f5f8fc;
+    color:#172033;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+#loadingScreen{
+    position:fixed;
+    inset:0;
+    background:#ffffff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+
+.loader{
+    width:42px;
+    height:42px;
+    border:4px solid #e6edf5;
+    border-top:4px solid #1565ff;
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
     }
+}
 
-    :root{
-      --blue:#0757c9;
-      --dark-blue:#043b8f;
-      --green:#16a34a;
-      --green-dark:#0d7a35;
-      --white:#ffffff;
-      --dark:#10233f;
-      --gray:#687891;
-      --light:#f4f8ff;
-      --border:#e0e8f2;
-      --red:#dc2626;
-    }
+/* =========================
+   SIDEBAR
+========================= */
 
-    body{
-      font-family:"Inter",sans-serif;
-      background:var(--light);
-      color:var(--dark);
-      min-height:100vh;
-    }
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:250px;
+    height:100vh;
+    background:#ffffff;
+    border-right:1px solid #e8edf4;
+    padding:25px 16px;
+    z-index:100;
+}
 
-    /* LOADING */
+.logo{
+    font-size:22px;
+    font-weight:800;
+    color:#1565ff;
+    padding:0 12px;
+    margin-bottom:35px;
+}
 
-    .loading-screen{
-      position:fixed;
-      inset:0;
-      background:#fff;
-      z-index:99999;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-direction:column;
-      gap:16px;
-    }
+.logo span{
+    color:#19a463;
+}
 
-    .loading-logo{
-      font-size:25px;
-      font-weight:800;
-      color:var(--blue);
-    }
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
 
-    .loading-logo span{
-      color:var(--green);
-    }
+.menu a{
+    text-decoration:none;
+    color:#64748b;
+    padding:13px 14px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    transition:.2s;
+}
 
-    .loader{
-      width:34px;
-      height:34px;
-      border:3px solid #dce8f7;
-      border-top-color:var(--green);
-      border-radius:50%;
-      animation:spin .7s linear infinite;
-    }
+.menu a:hover{
+    background:#f0f5ff;
+    color:#1565ff;
+}
 
-    .loading-text{
-      color:var(--gray);
-      font-size:12px;
-    }
+.menu a.active{
+    background:#eaf2ff;
+    color:#1565ff;
+}
 
-    @keyframes spin{
-      to{transform:rotate(360deg);}
-    }
+.logout{
+    margin-top:25px;
+    color:#e53935 !important;
+}
 
-    /* TOP BAR */
+.logout:hover{
+    background:#fff1f1 !important;
+    color:#e53935 !important;
+}
 
-    .topbar{
-      height:72px;
-      background:#fff;
-      border-bottom:1px solid var(--border);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:0 5%;
-      position:sticky;
-      top:0;
-      z-index:1000;
+/* =========================
+   MAIN
+========================= */
+
+.main{
+    margin-left:250px;
+    padding:30px;
+}
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:28px;
+}
+
+.welcome h1{
+    font-size:25px;
+    font-weight:800;
+}
+
+.welcome p{
+    margin-top:5px;
+    color:#718096;
+    font-size:14px;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.avatar{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#1565ff;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+}
+
+.profile-name{
+    font-size:14px;
+    font-weight:700;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-bottom:20px;
+}
+
+.card{
+    background:white;
+    border:1px solid #e8edf4;
+    border-radius:15px;
+    padding:22px;
+}
+
+.card-label{
+    color:#718096;
+    font-size:13px;
+    margin-bottom:9px;
+}
+
+.card-value{
+    font-size:26px;
+    font-weight:800;
+    color:#172033;
+}
+
+.balance-card{
+    background:linear-gradient(135deg,#1565ff,#2879ff);
+    color:white;
+    border:none;
+}
+
+.balance-card .card-label{
+    color:#dbe8ff;
+}
+
+.balance-card .card-value{
+    color:white;
+}
+
+.balance-btn{
+    display:inline-block;
+    margin-top:15px;
+    background:white;
+    color:#1565ff;
+    text-decoration:none;
+    padding:9px 15px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:700;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.status-left h3{
+    font-size:16px;
+    margin-bottom:5px;
+}
+
+.status-left p{
+    color:#718096;
+    font-size:13px;
+}
+
+.status{
+    background:#e9f9f0;
+    color:#159447;
+    padding:7px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:700;
+}
+
+/* =========================
+   BANK ACCOUNT
+========================= */
+
+.bank-card{
+    margin-bottom:20px;
+}
+
+.bank-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.bank-header h3{
+    font-size:17px;
+}
+
+.bank-header a{
+    text-decoration:none;
+    background:#1565ff;
+    color:#fff;
+    padding:9px 14px;
+    border-radius:8px;
+    font-size:12px;
+    font-weight:700;
+}
+
+.no-bank{
+    padding:20px;
+    border:1px dashed #cfd8e3;
+    border-radius:10px;
+    text-align:center;
+    color:#718096;
+    font-size:13px;
+}
+
+.bank-info{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.bank-item{
+    background:#f7f9fc;
+    border-radius:10px;
+    padding:14px;
+}
+
+.bank-item span{
+    display:block;
+    color:#718096;
+    font-size:11px;
+    margin-bottom:5px;
+}
+
+.bank-item strong{
+    font-size:14px;
+}
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.section-title{
+    font-size:18px;
+    font-weight:800;
+    margin-bottom:15px;
+}
+
+.actions{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.action{
+    background:white;
+    border:1px solid #e8edf4;
+    border-radius:13px;
+    padding:20px;
+    text-decoration:none;
+    color:#172033;
+    transition:.2s;
+}
+
+.action:hover{
+    transform:translateY(-2px);
+    border-color:#1565ff;
+}
+
+.action-icon{
+    width:42px;
+    height:42px;
+    border-radius:10px;
+    background:#edf4ff;
+    color:#1565ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    margin-bottom:12px;
+}
+
+.action h4{
+    font-size:14px;
+    margin-bottom:5px;
+}
+
+.action p{
+    font-size:12px;
+    color:#718096;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    .sidebar{
+        width:70px;
+        padding:20px 8px;
     }
 
     .logo{
-      color:var(--blue);
-      font-size:23px;
-      font-weight:800;
-      text-decoration:none;
+        font-size:0;
+        text-align:center;
+        padding:0;
     }
 
-    .logo span{
-      color:var(--green);
+    .logo::before{
+        content:"B";
+        font-size:25px;
+        color:#1565ff;
+        font-weight:800;
     }
 
-    .top-right{
-      display:flex;
-      align-items:center;
-      gap:12px;
+    .menu a{
+        justify-content:center;
+        font-size:0;
     }
 
-    .welcome-name{
-      font-size:12px;
-      font-weight:700;
-      color:var(--dark);
+    .menu a span{
+        font-size:20px;
     }
-
-    .avatar{
-      width:40px;
-      height:40px;
-      border-radius:50%;
-      background:var(--blue);
-      color:#fff;
-      display:grid;
-      place-items:center;
-      font-size:13px;
-      font-weight:800;
-    }
-
-    /* LAYOUT */
-
-    .layout{
-      display:flex;
-      min-height:calc(100vh - 72px);
-    }
-
-    /* SIDEBAR */
-
-    .sidebar{
-      width:245px;
-      background:#fff;
-      border-right:1px solid var(--border);
-      padding:25px 15px;
-      flex-shrink:0;
-    }
-
-    .menu-title{
-      color:#91a0b5;
-      font-size:10px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:1px;
-      padding:0 13px;
-      margin:8px 0 12px;
-    }
-
-    .menu{
-      display:flex;
-      flex-direction:column;
-      gap:5px;
-    }
-
-    .menu-item{
-      width:100%;
-      border:0;
-      background:transparent;
-      padding:12px 13px;
-      border-radius:9px;
-      display:flex;
-      align-items:center;
-      gap:12px;
-      color:var(--gray);
-      font-family:inherit;
-      font-size:13px;
-      font-weight:600;
-      text-decoration:none;
-      cursor:pointer;
-      transition:.2s;
-      text-align:left;
-    }
-
-    .menu-item:hover{
-      background:#edf5ff;
-      color:var(--blue);
-    }
-
-    .menu-item.active{
-      background:#eaf2ff;
-      color:var(--blue);
-    }
-
-    .menu-icon{
-      width:22px;
-      text-align:center;
-      font-size:16px;
-    }
-
-    .logout{
-      color:var(--red);
-      margin-top:15px;
-    }
-
-    .logout:hover{
-      background:#fff0f0;
-      color:var(--red);
-    }
-
-    /* MAIN */
 
     .main{
-      flex:1;
-      width:100%;
-      max-width:1400px;
-      padding:35px 5%;
+        margin-left:70px;
+        padding:20px;
     }
-
-    .page-title{
-      margin-bottom:25px;
-    }
-
-    .page-title h1{
-      font-size:25px;
-      line-height:1.3;
-      margin-bottom:7px;
-    }
-
-    .page-title p{
-      color:var(--gray);
-      font-size:13px;
-    }
-
-    /* WALLET */
-
-    .wallet-card{
-      min-height:195px;
-      border-radius:18px;
-      padding:28px;
-      color:#fff;
-
-      background:
-        radial-gradient(
-          circle at 85% 15%,
-          rgba(22,163,74,.30),
-          transparent 30%
-        ),
-        linear-gradient(
-          135deg,
-          var(--blue),
-          var(--dark-blue)
-        );
-
-      box-shadow:
-        0 12px 30px rgba(7,87,201,.18);
-
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-
-    .wallet-top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:20px;
-    }
-
-    .wallet-label{
-      color:#cbdcf7;
-      font-size:12px;
-      margin-bottom:8px;
-    }
-
-    .wallet-balance{
-      font-size:34px;
-      font-weight:800;
-      letter-spacing:-1px;
-    }
-
-    .wallet-status{
-      padding:7px 11px;
-      border-radius:20px;
-      background:var(--green);
-      color:white;
-      font-size:9px;
-      font-weight:800;
-    }
-
-    .wallet-bottom{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:20px;
-    }
-
-    .wallet-note{
-      color:#cbdcf7;
-      font-size:11px;
-      line-height:1.5;
-    }
-
-    .withdraw-btn{
-      border:0;
-      padding:10px 17px;
-      border-radius:8px;
-      background:#fff;
-      color:var(--blue);
-      font-family:inherit;
-      font-size:11px;
-      font-weight:800;
-      cursor:pointer;
-      white-space:nowrap;
-    }
-
-    .withdraw-btn:hover{
-      background:#f0fff5;
-    }
-
-    /* SECTIONS */
-
-    .section{
-      margin-top:30px;
-    }
-
-    .section-header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:14px;
-    }
-
-    .section-header h2{
-      font-size:17px;
-    }
-
-    .section-header span{
-      color:var(--gray);
-      font-size:11px;
-    }
-
-    .view-all{
-      color:var(--blue);
-      font-size:11px;
-      font-weight:700;
-      text-decoration:none;
-    }
-
-    /* ACTIONS */
-
-    .actions{
-      display:grid;
-      grid-template-columns:
-        repeat(5,minmax(0,1fr));
-      gap:13px;
-    }
-
-    .action-card{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:13px;
-      padding:20px 15px;
-      text-decoration:none;
-      color:var(--dark);
-      transition:.2s;
-    }
-
-    .action-card:hover{
-      border-color:var(--blue);
-      transform:translateY(-2px);
-      box-shadow:
-        0 8px 25px rgba(7,87,201,.08);
-    }
-
-    .action-icon{
-      width:42px;
-      height:42px;
-      border-radius:10px;
-      background:#edf5ff;
-      display:grid;
-      place-items:center;
-      font-size:19px;
-      margin-bottom:13px;
-    }
-
-    .action-card h3{
-      font-size:13px;
-      margin-bottom:5px;
-    }
-
-    .action-card p{
-      color:var(--gray);
-      font-size:10px;
-      line-height:1.5;
-    }
-
-    /* BANK CARD */
-
-    .bank-card{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:15px;
-      padding:20px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
-
-    .bank-left{
-      display:flex;
-      align-items:center;
-      gap:15px;
-    }
-
-    .bank-icon{
-      width:50px;
-      height:50px;
-      border-radius:13px;
-      background:#eaf8ef;
-      display:grid;
-      place-items:center;
-      font-size:23px;
-    }
-
-    .bank-info h3{
-      font-size:14px;
-      margin-bottom:5px;
-    }
-
-    .bank-info p{
-      color:var(--gray);
-      font-size:11px;
-    }
-
-    .bank-details{
-      margin-top:7px;
-      font-size:11px;
-      color:var(--dark);
-      font-weight:600;
-    }
-
-    .bank-action{
-      padding:10px 15px;
-      border-radius:8px;
-      background:var(--blue);
-      color:#fff;
-      text-decoration:none;
-      font-size:11px;
-      font-weight:800;
-      white-space:nowrap;
-    }
-
-    .bank-action:hover{
-      background:var(--dark-blue);
-    }
-
-    .bank-action.saved{
-      background:#eaf8ef;
-      color:var(--green-dark);
-    }
-
-    /* STATS */
 
     .stats{
-      display:grid;
-      grid-template-columns:
-        repeat(3,minmax(0,1fr));
-      gap:13px;
-    }
-
-    .stat-card{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:13px;
-      padding:20px;
-    }
-
-    .stat-card p{
-      color:var(--gray);
-      font-size:11px;
-      margin-bottom:8px;
-    }
-
-    .stat-card h3{
-      font-size:21px;
-      font-weight:800;
-    }
-
-    .green-text{
-      color:var(--green);
-    }
-
-    /* TRANSACTIONS */
-
-    .transactions{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:13px;
-      overflow:hidden;
-    }
-
-    .empty-state{
-      padding:42px 20px;
-      text-align:center;
-      color:var(--gray);
-      font-size:12px;
-    }
-
-    .empty-icon{
-      font-size:30px;
-      margin-bottom:10px;
-    }
-
-    /* MOBILE */
-
-    @media(max-width:1100px){
-
-      .actions{
-        grid-template-columns:
-          repeat(3,minmax(0,1fr));
-      }
-
-    }
-
-    @media(max-width:900px){
-
-      .sidebar{
-        width:210px;
-      }
-
-      .actions{
-        grid-template-columns:
-          repeat(2,minmax(0,1fr));
-      }
-
-    }
-
-    @media(max-width:700px){
-
-      .topbar{
-        padding:0 18px;
-      }
-
-      .welcome-name{
-        display:none;
-      }
-
-      .layout{
-        display:block;
-      }
-
-      .sidebar{
-        width:100%;
-        border-right:0;
-        border-bottom:1px solid var(--border);
-        padding:10px;
-        overflow-x:auto;
-      }
-
-      .menu-title{
-        display:none;
-      }
-
-      .menu{
-        flex-direction:row;
-        width:max-content;
-      }
-
-      .menu-item{
-        width:auto;
-        white-space:nowrap;
-      }
-
-      .logout{
-        margin-top:0;
-      }
-
-      .main{
-        padding:25px 18px 40px;
-      }
-
-      .stats{
         grid-template-columns:1fr;
-      }
+    }
 
-      .bank-card{
+    .actions{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .bank-info{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:550px){
+
+    .main{
+        padding:15px;
+    }
+
+    .topbar{
         align-items:flex-start;
-        flex-direction:column;
-      }
-
-      .bank-action{
-        width:100%;
-        text-align:center;
-      }
-
     }
 
-    @media(max-width:450px){
-
-      .page-title h1{
-        font-size:22px;
-      }
-
-      .wallet-card{
-        padding:22px;
-      }
-
-      .wallet-balance{
-        font-size:28px;
-      }
-
-      .wallet-top{
-        gap:10px;
-      }
-
-      .wallet-bottom{
-        align-items:flex-end;
-      }
-
-      .actions{
-        gap:10px;
-      }
-
-      .action-card{
-        padding:16px 12px;
-      }
-
-      .action-card h3{
-        font-size:12px;
-      }
-
+    .profile-name{
+        display:none;
     }
 
-  </style>
+    .actions{
+        grid-template-columns:1fr;
+    }
+
+    .status-card{
+        gap:15px;
+        align-items:flex-start;
+    }
+
+}
+
+</style>
 
 </head>
 
-
 <body>
 
+<!-- =========================
+     LOADING
+========================= -->
 
-<!-- LOADING -->
-
-<div
-  class="loading-screen"
-  id="loadingScreen"
->
-
-  <div class="loading-logo">
-    Beez <span>Gift Card</span>
-  </div>
-
-  <div class="loader"></div>
-
-  <div class="loading-text">
-    Loading your account...
-  </div>
-
+<div id="loadingScreen">
+    <div class="loader"></div>
 </div>
 
 
-<!-- TOP BAR -->
-
-<header class="topbar">
-
-  <a
-    href="dashboard.html"
-    class="logo"
-  >
-    Beez <span>Gift Card</span>
-  </a>
-
-  <div class="top-right">
-
-    <span
-      class="welcome-name"
-      id="topName"
-    >
-      Welcome
-    </span>
-
-    <div
-      class="avatar"
-      id="avatar"
-    >
-      B
-    </div>
-
-  </div>
-
-</header>
-
-
-<div class="layout">
-
-
-<!-- SIDEBAR -->
+<!-- =========================
+     SIDEBAR
+========================= -->
 
 <aside class="sidebar">
 
-  <div class="menu-title">
-    Main Menu
-  </div>
-
-  <nav class="menu">
-
-    <a
-      href="dashboard.html"
-      class="menu-item active"
-    >
-      <span class="menu-icon">🏠</span>
-      Dashboard
-    </a>
-
-
-    <a
-      href="sell-gift-card.html"
-      class="menu-item"
-    >
-      <span class="menu-icon">🎁</span>
-      Sell Gift Card
-    </a>
-
-
-    <a
-      href="rates.html"
-      class="menu-item"
-    >
-      <span class="menu-icon">💰</span>
-      Gift Card Rates
-    </a>
-
-
-    <a
-      href="transactions.html"
-      class="menu-item"
-    >
-      <span class="menu-icon">📋</span>
-      Transactions
-    </a>
-
-
-    <a
-      href="add-bank.html"
-      class="menu-item"
-    >
-      <span class="menu-icon">🏦</span>
-      Bank Account
-    </a>
-
-
-    <a
-      href="withdraw.html"
-      class="menu-item"
-    >
-      <span class="menu-icon">💳</span>
-      Withdraw
-    </a>
-
-
-    <div class="menu-title">
-      Account
+    <div class="logo">
+        Beez <span>Gift Card</span>
     </div>
 
+    <nav class="menu">
 
-    <a
-      href="profile.html"
-      class="menu-item"
-    >
-      <span class="menu-icon">👤</span>
-      Profile
-    </a>
+        <a href="dashboard.html" class="active">
+            <span>🏠</span>
+            Dashboard
+        </a>
 
+        <a href="sell-gift-card.html">
+            <span>🎁</span>
+            Sell Gift Card
+        </a>
 
-    <a
-      href="support.html"
-      class="menu-item"
-    >
-      <span class="menu-icon">💬</span>
-      Customer Support
-    </a>
+        <a href="transactions.html">
+            <span>📋</span>
+            Transactions
+        </a>
 
+        <a href="withdraw.html">
+            <span>💰</span>
+            Withdraw
+        </a>
 
-    <button
-      type="button"
-      class="menu-item logout"
-      id="logoutBtn"
-    >
-      <span class="menu-icon">🚪</span>
-      Logout
-    </button>
+        <!-- ADD BANK -->
+        <a href="add-bank.html">
+            <span>🏦</span>
+            Add Bank
+        </a>
 
-  </nav>
+        <a href="profile.html">
+            <span>👤</span>
+            Profile
+        </a>
+
+        <a href="support.html">
+            <span>💬</span>
+            Support
+        </a>
+
+        <a href="#" id="logoutBtn" class="logout">
+            <span>🚪</span>
+            Logout
+        </a>
+
+    </nav>
 
 </aside>
 
 
-<!-- MAIN -->
+<!-- =========================
+     MAIN
+========================= -->
 
 <main class="main">
 
+    <!-- TOPBAR -->
 
-  <div class="page-title">
+    <div class="topbar">
 
-    <h1>
-      Welcome back,
-      <span id="userName">
-        Customer
-      </span>
-    </h1>
+        <div class="welcome">
 
-    <p>
-      Manage your gift card trades and wallet from here.
-    </p>
+            <h1>
+                Welcome back, <span id="userName">User</span> 👋
+            </h1>
 
-  </div>
+            <p>
+                Manage your gift card trading account.
+            </p>
 
-
-  <!-- WALLET -->
-
-  <section class="wallet-card">
-
-    <div class="wallet-top">
-
-      <div>
-
-        <div class="wallet-label">
-          Available Wallet Balance
         </div>
 
-        <div
-          class="wallet-balance"
-          id="walletBalance"
-        >
-          ₦0.00
+        <div class="profile">
+
+            <div class="avatar"
+                 id="avatar">
+                U
+            </div>
+
+            <div class="profile-name"
+                 id="profileName">
+                User
+            </div>
+
         </div>
-
-      </div>
-
-      <div class="wallet-status">
-        ACTIVE
-      </div>
 
     </div>
 
 
-    <div class="wallet-bottom">
+    <!-- =========================
+         STATISTICS
+    ========================= -->
 
-      <div class="wallet-note">
-        Your approved gift card earnings
-        appear here.
-      </div>
+    <section class="stats">
 
-      <button
-        type="button"
-        class="withdraw-btn"
-        onclick="window.location.href='withdraw.html'"
-      >
-        Withdraw
-      </button>
+        <div class="card balance-card">
 
-    </div>
+            <div class="card-label">
+                Wallet Balance
+            </div>
 
-  </section>
+            <div class="card-value">
+                ₦<span id="walletBalance">0.00</span>
+            </div>
 
+            <a href="withdraw.html"
+               class="balance-btn">
+                Withdraw
+            </a>
 
-  <!-- QUICK ACTIONS -->
-
-  <section class="section">
-
-    <div class="section-header">
-
-      <h2>
-        Quick Actions
-      </h2>
-
-      <span>
-        Manage your account
-      </span>
-
-    </div>
-
-
-    <div class="actions">
-
-
-      <a
-        href="sell-gift-card.html"
-        class="action-card"
-      >
-
-        <div class="action-icon">
-          🎁
-        </div>
-
-        <h3>
-          Sell Gift Card
-        </h3>
-
-        <p>
-          Submit a gift card for verification.
-        </p>
-
-      </a>
-
-
-      <a
-        href="rates.html"
-        class="action-card"
-      >
-
-        <div class="action-icon">
-          💰
-        </div>
-
-        <h3>
-          View Rates
-        </h3>
-
-        <p>
-          Check current gift card rates.
-        </p>
-
-      </a>
-
-
-      <a
-        href="transactions.html"
-        class="action-card"
-      >
-
-        <div class="action-icon">
-          📋
-        </div>
-
-        <h3>
-          Transactions
-        </h3>
-
-        <p>
-          View your trading history.
-        </p>
-
-      </a>
-
-
-      <a
-        href="add-bank.html"
-        class="action-card"
-      >
-
-        <div class="action-icon">
-          🏦
-        </div>
-
-        <h3>
-          Bank Account
-        </h3>
-
-        <p>
-          Add or update your Nigerian bank account.
-        </p>
-
-      </a>
-
-
-      <a
-        href="withdraw.html"
-        class="action-card"
-      >
-
-        <div class="action-icon">
-          💳
-        </div>
-
-        <h3>
-          Withdraw
-        </h3>
-
-        <p>
-          Withdraw your available balance.
-        </p>
-
-      </a>
-
-
-    </div>
-
-  </section>
-
-
-  <!-- BANK ACCOUNT -->
-
-  <section class="section">
-
-    <div class="section-header">
-
-      <h2>
-        Bank Account
-      </h2>
-
-      <span>
-        Withdrawal account
-      </span>
-
-    </div>
-
-
-    <div class="bank-card">
-
-
-      <div class="bank-left">
-
-        <div class="bank-icon">
-          🏦
         </div>
 
 
-        <div class="bank-info">
+        <div class="card">
 
-          <h3 id="bankStatus">
-            No bank account added
-          </h3>
+            <div class="card-label">
+                Total Trades
+            </div>
 
-          <p id="bankDescription">
+            <div class="card-value"
+                 id="totalTrades">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-label">
+                Total Earnings
+            </div>
+
+            <div class="card-value">
+                ₦<span id="totalEarnings">0.00</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ACCOUNT STATUS
+    ========================= -->
+
+    <section class="card status-card">
+
+        <div class="status-left">
+
+            <h3>
+                Account Status
+            </h3>
+
+            <p>
+                Your Beez Gift Card account is active.
+            </p>
+
+        </div>
+
+        <div class="status"
+             id="accountStatus">
+            Active
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BANK ACCOUNT
+    ========================= -->
+
+    <section class="card bank-card">
+
+        <div class="bank-header">
+
+            <h3>
+                🏦 Bank Account
+            </h3>
+
+            <a href="add-bank.html"
+               id="bankButton">
+                Add Bank
+            </a>
+
+        </div>
+
+        <div id="noBank"
+             class="no-bank">
+
+            No bank account added yet.
             Add your Nigerian bank account to receive withdrawals.
-          </p>
-
-          <div
-            class="bank-details"
-            id="bankDetails"
-            style="display:none;"
-          >
-          </div>
 
         </div>
 
-      </div>
+        <div id="bankInfo"
+             class="bank-info"
+             style="display:none;">
+
+            <div class="bank-item">
+
+                <span>
+                    Bank Name
+                </span>
+
+                <strong id="bankName">
+                    —
+                </strong>
+
+            </div>
 
 
-      <a
-        href="add-bank.html"
-        class="bank-action"
-        id="bankButton"
-      >
-        Add Bank Account
-      </a>
+            <div class="bank-item">
+
+                <span>
+                    Account Name
+                </span>
+
+                <strong id="accountName">
+                    —
+                </strong>
+
+            </div>
 
 
-    </div>
+            <div class="bank-item">
 
-  </section>
+                <span>
+                    Account Number
+                </span>
 
+                <strong id="accountNumber">
+                    —
+                </strong>
 
-  <!-- ACCOUNT OVERVIEW -->
+            </div>
 
-  <section class="section">
-
-    <div class="section-header">
-
-      <h2>
-        Account Overview
-      </h2>
-
-    </div>
-
-
-    <div class="stats">
-
-
-      <div class="stat-card">
-
-        <p>
-          Total Gift Cards Sold
-        </p>
-
-        <h3 id="totalTrades">
-          0
-        </h3>
-
-      </div>
-
-
-      <div class="stat-card">
-
-        <p>
-          Total Earnings
-        </p>
-
-        <h3
-          class="green-text"
-          id="totalEarnings"
-        >
-          ₦0.00
-        </h3>
-
-      </div>
-
-
-      <div class="stat-card">
-
-        <p>
-          Account Status
-        </p>
-
-        <h3
-          class="green-text"
-          id="accountStatus"
-        >
-          Active
-        </h3>
-
-      </div>
-
-
-    </div>
-
-  </section>
-
-
-  <!-- TRANSACTIONS -->
-
-  <section class="section">
-
-    <div class="section-header">
-
-      <h2>
-        Recent Transactions
-      </h2>
-
-      <a
-        href="transactions.html"
-        class="view-all"
-      >
-        View All
-      </a>
-
-    </div>
-
-
-    <div class="transactions">
-
-      <div class="empty-state">
-
-        <div class="empty-icon">
-          📋
         </div>
 
-        <p>
-          No transactions yet.
-        </p>
+    </section>
 
-      </div>
 
-    </div>
+    <!-- =========================
+         QUICK ACTIONS
+    ========================= -->
 
-  </section>
+    <h2 class="section-title">
+        Quick Actions
+    </h2>
 
+
+    <section class="actions">
+
+        <a href="sell-gift-card.html"
+           class="action">
+
+            <div class="action-icon">
+                🎁
+            </div>
+
+            <h4>
+                Sell Gift Card
+            </h4>
+
+            <p>
+                Submit a gift card for trading.
+            </p>
+
+        </a>
+
+
+        <a href="transactions.html"
+           class="action">
+
+            <div class="action-icon">
+                📋
+            </div>
+
+            <h4>
+                Transactions
+            </h4>
+
+            <p>
+                View your trading history.
+            </p>
+
+        </a>
+
+
+        <a href="withdraw.html"
+           class="action">
+
+            <div class="action-icon">
+                💰
+            </div>
+
+            <h4>
+                Withdraw
+            </h4>
+
+            <p>
+                Withdraw your available balance.
+            </p>
+
+        </a>
+
+
+        <!-- ADD BANK -->
+
+        <a href="add-bank.html"
+           class="action">
+
+            <div class="action-icon">
+                🏦
+            </div>
+
+            <h4>
+                Add Bank
+            </h4>
+
+            <p>
+                Add or update your bank account.
+            </p>
+
+        </a>
+
+    </section>
 
 </main>
 
-</div>
 
+<!-- =========================
+     FIREBASE
+========================= -->
 
 <script type="module">
 
-
-  /* FIREBASE */
-
-  import {
+import {
     initializeApp
-  } from
-  "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
-
-  import {
+import {
     getAuth,
     onAuthStateChanged,
     signOut
-  } from
-  "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
-
-  import {
+import {
     getFirestore,
     doc,
     getDoc
-  } from
-  "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-  /* EXACT BEEZ GIFT CARD CONFIG */
+/* =========================
+   FIREBASE CONFIG
+========================= */
 
-  const firebaseConfig = {
+const firebaseConfig = {
 
     apiKey:
-      "AIzaSyDKJescGQhaWB_-E5qH6mnjtmqVVPmlkUI",
+    "AIzaSyDKJescGQhaWB_-E5qH6mnjtmqVVPmlkUI",
 
     authDomain:
-      "beezgiftcard.firebaseapp.com",
+    "beezgiftcard.firebaseapp.com",
 
     projectId:
-      "beezgiftcard",
+    "beezgiftcard",
 
     storageBucket:
-      "beezgiftcard.firebasestorage.app",
+    "beezgiftcard.firebasestorage.app",
 
     messagingSenderId:
-      "875969788899",
+    "875969788899",
 
     appId:
-      "1:875969788899:web:b8f1d6f03bf8752438bed6",
+    "1:875969788899:web:b8f1d6f03bf8752438bed6",
 
     measurementId:
-      "G-85CETQ7LEN"
+    "G-85CETQ7LEN"
+};
 
-  };
 
+/* =========================
+   INITIALIZE
+========================= */
 
-  const app =
+const app =
     initializeApp(firebaseConfig);
 
-
-  const auth =
+const auth =
     getAuth(app);
 
-
-  const db =
+const db =
     getFirestore(app);
 
 
-  /* ELEMENTS */
+/* =========================
+   ELEMENTS
+========================= */
 
-  const loadingScreen =
+const loadingScreen =
     document.getElementById("loadingScreen");
 
-  const userName =
+const userName =
     document.getElementById("userName");
 
-  const topName =
-    document.getElementById("topName");
+const profileName =
+    document.getElementById("profileName");
 
-  const avatar =
+const avatar =
     document.getElementById("avatar");
 
-  const walletBalance =
+const walletBalance =
     document.getElementById("walletBalance");
 
-  const totalTrades =
+const totalTrades =
     document.getElementById("totalTrades");
 
-  const totalEarnings =
+const totalEarnings =
     document.getElementById("totalEarnings");
 
-  const accountStatus =
+const accountStatus =
     document.getElementById("accountStatus");
 
-  const logoutBtn =
-    document.getElementById("logoutBtn");
+const noBank =
+    document.getElementById("noBank");
 
-  const bankStatus =
-    document.getElementById("bankStatus");
+const bankInfo =
+    document.getElementById("bankInfo");
 
-  const bankDescription =
-    document.getElementById("bankDescription");
+const bankName =
+    document.getElementById("bankName");
 
-  const bankDetails =
-    document.getElementById("bankDetails");
+const accountName =
+    document.getElementById("accountName");
 
-  const bankButton =
+const accountNumber =
+    document.getElementById("accountNumber");
+
+const bankButton =
     document.getElementById("bankButton");
 
 
-  /* FORMAT NAIRA */
+/* =========================
+   AUTH
+========================= */
 
-  function formatNaira(amount){
+onAuthStateChanged(auth, async (user) => {
 
-    const value =
-      Number(amount || 0);
+    if(!user){
 
-    return "₦" +
-      value.toLocaleString(
-        "en-NG",
-        {
-          minimumFractionDigits:2,
-          maximumFractionDigits:2
-        }
-      );
-
-  }
-
-
-  /* INITIALS */
-
-  function getInitials(name){
-
-    if(!name){
-      return "B";
-    }
-
-    const parts =
-      name.trim().split(/\s+/);
-
-    if(parts.length === 1){
-
-      return parts[0]
-        .substring(0,2)
-        .toUpperCase();
-
-    }
-
-    return (
-      parts[0][0] +
-      parts[parts.length - 1][0]
-    ).toUpperCase();
-
-  }
-
-
-  /* HIDE LOADING */
-
-  function hideLoading(){
-
-    loadingScreen.style.display =
-      "none";
-
-  }
-
-
-  /* MASK ACCOUNT NUMBER */
-
-  function maskAccountNumber(number){
-
-    if(!number){
-      return "";
-    }
-
-    const value =
-      String(number);
-
-    if(value.length <= 4){
-      return value;
-    }
-
-    return "••••••" +
-      value.slice(-4);
-
-  }
-
-
-  /* AUTH */
-
-  onAuthStateChanged(
-    auth,
-    async(user)=>{
-
-      if(!user){
-
-        window.location.replace(
-          "./login.html"
-        );
+        window.location.replace("login.html");
 
         return;
-
-      }
-
-
-      /* AUTH USER */
-
-      const authName =
-        user.displayName ||
-        "Customer";
+    }
 
 
-      userName.textContent =
-        authName;
+    /* Hide loading */
 
-      topName.textContent =
-        authName;
-
-      avatar.textContent =
-        getInitials(authName);
+    loadingScreen.style.display = "none";
 
 
-      walletBalance.textContent =
-        "₦0.00";
-
-      totalTrades.textContent =
-        "0";
-
-      totalEarnings.textContent =
-        "₦0.00";
-
-      accountStatus.textContent =
-        "Active";
-
-
-      hideLoading();
-
-
-      /* FIRESTORE PROFILE */
-
-      try{
+    try{
 
         const userRef =
-          doc(
-            db,
-            "users",
-            user.uid
-          );
-
+            doc(db, "users", user.uid);
 
         const userSnap =
-          await getDoc(userRef);
+            await getDoc(userRef);
 
 
-        if(!userSnap.exists()){
+        if(userSnap.exists()){
 
-          console.warn(
-            "No Firestore profile found."
-          );
+            const data =
+                userSnap.data();
 
-          return;
+
+            /* =====================
+               NAME
+            ===================== */
+
+            const fullName =
+                data.fullName ||
+                user.displayName ||
+                "User";
+
+            userName.textContent =
+                fullName.split(" ")[0];
+
+            profileName.textContent =
+                fullName;
+
+            avatar.textContent =
+                fullName
+                    .charAt(0)
+                    .toUpperCase();
+
+
+            /* =====================
+               WALLET
+            ===================== */
+
+            const balance =
+                Number(data.walletBalance || 0);
+
+            walletBalance.textContent =
+                balance.toLocaleString(
+                    "en-NG",
+                    {
+                        minimumFractionDigits:2,
+                        maximumFractionDigits:2
+                    }
+                );
+
+
+            /* =====================
+               TRADES
+            ===================== */
+
+            totalTrades.textContent =
+                Number(
+                    data.totalTrades || 0
+                ).toLocaleString();
+
+
+            /* =====================
+               EARNINGS
+            ===================== */
+
+            const earnings =
+                Number(
+                    data.totalEarnings || 0
+                );
+
+            totalEarnings.textContent =
+                earnings.toLocaleString(
+                    "en-NG",
+                    {
+                        minimumFractionDigits:2,
+                        maximumFractionDigits:2
+                    }
+                );
+
+
+            /* =====================
+               STATUS
+            ===================== */
+
+            const status =
+                data.accountStatus ||
+                "active";
+
+            accountStatus.textContent =
+                status.charAt(0)
+                    .toUpperCase()
+                +
+                status.slice(1);
+
+
+            /* =====================
+               BANK
+            ===================== */
+
+            if(
+                data.bankName &&
+                data.accountName &&
+                data.accountNumber
+            ){
+
+                noBank.style.display =
+                    "none";
+
+                bankInfo.style.display =
+                    "grid";
+
+                bankName.textContent =
+                    data.bankName;
+
+                accountName.textContent =
+                    data.accountName;
+
+
+                /* Mask account number */
+
+                const number =
+                    String(
+                        data.accountNumber
+                    );
+
+                accountNumber.textContent =
+                    "******" +
+                    number.slice(-4);
+
+
+                bankButton.textContent =
+                    "Update Bank";
+
+            }else{
+
+                noBank.style.display =
+                    "block";
+
+                bankInfo.style.display =
+                    "none";
+
+                bankButton.textContent =
+                    "Add Bank";
+
+            }
 
         }
 
+    }catch(error){
 
-        const data =
-          userSnap.data();
+        console.error(
+            "Dashboard error:",
+            error
+        );
 
+    }
 
-        /* NAME */
-
-        const fullName =
-          data.fullName ||
-          user.displayName ||
-          "Customer";
-
-
-        userName.textContent =
-          fullName;
-
-        topName.textContent =
-          fullName;
-
-        avatar.textContent =
-          getInitials(fullName);
+});
 
 
-        /* WALLET */
+/* =========================
+   LOGOUT
+========================= */
 
-        walletBalance.textContent =
-          formatNaira(
-            data.walletBalance || 0
-          );
+document
+    .getElementById("logoutBtn")
+    .addEventListener(
+        "click",
+        async (event) => {
 
+            event.preventDefault();
 
-        /* EARNINGS */
+            try{
 
-        totalEarnings.textContent =
-          formatNaira(
-            data.totalEarnings || 0
-          );
+                await signOut(auth);
 
+                window.location.replace(
+                    "login.html"
+                );
 
-        /* TRADES */
+            }catch(error){
 
-        totalTrades.textContent =
-          Number(
-            data.totalTrades || 0
-          );
+                console.error(
+                    "Logout error:",
+                    error
+                );
 
-
-        /* STATUS */
-
-        const status =
-          data.accountStatus ||
-          "active";
-
-
-        accountStatus.textContent =
-          status
-            .charAt(0)
-            .toUpperCase() +
-          status.slice(1);
-
-
-        /* BANK ACCOUNT */
-
-        if(
-          data.bankName &&
-          data.accountNumber &&
-          data.accountName
-        ){
-
-          bankStatus.textContent =
-            data.bankName;
-
-          bankDescription.textContent =
-            data.accountName;
-
-          bankDetails.style.display =
-            "block";
-
-          bankDetails.textContent =
-            maskAccountNumber(
-              data.accountNumber
-            );
-
-          bankButton.textContent =
-            "Update Bank";
-
-          bankButton.classList.add(
-            "saved"
-          );
-
-        }else{
-
-          bankStatus.textContent =
-            "No bank account added";
-
-          bankDescription.textContent =
-            "Add your Nigerian bank account to receive withdrawals.";
-
-          bankDetails.style.display =
-            "none";
-
-          bankButton.textContent =
-            "Add Bank Account";
-
-          bankButton.classList.remove(
-            "saved"
-          );
+            }
 
         }
-
-
-      }catch(error){
-
-        console.error(
-          "Firestore profile error:",
-          error
-        );
-
-      }
-
-    }
-  );
-
-
-  /* LOGOUT */
-
-  logoutBtn.addEventListener(
-    "click",
-    async()=>{
-
-      logoutBtn.disabled =
-        true;
-
-      logoutBtn.innerHTML =
-        "⏳ Logging out...";
-
-
-      try{
-
-        await signOut(auth);
-
-        window.location.replace(
-          "./login.html"
-        );
-
-      }catch(error){
-
-        console.error(
-          "Logout error:",
-          error
-        );
-
-        logoutBtn.disabled =
-          false;
-
-        logoutBtn.innerHTML =
-          "🚪 Logout";
-
-      }
-
-    }
-  );
-
+    );
 
 </script>
 
-
 </body>
-
 </html>
