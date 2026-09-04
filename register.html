@@ -3,1193 +3,1104 @@
 
 <head>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Create Account | Beez Gift Card</title>
+<title>Create Account | Beez Gift Card</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
 
-  <style>
+<style>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --blue:#0757c9;
+    --dark-blue:#043b8f;
+    --green:#16a34a;
+    --green-dark:#0d7a35;
+    --white:#ffffff;
+    --dark:#10233f;
+    --gray:#687891;
+    --border:#d9e4f2;
+}
+
+body{
+    font-family:Inter,sans-serif;
+    min-height:100vh;
+
+    background:
+    radial-gradient(
+        circle at 15% 15%,
+        rgba(22,163,74,.18),
+        transparent 30%
+    ),
+    linear-gradient(
+        135deg,
+        var(--blue),
+        var(--dark-blue)
+    );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:1050px;
+
+    background:white;
+    border-radius:24px;
+    overflow:hidden;
+
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+
+    box-shadow:0 25px 70px rgba(0,0,0,.2);
+}
+
+/* LEFT */
+
+.left{
+    padding:55px 45px;
+    color:white;
+
+    background:
+    radial-gradient(
+        circle at 80% 20%,
+        rgba(22,163,74,.25),
+        transparent 30%
+    ),
+    linear-gradient(
+        150deg,
+        #0757c9,
+        #043b8f
+    );
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:27px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#4bea82;
+}
+
+.left-content{
+    margin:auto 0;
+}
+
+.left-content h1{
+    font-size:39px;
+    line-height:1.15;
+    margin-bottom:18px;
+}
+
+.left-content h1 span{
+    color:#4bea82;
+}
+
+.left-content p{
+    max-width:380px;
+    color:#dceaff;
+    font-size:14px;
+    line-height:1.8;
+}
+
+.features{
+    margin-top:30px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.feature{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    font-size:13px;
+    font-weight:600;
+}
+
+.feature-icon{
+    width:36px;
+    height:36px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:9px;
+    background:rgba(255,255,255,.12);
+}
+
+.footer{
+    color:#bdd0ea;
+    font-size:11px;
+}
+
+/* RIGHT */
+
+.right{
+    padding:50px 55px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.form-box{
+    width:100%;
+    max-width:440px;
+}
+
+.heading{
+    margin-bottom:25px;
+}
+
+.heading h2{
+    font-size:29px;
+    margin-bottom:7px;
+}
+
+.heading p{
+    color:var(--gray);
+    font-size:13px;
+}
+
+/* MESSAGE */
+
+#message{
+    display:none;
+
+    padding:12px;
+    border-radius:8px;
+
+    margin-bottom:17px;
+
+    font-size:12px;
+    line-height:1.5;
+}
+
+#message.error{
+    display:block;
+
+    color:#b42318;
+    background:#fff0f0;
+    border:1px solid #ffd0d0;
+}
+
+#message.success{
+    display:block;
+
+    color:#08752e;
+    background:#edfff3;
+    border:1px solid #bceccc;
+}
+
+/* INPUT */
+
+.group{
+    margin-bottom:17px;
+}
+
+label{
+    display:block;
+
+    font-size:13px;
+    font-weight:700;
+
+    margin-bottom:7px;
+}
+
+.input-wrap{
+    position:relative;
+}
+
+.icon{
+    position:absolute;
+
+    left:14px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    font-size:16px;
+}
+
+input{
+    width:100%;
+    height:50px;
+
+    border:1px solid var(--border);
+    border-radius:9px;
+
+    outline:none;
+
+    padding:0 43px;
+
+    font-family:inherit;
+    font-size:13px;
+
+    background:#fbfdff;
+}
+
+input:focus{
+    border-color:var(--blue);
+
+    box-shadow:
+    0 0 0 3px rgba(7,87,201,.09);
+
+    background:white;
+}
+
+.eye{
+    position:absolute;
+
+    right:12px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    border:0;
+    background:transparent;
+
+    cursor:pointer;
+
+    font-size:16px;
+}
+
+/* TERMS */
+
+.terms{
+    display:flex;
+    align-items:flex-start;
+
+    gap:8px;
+
+    margin:18px 0;
+
+    color:var(--gray);
+
+    font-size:11px;
+    line-height:1.5;
+}
+
+.terms input{
+    width:auto;
+    height:auto;
+
+    margin-top:2px;
+    padding:0;
+
+    accent-color:var(--green);
+}
+
+.terms label{
+    margin:0;
+    font-size:11px;
+    font-weight:400;
+}
+
+.terms a{
+    color:var(--blue);
+    font-weight:700;
+}
+
+/* BUTTON */
+
+.btn{
+    width:100%;
+    height:50px;
+
+    border:0;
+    border-radius:9px;
+
+    background:var(--green);
+    color:white;
+
+    font-family:inherit;
+
+    font-size:14px;
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.btn:hover{
+    background:var(--green-dark);
+    transform:translateY(-1px);
+}
+
+.btn:disabled{
+    opacity:.65;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.login{
+    text-align:center;
+
+    margin-top:20px;
+
+    color:var(--gray);
+    font-size:12px;
+}
+
+.login a{
+    color:var(--blue);
+    font-weight:800;
+    text-decoration:none;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .container{
+        display:block;
+        max-width:520px;
     }
 
-    :root {
-      --blue: #0757c9;
-      --dark-blue: #043b8f;
-      --green: #16a34a;
-      --green-dark: #0d7a35;
-      --white: #ffffff;
-      --dark: #10233f;
-      --gray: #687891;
-      --border: #d9e4f2;
+    .left{
+        display:none;
     }
 
-    body {
-      font-family: Inter, sans-serif;
-      min-height: 100vh;
+    .right{
+        padding:40px 25px;
+    }
+}
 
-      background:
-        radial-gradient(
-          circle at 15% 15%,
-          rgba(22, 163, 74, .18),
-          transparent 30%
-        ),
-        linear-gradient(
-          135deg,
-          var(--blue),
-          var(--dark-blue)
-        );
+@media(max-width:400px){
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      padding: 20px;
+    .right{
+        padding:32px 18px;
     }
 
-    .container {
-      width: 100%;
-      max-width: 1050px;
-
-      background: white;
-
-      border-radius: 24px;
-
-      overflow: hidden;
-
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-
-      box-shadow:
-        0 25px 70px rgba(0,0,0,.2);
+    .heading h2{
+        font-size:25px;
     }
+}
 
-    /* LEFT */
-
-    .left {
-      padding: 55px 45px;
-
-      color: white;
-
-      background:
-        radial-gradient(
-          circle at 80% 20%,
-          rgba(22,163,74,.25),
-          transparent 30%
-        ),
-        linear-gradient(
-          150deg,
-          #0757c9,
-          #043b8f
-        );
-
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-size: 27px;
-      font-weight: 800;
-    }
-
-    .logo span {
-      color: #4bea82;
-    }
-
-    .left-content {
-      margin: auto 0;
-    }
-
-    .left-content h1 {
-      font-size: 39px;
-      line-height: 1.15;
-      margin-bottom: 18px;
-    }
-
-    .left-content h1 span {
-      color: #4bea82;
-    }
-
-    .left-content p {
-      max-width: 380px;
-
-      color: #dceaff;
-
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .features {
-      margin-top: 30px;
-
-      display: flex;
-      flex-direction: column;
-
-      gap: 15px;
-    }
-
-    .feature {
-      display: flex;
-      align-items: center;
-
-      gap: 12px;
-
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .feature-icon {
-      width: 36px;
-      height: 36px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 9px;
-
-      background: rgba(255,255,255,.12);
-    }
-
-    .footer {
-      color: #bdd0ea;
-      font-size: 11px;
-    }
-
-    /* RIGHT */
-
-    .right {
-      padding: 50px 55px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .form-box {
-      width: 100%;
-      max-width: 440px;
-    }
-
-    .heading {
-      margin-bottom: 25px;
-    }
-
-    .heading h2 {
-      font-size: 29px;
-      margin-bottom: 7px;
-    }
-
-    .heading p {
-      color: var(--gray);
-      font-size: 13px;
-    }
-
-    /* MESSAGE */
-
-    #message {
-      display: none;
-
-      padding: 12px;
-
-      border-radius: 8px;
-
-      margin-bottom: 17px;
-
-      font-size: 12px;
-
-      line-height: 1.5;
-    }
-
-    #message.error {
-      display: block;
-
-      color: #b42318;
-
-      background: #fff0f0;
-
-      border: 1px solid #ffd0d0;
-    }
-
-    #message.success {
-      display: block;
-
-      color: #08752e;
-
-      background: #edfff3;
-
-      border: 1px solid #bceccc;
-    }
-
-    /* INPUTS */
-
-    .group {
-      margin-bottom: 17px;
-    }
-
-    label {
-      display: block;
-
-      font-size: 13px;
-      font-weight: 700;
-
-      margin-bottom: 7px;
-    }
-
-    .input-wrap {
-      position: relative;
-    }
-
-    .icon {
-      position: absolute;
-
-      left: 14px;
-      top: 50%;
-
-      transform: translateY(-50%);
-
-      font-size: 16px;
-    }
-
-    input {
-      width: 100%;
-      height: 50px;
-
-      border: 1px solid var(--border);
-
-      border-radius: 9px;
-
-      outline: none;
-
-      padding: 0 43px;
-
-      font-family: inherit;
-
-      font-size: 13px;
-
-      background: #fbfdff;
-    }
-
-    input:focus {
-      border-color: var(--blue);
-
-      box-shadow:
-        0 0 0 3px rgba(7,87,201,.09);
-
-      background: white;
-    }
-
-    .eye {
-      position: absolute;
-
-      right: 12px;
-      top: 50%;
-
-      transform: translateY(-50%);
-
-      border: 0;
-
-      background: transparent;
-
-      cursor: pointer;
-
-      font-size: 16px;
-    }
-
-    /* TERMS */
-
-    .terms {
-      display: flex;
-
-      align-items: flex-start;
-
-      gap: 8px;
-
-      margin: 18px 0;
-
-      color: var(--gray);
-
-      font-size: 11px;
-
-      line-height: 1.5;
-    }
-
-    .terms input {
-      width: auto;
-      height: auto;
-
-      margin-top: 2px;
-
-      padding: 0;
-
-      accent-color: var(--green);
-    }
-
-    .terms label {
-      margin: 0;
-      font-size: 11px;
-      font-weight: 400;
-    }
-
-    .terms a {
-      color: var(--blue);
-      font-weight: 700;
-    }
-
-    /* BUTTON */
-
-    .btn {
-      width: 100%;
-      height: 50px;
-
-      border: 0;
-
-      border-radius: 9px;
-
-      background: var(--green);
-
-      color: white;
-
-      font-family: inherit;
-
-      font-size: 14px;
-      font-weight: 800;
-
-      cursor: pointer;
-
-      transition: .2s;
-    }
-
-    .btn:hover {
-      background: var(--green-dark);
-
-      transform: translateY(-1px);
-    }
-
-    .btn:disabled {
-      opacity: .65;
-
-      cursor: not-allowed;
-
-      transform: none;
-    }
-
-    .login {
-      text-align: center;
-
-      margin-top: 20px;
-
-      color: var(--gray);
-
-      font-size: 12px;
-    }
-
-    .login a {
-      color: var(--blue);
-
-      font-weight: 800;
-
-      text-decoration: none;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 800px) {
-
-      .container {
-        display: block;
-
-        max-width: 520px;
-      }
-
-      .left {
-        display: none;
-      }
-
-      .right {
-        padding: 40px 25px;
-      }
-
-    }
-
-    @media (max-width: 400px) {
-
-      .right {
-        padding: 32px 18px;
-      }
-
-      .heading h2 {
-        font-size: 25px;
-      }
-
-    }
-
-  </style>
+</style>
 
 </head>
 
-
 <body>
-
 
 <div class="container">
 
-
-  <!-- LEFT -->
-
-  <section class="left">
+<section class="left">
 
     <div class="logo">
-      Beez <span>Gift Card</span>
+        Beez <span>Gift Card</span>
     </div>
-
 
     <div class="left-content">
 
-      <h1>
-        Start Trading
-        <span>Gift Cards.</span>
-      </h1>
+        <h1>
+            Start Trading
+            <span>Gift Cards.</span>
+        </h1>
 
-      <p>
-        Create your Beez Gift Card account and
-        start trading your gift cards at competitive
-        rates.
-      </p>
+        <p>
+            Create your Beez Gift Card account and
+            start trading your gift cards at competitive
+            rates.
+        </p>
 
+        <div class="features">
 
-      <div class="features">
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                Fast Processing
+            </div>
 
-        <div class="feature">
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                Secure Transactions
+            </div>
 
-          <div class="feature-icon">⚡</div>
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                Competitive Rates
+            </div>
 
-          Fast Processing
-
-        </div>
-
-
-        <div class="feature">
-
-          <div class="feature-icon">🔒</div>
-
-          Secure Transactions
-
-        </div>
-
-
-        <div class="feature">
-
-          <div class="feature-icon">💰</div>
-
-          Competitive Rates
+            <div class="feature">
+                <div class="feature-icon">🏦</div>
+                Easy Withdrawals
+            </div>
 
         </div>
-
-
-        <div class="feature">
-
-          <div class="feature-icon">🏦</div>
-
-          Easy Withdrawals
-
-        </div>
-
-      </div>
 
     </div>
-
 
     <div class="footer">
-      © 2026 Beez Gift Card. All Rights Reserved.
+        © 2026 Beez Gift Card. All Rights Reserved.
     </div>
 
-  </section>
+</section>
 
 
-  <!-- RIGHT -->
+<section class="right">
 
-  <section class="right">
+<div class="form-box">
 
-    <div class="form-box">
-
-
-      <div class="heading">
+    <div class="heading">
 
         <h2>
-          Create Account
+            Create Account
         </h2>
 
         <p>
-          Register your account to start trading gift cards.
+            Register your account to start trading gift cards.
         </p>
 
-      </div>
+    </div>
 
 
-      <div id="message"></div>
+    <div id="message"></div>
 
 
-      <form id="registerForm">
-
-
-        <!-- FULL NAME -->
+    <form id="registerForm">
 
         <div class="group">
 
-          <label for="fullName">
-            Full Name
-          </label>
+            <label for="fullName">
+                Full Name
+            </label>
 
-          <div class="input-wrap">
+            <div class="input-wrap">
 
-            <span class="icon">👤</span>
+                <span class="icon">👤</span>
 
-            <input
-              id="fullName"
-              type="text"
-              placeholder="Enter your full name"
-              autocomplete="name"
-              required
-            >
+                <input
+                    id="fullName"
+                    type="text"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                    required
+                >
 
-          </div>
+            </div>
 
         </div>
 
 
-        <!-- NUMBER -->
-
         <div class="group">
 
-          <label for="phone">
-            Number
-          </label>
+            <label for="phone">
+                Number
+            </label>
 
-          <div class="input-wrap">
+            <div class="input-wrap">
 
-            <span class="icon">📱</span>
+                <span class="icon">📱</span>
 
-            <input
-              id="phone"
-              type="tel"
-              placeholder="Enter your phone number"
-              autocomplete="tel"
-              required
-            >
+                <input
+                    id="phone"
+                    type="tel"
+                    placeholder="Enter your phone number"
+                    autocomplete="tel"
+                    required
+                >
 
-          </div>
+            </div>
 
         </div>
 
 
-        <!-- GMAIL -->
-
         <div class="group">
 
-          <label for="email">
-            Gmail
-          </label>
+            <label for="email">
+                Gmail
+            </label>
 
-          <div class="input-wrap">
+            <div class="input-wrap">
 
-            <span class="icon">✉️</span>
+                <span class="icon">✉️</span>
 
-            <input
-              id="email"
-              type="email"
-              placeholder="Enter your Gmail address"
-              autocomplete="email"
-              required
-            >
+                <input
+                    id="email"
+                    type="email"
+                    placeholder="Enter your Gmail address"
+                    autocomplete="email"
+                    required
+                >
 
-          </div>
+            </div>
 
         </div>
 
 
-        <!-- PASSWORD -->
-
         <div class="group">
 
-          <label for="password">
-            Password
-          </label>
+            <label for="password">
+                Password
+            </label>
 
-          <div class="input-wrap">
+            <div class="input-wrap">
 
-            <span class="icon">🔐</span>
+                <span class="icon">🔐</span>
 
-            <input
-              id="password"
-              type="password"
-              placeholder="Create a password"
-              autocomplete="new-password"
-              minlength="6"
-              required
-            >
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Create a password"
+                    autocomplete="new-password"
+                    minlength="6"
+                    required
+                >
 
-            <button
-              type="button"
-              class="eye"
-              id="passwordEye"
-            >
-              👁️
-            </button>
+                <button
+                    type="button"
+                    class="eye"
+                    id="passwordEye"
+                >
+                    👁️
+                </button>
 
-          </div>
+            </div>
 
         </div>
 
 
-        <!-- CONFIRM -->
-
         <div class="group">
 
-          <label for="confirmPassword">
-            Confirm Password
-          </label>
+            <label for="confirmPassword">
+                Confirm Password
+            </label>
 
-          <div class="input-wrap">
+            <div class="input-wrap">
 
-            <span class="icon">🔐</span>
+                <span class="icon">🔐</span>
 
-            <input
-              id="confirmPassword"
-              type="password"
-              placeholder="Confirm your password"
-              autocomplete="new-password"
-              minlength="6"
-              required
-            >
+                <input
+                    id="confirmPassword"
+                    type="password"
+                    placeholder="Confirm your password"
+                    autocomplete="new-password"
+                    minlength="6"
+                    required
+                >
 
-            <button
-              type="button"
-              class="eye"
-              id="confirmEye"
-            >
-              👁️
-            </button>
+                <button
+                    type="button"
+                    class="eye"
+                    id="confirmEye"
+                >
+                    👁️
+                </button>
 
-          </div>
+            </div>
 
         </div>
 
-
-        <!-- TERMS -->
 
         <div class="terms">
 
-          <input
-            type="checkbox"
-            id="terms"
-            required
-          >
+            <input
+                type="checkbox"
+                id="terms"
+                required
+            >
 
-          <label for="terms">
+            <label for="terms">
 
-            I agree to the Beez Gift Card
-            <a href="#">Terms & Conditions</a>
-            and
-            <a href="#">Privacy Policy</a>.
+                I agree to the Beez Gift Card
+                <a href="#">Terms & Conditions</a>
+                and
+                <a href="#">Privacy Policy</a>.
 
-          </label>
+            </label>
 
         </div>
 
 
-        <!-- BUTTON -->
-
         <button
-          type="submit"
-          class="btn"
-          id="registerBtn"
+            type="submit"
+            class="btn"
+            id="registerBtn"
         >
-          Create Account
+            Create Account
         </button>
 
+    </form>
 
-      </form>
 
-
-      <div class="login">
+    <div class="login">
 
         Already have an account?
 
         <a href="login.html">
-          Login
+            Login
         </a>
-
-      </div>
-
 
     </div>
 
-  </section>
+</div>
 
+</section>
 
 </div>
 
 
 <script type="module">
 
-  /* ==========================================
-     FIREBASE IMPORTS
-  ========================================== */
-
-  import {
+import {
     initializeApp
-  } from
-  "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
-
-  import {
+import {
     getAuth,
     createUserWithEmailAndPassword,
-    updateProfile
-  } from
-  "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+    updateProfile,
+    setPersistence,
+    browserLocalPersistence
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
-
-  import {
+import {
     getFirestore,
     doc,
     setDoc,
     serverTimestamp
-  } from
-  "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-  /* ==========================================
-     YOUR FIREBASE CONFIG
-  ========================================== */
+/* ==========================================
+   FIREBASE CONFIG
+========================================== */
 
-  const firebaseConfig = {
+const firebaseConfig = {
 
     apiKey:
-      "AIzaSyDKJescGQhaWB_-E5qH6mnjtmQvVPmlkUI",
+    "AIzaSyDKJescGQhaWB_-E5qH6mnjtmqVVPmlkUI",
 
     authDomain:
-      "beezgiftcard.firebaseapp.com",
+    "beezgiftcard.firebaseapp.com",
 
     projectId:
-      "beezgiftcard",
+    "beezgiftcard",
 
     storageBucket:
-      "beezgiftcard.firebasestorage.app",
+    "beezgiftcard.firebasestorage.app",
 
     messagingSenderId:
-      "875969788899",
+    "875969788899",
 
     appId:
-      "1:875969788899:web:b8f1d6f03bf8752438bed6",
+    "1:875969788899:web:b8f1d6f03bf8752438bed6",
 
     measurementId:
-      "G-85CETQ7LEN"
+    "G-85CETQ7LEN"
+};
 
-  };
 
+/* ==========================================
+   INITIALIZE
+========================================== */
 
-  /* ==========================================
-     INITIALIZE FIREBASE
-  ========================================== */
-
-  const app =
+const app =
     initializeApp(firebaseConfig);
 
-
-  const auth =
+const auth =
     getAuth(app);
 
-
-  const db =
+const db =
     getFirestore(app);
 
 
-  /* ==========================================
-     ELEMENTS
-  ========================================== */
+/* ==========================================
+   KEEP USER LOGGED IN
+========================================== */
 
-  const form =
+await setPersistence(
+    auth,
+    browserLocalPersistence
+);
+
+
+/* ==========================================
+   ELEMENTS
+========================================== */
+
+const form =
     document.getElementById("registerForm");
 
-  const button =
+const button =
     document.getElementById("registerBtn");
 
-  const message =
+const message =
     document.getElementById("message");
 
 
-  /* ==========================================
-     PASSWORD TOGGLE
-  ========================================== */
+/* ==========================================
+   PASSWORD TOGGLE
+========================================== */
 
-  document
-    .getElementById("passwordEye")
-    .addEventListener("click", () => {
+document
+.getElementById("passwordEye")
+.addEventListener("click", () => {
 
-      const input =
+    const input =
         document.getElementById("password");
 
-      if (input.type === "password") {
+    if(input.type === "password"){
 
         input.type = "text";
 
         document.getElementById("passwordEye")
-          .textContent = "🙈";
+        .textContent = "🙈";
 
-      } else {
+    }else{
 
         input.type = "password";
 
         document.getElementById("passwordEye")
-          .textContent = "👁️";
+        .textContent = "👁️";
 
-      }
+    }
 
-    });
+});
 
 
-  document
-    .getElementById("confirmEye")
-    .addEventListener("click", () => {
+document
+.getElementById("confirmEye")
+.addEventListener("click", () => {
 
-      const input =
+    const input =
         document.getElementById("confirmPassword");
 
-      if (input.type === "password") {
+    if(input.type === "password"){
 
         input.type = "text";
 
         document.getElementById("confirmEye")
-          .textContent = "🙈";
+        .textContent = "🙈";
 
-      } else {
+    }else{
 
         input.type = "password";
 
         document.getElementById("confirmEye")
-          .textContent = "👁️";
+        .textContent = "👁️";
 
-      }
+    }
 
-    });
+});
 
 
-  /* ==========================================
-     MESSAGE
-  ========================================== */
+/* ==========================================
+   MESSAGE
+========================================== */
 
-  function showMessage(text, type) {
+function showMessage(text,type){
 
     message.textContent = text;
 
     message.className = type;
 
-  }
+}
 
 
-  /* ==========================================
-     FIREBASE ERROR
-  ========================================== */
+/* ==========================================
+   ERROR MESSAGE
+========================================== */
 
-  function getErrorMessage(error) {
+function getErrorMessage(error){
 
     console.error(
-      "Firebase error:",
-      error.code,
-      error.message
+        "Firebase error:",
+        error.code,
+        error.message
     );
 
 
-    switch (error.code) {
+    switch(error.code){
 
-      case "auth/email-already-in-use":
+        case "auth/email-already-in-use":
+            return "This Gmail is already registered. Please login instead.";
 
-        return "This Gmail is already registered. Please login instead.";
+        case "auth/invalid-email":
+            return "Please enter a valid Gmail address.";
 
+        case "auth/weak-password":
+            return "Password must contain at least 6 characters.";
 
-      case "auth/invalid-email":
+        case "auth/operation-not-allowed":
+            return "Email/Password authentication is not enabled in Firebase.";
 
-        return "Please enter a valid Gmail address.";
+        case "auth/network-request-failed":
+            return "Network error. Please check your internet connection.";
 
+        case "permission-denied":
+        case "firestore/permission-denied":
+            return "Your account was created, but your profile could not be saved because Firestore permissions are blocking it.";
 
-      case "auth/weak-password":
-
-        return "Password must contain at least 6 characters.";
-
-
-      case "auth/operation-not-allowed":
-
-        return "Email/Password authentication is not enabled in Firebase.";
-
-
-      case "auth/network-request-failed":
-
-        return "Network error. Please check your internet connection.";
-
-
-      case "permission-denied":
-
-        return "Firestore permission denied. Please check your Firestore Rules.";
-
-
-      default:
-
-        return error.message ||
-          "Registration failed. Please try again.";
+        default:
+            return error.message ||
+            "Registration failed. Please try again.";
 
     }
 
-  }
+}
 
 
-  /* ==========================================
-     REGISTER
-  ========================================== */
+/* ==========================================
+   REGISTER
+========================================== */
 
-  form.addEventListener(
-    "submit",
-    async (event) => {
+form.addEventListener(
+"submit",
+async(event)=>{
 
-      event.preventDefault();
+    event.preventDefault();
 
 
-      const fullName =
+    const fullName =
         document
-          .getElementById("fullName")
-          .value
-          .trim();
+        .getElementById("fullName")
+        .value
+        .trim();
 
 
-      const phone =
+    const phone =
         document
-          .getElementById("phone")
-          .value
-          .trim();
+        .getElementById("phone")
+        .value
+        .trim();
 
 
-      const email =
+    const email =
         document
-          .getElementById("email")
-          .value
-          .trim()
-          .toLowerCase();
+        .getElementById("email")
+        .value
+        .trim()
+        .toLowerCase();
 
 
-      const password =
+    const password =
         document
-          .getElementById("password")
-          .value;
+        .getElementById("password")
+        .value;
 
 
-      const confirmPassword =
+    const confirmPassword =
         document
-          .getElementById("confirmPassword")
-          .value;
+        .getElementById("confirmPassword")
+        .value;
 
 
-      /* ======================================
-         VALIDATION
-      ====================================== */
+    /* VALIDATION */
 
-      if (fullName.length < 2) {
+    if(fullName.length < 2){
 
         showMessage(
-          "Please enter your full name.",
-          "error"
+            "Please enter your full name.",
+            "error"
         );
 
         return;
+    }
 
-      }
 
-
-      if (phone.length < 7) {
+    if(phone.length < 7){
 
         showMessage(
-          "Please enter a valid phone number.",
-          "error"
+            "Please enter a valid phone number.",
+            "error"
         );
 
         return;
+    }
 
-      }
 
-
-      if (!email.endsWith("@gmail.com")) {
+    if(!email.endsWith("@gmail.com")){
 
         showMessage(
-          "Please enter a valid Gmail address.",
-          "error"
+            "Please enter a valid Gmail address.",
+            "error"
         );
 
         return;
+    }
 
-      }
 
-
-      if (password.length < 6) {
+    if(password.length < 6){
 
         showMessage(
-          "Password must contain at least 6 characters.",
-          "error"
+            "Password must contain at least 6 characters.",
+            "error"
         );
 
         return;
+    }
 
-      }
 
-
-      if (password !== confirmPassword) {
+    if(password !== confirmPassword){
 
         showMessage(
-          "Passwords do not match.",
-          "error"
+            "Passwords do not match.",
+            "error"
         );
 
         return;
+    }
 
-      }
 
+    /* LOADING */
 
-      /* ======================================
-         LOADING
-      ====================================== */
+    button.disabled = true;
 
-      button.disabled = true;
-
-      button.textContent =
+    button.textContent =
         "Creating Account...";
 
 
-      try {
+    try{
 
-
-        /* ====================================
-           CREATE FIREBASE AUTH ACCOUNT
-        ==================================== */
+        /* ======================================
+           CREATE AUTH ACCOUNT
+        ====================================== */
 
         const credential =
-          await createUserWithEmailAndPassword(
-            auth,
-            email,
-            password
-          );
+            await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
 
 
         const user =
-          credential.user;
+            credential.user;
 
 
-        /* ====================================
+        /* ======================================
            SAVE DISPLAY NAME
-        ==================================== */
+        ====================================== */
 
         await updateProfile(
-          user,
-          {
-            displayName: fullName
-          }
+            user,
+            {
+                displayName:fullName
+            }
         );
 
 
-        /* ====================================
-           CREATE FIRESTORE USER PROFILE
-        ==================================== */
+        /* ======================================
+           CREATE USER PROFILE
+        ====================================== */
 
         await setDoc(
-          doc(
-            db,
-            "users",
-            user.uid
-          ),
-          {
+            doc(
+                db,
+                "users",
+                user.uid
+            ),
+            {
 
-            uid: user.uid,
+                uid:user.uid,
 
-            fullName: fullName,
+                fullName:fullName,
 
-            phone: phone,
+                phone:phone,
 
-            email: email,
+                email:email,
 
-            walletBalance: 0,
+                walletBalance:0,
 
-            totalEarnings: 0,
+                totalEarnings:0,
 
-            totalTrades: 0,
+                totalTrades:0,
 
-            accountStatus: "active",
+                accountStatus:"active",
 
-            createdAt: serverTimestamp(),
+                createdAt:serverTimestamp(),
 
-            updatedAt: serverTimestamp()
+                updatedAt:serverTimestamp()
 
-          }
+            }
         );
 
 
-        /* ====================================
-           SUCCESS
-        ==================================== */
+        /* ======================================
+           MAKE SURE AUTH SESSION EXISTS
+        ====================================== */
+
+        await setPersistence(
+            auth,
+            browserLocalPersistence
+        );
+
 
         showMessage(
-          "Account created successfully. Opening dashboard...",
-          "success"
+            "Account created successfully. Opening your dashboard...",
+            "success"
         );
 
 
         button.textContent =
-          "Account Created";
+            "Account Created";
 
 
-        /* ====================================
-           DASHBOARD
-        ==================================== */
+        /* ======================================
+           REDIRECT
+        ====================================== */
 
-        setTimeout(
-          () => {
+        setTimeout(()=>{
 
-            window.location.href =
-              "dashboard.html";
+            window.location.replace(
+                "dashboard.html"
+            );
 
-          },
-          1000
+        },700);
+
+
+    }catch(error){
+
+        console.error(
+            "REGISTRATION ERROR:",
+            error
         );
 
 
-      } catch (error) {
-
         showMessage(
-          getErrorMessage(error),
-          "error"
+            getErrorMessage(error),
+            "error"
         );
 
 
         button.disabled = false;
 
         button.textContent =
-          "Create Account";
-
-      }
+            "Create Account";
 
     }
-  );
+
+});
 
 </script>
-
 
 </body>
 </html>
